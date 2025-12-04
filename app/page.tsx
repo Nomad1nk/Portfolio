@@ -211,7 +211,7 @@ export default function Portfolio() {
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-blue-100">
+    <div className="min-h-screen font-sans selection:bg-blue-100 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 animate-gradient-xy text-slate-800">
 
       {/* --- NAV / HERO SECTION --- */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-sm bg-white/90">
