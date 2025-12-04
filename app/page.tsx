@@ -552,10 +552,10 @@ function Bubbles() {
   const bubbles = Array.from({ length: 30 }).map((_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
-    animationDuration: `${15 + Math.random() * 20}s`, // 15-35s duration
-    animationDelay: `-${Math.random() * 30}s`, // Negative delay to start mid-animation
+    animationDuration: `${20 + Math.random() * 40}s`, // 20-60s duration for longer travel
+    animationDelay: `-${Math.random() * 40}s`, // Negative delay to start mid-animation
     opacity: 0.1 + Math.random() * 0.2,
-    size: `${4 + Math.random() * 6}px`
+    size: `${10 + Math.random() * 30}px` // 10px - 40px size
   }));
 
   return (

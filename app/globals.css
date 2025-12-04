@@ -67,7 +67,7 @@
     }
 
     100% {
-        bottom: 100vh;
+        bottom: 100%;
         transform: translateX(-200px);
         opacity: 0;
     }
