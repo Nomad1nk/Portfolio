@@ -31,6 +31,10 @@ A hands-free HCI system enabling touchless control using computer vision to tran
 ### 3. MindSync AI
 An empathetic AI companion designed for deep psychological context retention using Vector Memory.
 - **Stack:** Next.js, OpenAI, LangChain, Vector DB.
+### 4. Lux e-Commerce Website
+A high-performance headless eCommerce platform designed for luxury retail. Features a seamless checkout experience, real-time inventory management, and AI-driven product recommendations.
+- **Stack:** Next.js, Shopify API, Stripe, Redis.
+
 
 ## 🛠️ Getting Started
 
