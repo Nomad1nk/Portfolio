@@ -211,24 +211,24 @@ export default function Portfolio() {
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen font-sans selection:bg-blue-200 bg-gradient-to-br from-indigo-100 via-purple-100 to-teal-100 animate-gradient-xy text-slate-800">
+    <div className="min-h-screen font-sans selection:bg-gray-300 bg-gradient-to-br from-white via-gray-100 to-slate-200 animate-gradient-xy text-slate-900">
 
       {/* --- NAV / HERO SECTION --- */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-sm bg-white/90">
+      <header className="bg-white/80 border-b border-gray-200 sticky top-0 z-50 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="font-bold text-xl tracking-tight text-slate-900">Nomad<span className="text-blue-600">.Dev</span></div>
-          <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-            <a href="#about" className="hover:text-blue-600 transition">{t.nav.about}</a>
-            <a href="#projects" className="hover:text-blue-600 transition">{t.nav.projects}</a>
-            <a href="#skills" className="hover:text-blue-600 transition">{t.nav.stack}</a>
-            <a href="#contact" className="hover:text-blue-600 transition">{t.nav.contact}</a>
+          <div className="font-bold text-xl tracking-tight text-black">Nomad<span className="text-gray-500">.Dev</span></div>
+          <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+            <a href="#about" className="hover:text-black transition">{t.nav.about}</a>
+            <a href="#projects" className="hover:text-black transition">{t.nav.projects}</a>
+            <a href="#skills" className="hover:text-black transition">{t.nav.stack}</a>
+            <a href="#contact" className="hover:text-black transition">{t.nav.contact}</a>
           </nav>
 
           <div className="flex items-center gap-4">
 
             {/* Hover Language Switcher */}
             <div className="relative group">
-              <button className="flex items-center gap-1 text-sm font-bold text-slate-600 hover:text-blue-600 transition px-2 py-1 rounded-md">
+              <button className="flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-black transition px-2 py-1 rounded-md">
                 <Globe size={16} />
                 <span className="uppercase">{lang}</span>
                 <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
@@ -236,22 +236,22 @@ export default function Portfolio() {
 
               {/* Dropdown Menu */}
               <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">
-                <div className="bg-white border border-slate-200 rounded-lg shadow-xl overflow-hidden min-w-[120px] flex flex-col">
+                <div className="bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden min-w-[120px] flex flex-col">
                   {(['en', 'jp', 'de', 'mn'] as const).map((l) => (
                     <button
                       key={l}
                       onClick={() => setLang(l)}
-                      className={`px-4 py-2 text-left text-sm font-medium hover:bg-slate-50 transition flex items-center justify-between ${lang === l ? 'text-blue-600 bg-blue-50' : 'text-slate-600'}`}
+                      className={`px-4 py-2 text-left text-sm font-medium hover:bg-gray-50 transition flex items-center justify-between ${lang === l ? 'text-black bg-gray-100 font-bold' : 'text-gray-600'}`}
                     >
                       <span className="uppercase">{l}</span>
-                      {lang === l && <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>}
+                      {lang === l && <div className="w-1.5 h-1.5 rounded-full bg-black"></div>}
                     </button>
                   ))}
                 </div>
               </div>
             </div>
 
-            <a href="/MainRirekiSho.xlsx" className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-800 transition">
+            <a href="/MainRirekiSho.xlsx" className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition shadow-lg shadow-gray-200">
               <Download size={16} />
               <span className="hidden sm:inline">{t.cv}</span>
             </a>
@@ -263,24 +263,24 @@ export default function Portfolio() {
         {/* --- HERO --- */}
         <section id="about" className="pt-20 pb-32 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wide mb-6 border border-blue-100">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-xs font-bold uppercase tracking-wide mb-6 border border-gray-200">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gray-600"></span>
               </span>
               {t.hero.openToWork}
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
-              {t.hero.titlePrefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">{t.hero.titleHighlight}</span> {t.hero.titleSuffix}
+              {t.hero.titlePrefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-black">{t.hero.titleHighlight}</span> {t.hero.titleSuffix}
             </h1>
             <p className="text-lg text-slate-600 mb-10 leading-relaxed">
               {t.hero.description}
             </p>
             <div className="flex justify-center gap-4">
-              <a href="#contact" className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
+              <a href="#contact" className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition shadow-xl shadow-gray-200">
                 {t.hero.contact}
               </a>
-              <a href="https://github.com/nomad1nk" target="_blank" rel="noreferrer" className="px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-lg font-semibold hover:bg-slate-50 transition flex items-center gap-2">
+              <a href="https://github.com/nomad1nk" target="_blank" rel="noreferrer" className="px-6 py-3 bg-white text-slate-800 border border-gray-200 rounded-lg font-semibold hover:bg-gray-50 transition flex items-center gap-2">
                 <Github size={20} />
                 {t.hero.github}
               </a>
@@ -291,7 +291,7 @@ export default function Portfolio() {
         {/* --- FEATURED PROJECTS --- */}
         <section id="projects" className="py-20 bg-white/40 backdrop-blur-sm border-y border-white/50">
           <div className="max-w-5xl mx-auto px-6 space-y-24">
-            <h2 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-8">{t.projects.title}</h2>
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-8 border-b border-gray-200 pb-2 inline-block">{t.projects.title}</h2>
 
             {/* PROJECT 1: EcoRoute */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -301,11 +301,11 @@ export default function Portfolio() {
                   <p>{t.projects.p1.desc}</p>
                   <ul className="space-y-2 mt-4">
                     <li className="flex items-start gap-3">
-                      <span className="bg-green-100 p-1 rounded text-green-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p1.feat1}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="bg-green-100 p-1 rounded text-green-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p1.feat2}</span>
                     </li>
                   </ul>
@@ -317,8 +317,8 @@ export default function Portfolio() {
                   <TechBadge icon={MapPin} label="Leaflet / OSRM" />
                 </div>
               </div>
-              <div className="bg-slate-100 rounded-2xl p-4 border border-slate-200 shadow-xl rotate-1 hover:rotate-0 transition duration-500">
-                <div className="aspect-video bg-slate-200 rounded-lg flex items-center justify-center overflow-hidden relative border border-slate-200">
+              <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-xl rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
+                <div className="aspect-video bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden relative border border-gray-100">
                   <img
                     src="/ecoroute.png"
                     alt="EcoRoute Dashboard Interface"
@@ -333,8 +333,8 @@ export default function Portfolio() {
 
             {/* PROJECT 2: Virtual Mouse */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1 bg-slate-100 rounded-2xl p-4 border border-slate-200 shadow-xl -rotate-1 hover:rotate-0 transition duration-500">
-                <div className="aspect-video bg-indigo-50 rounded-lg flex items-center justify-center border-2 border-dashed border-indigo-200 overflow-hidden">
+              <div className="order-2 md:order-1 bg-white rounded-2xl p-4 border border-gray-200 shadow-xl -rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
+                <div className="aspect-video bg-gray-50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200 overflow-hidden">
                   <img
                     src="/virtualmouse.png"
                     alt="AI Hand Gesture Recognition"
@@ -349,11 +349,11 @@ export default function Portfolio() {
                   <p>{t.projects.p2.desc}</p>
                   <ul className="space-y-2 mt-4">
                     <li className="flex items-start gap-3">
-                      <span className="bg-indigo-100 p-1 rounded text-indigo-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p2.feat1}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="bg-indigo-100 p-1 rounded text-indigo-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p2.feat2}</span>
                     </li>
                   </ul>
@@ -367,7 +367,7 @@ export default function Portfolio() {
                 </div>
 
                 <div className="pt-4">
-                  <a href="https://github.com/Nomad1nk/mouseTrack" target="_blank" rel="noreferrer" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800">
+                  <a href="https://github.com/Nomad1nk/mouseTrack" target="_blank" rel="noreferrer" className="inline-flex items-center text-black font-bold hover:text-gray-600 border-b-2 border-black hover:border-gray-600 pb-0.5 transition-colors">
                     {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
                   </a>
                 </div>
@@ -379,17 +379,17 @@ export default function Portfolio() {
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <h3 className="text-3xl font-bold text-slate-900">{t.projects.p3.title}</h3>
-                  <span className="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-wide rounded-full border border-amber-200">{t.projects.p3.status}</span>
+                  <span className="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-bold uppercase tracking-wide rounded-full border border-gray-300">{t.projects.p3.status}</span>
                 </div>
                 <div className="prose text-slate-600">
                   <p>{t.projects.p3.desc}</p>
                   <ul className="space-y-2 mt-4">
                     <li className="flex items-start gap-3">
-                      <span className="bg-amber-100 p-1 rounded text-amber-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p3.feat1}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="bg-amber-100 p-1 rounded text-amber-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p3.feat2}</span>
                     </li>
                   </ul>
@@ -401,8 +401,8 @@ export default function Portfolio() {
                   <TechBadge icon={Sparkles} label="Next.js" />
                 </div>
               </div>
-              <div className="bg-slate-100 rounded-2xl p-4 border border-slate-200 shadow-xl rotate-1 hover:rotate-0 transition duration-500">
-                <div className="aspect-video bg-amber-50 rounded-lg flex items-center justify-center border-2 border-dashed border-amber-200 overflow-hidden">
+              <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-xl rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
+                <div className="aspect-video bg-gray-50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200 overflow-hidden">
                   <img
                     src="/syncAI.png"
                     alt="AI Chat Interface"
@@ -414,8 +414,8 @@ export default function Portfolio() {
 
             {/* PROJECT 4: LuxeCart eCommerce (NEW) */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1 bg-slate-100 rounded-2xl p-4 border border-slate-200 shadow-xl -rotate-1 hover:rotate-0 transition duration-500">
-                <div className="aspect-video bg-slate-900 rounded-lg flex items-center justify-center border-2 border-dashed border-slate-700 overflow-hidden">
+              <div className="order-2 md:order-1 bg-white rounded-2xl p-4 border border-gray-200 shadow-xl -rotate-1 hover:rotate-0 transition duration-500 grayscale hover:grayscale-0">
+                <div className="aspect-video bg-black rounded-lg flex items-center justify-center border-2 border-dashed border-gray-700 overflow-hidden">
                   <img
                     src="/ecommerce.png"
                     alt="LuxeCart eCommerce Interface"
@@ -427,17 +427,17 @@ export default function Portfolio() {
               <div className="order-1 md:order-2 space-y-6">
                 <div className="flex items-center gap-3">
                   <h3 className="text-3xl font-bold text-slate-900">{t.projects.p4.title}</h3>
-                  <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wide rounded-full border border-emerald-200">{t.projects.p4.status}</span>
+                  <span className="px-3 py-1 bg-black text-white text-xs font-bold uppercase tracking-wide rounded-full border border-gray-800">{t.projects.p4.status}</span>
                 </div>
                 <div className="prose text-slate-600">
                   <p>{t.projects.p4.desc}</p>
                   <ul className="space-y-2 mt-4">
                     <li className="flex items-start gap-3">
-                      <span className="bg-emerald-100 p-1 rounded text-emerald-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p4.feat1}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="bg-emerald-100 p-1 rounded text-emerald-600 mt-1"><CheckIcon /></span>
+                      <span className="bg-gray-100 p-1 rounded text-gray-800 mt-1"><CheckIcon /></span>
                       <span>{t.projects.p4.feat2}</span>
                     </li>
                   </ul>
@@ -451,7 +451,7 @@ export default function Portfolio() {
                 </div>
 
                 <div className="pt-4">
-                  <a href="#" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800">
+                  <a href="#" className="inline-flex items-center text-black font-bold hover:text-gray-600 border-b-2 border-black hover:border-gray-600 pb-0.5 transition-colors">
                     {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
                   </a>
                 </div>
@@ -475,10 +475,10 @@ export default function Portfolio() {
         </section>
 
         {/* --- FOOTER / CONTACT --- */}
-        <footer id="contact" className="bg-slate-900 text-slate-300 py-20 px-6">
+        <footer id="contact" className="bg-black text-gray-400 py-20 px-6">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-3xl font-bold text-white">{t.footer.title}</h2>
-            <p className="text-lg text-slate-400">
+            <p className="text-lg text-gray-500">
               {t.footer.desc}
             </p>
             <div className="flex justify-center gap-6">
@@ -492,7 +492,7 @@ export default function Portfolio() {
                 <Github size={20} /> GitHub
               </a>
             </div>
-            <div className="border-t border-slate-800 pt-8 mt-12 text-sm text-slate-500">
+            <div className="border-t border-gray-800 pt-8 mt-12 text-sm text-gray-600">
               <p>&copy; {new Date().getFullYear()} Nomad. {t.footer.rights}</p>
               <p className="mt-2">{t.footer.imprint}</p>
             </div>
@@ -507,7 +507,7 @@ export default function Portfolio() {
 
 function TechBadge({ icon: Icon, label }: { icon: any, label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold border border-slate-200">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white text-gray-800 text-xs font-semibold border border-gray-200 shadow-sm">
       <Icon size={14} />
       {label}
     </span>
@@ -516,12 +516,12 @@ function TechBadge({ icon: Icon, label }: { icon: any, label: string }) {
 
 function SkillCard({ title, skills }: { title: string, skills: string[] }) {
   return (
-    <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
-      <h3 className="font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">{title}</h3>
+    <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition duration-300">
+      <h3 className="font-bold text-black mb-4 border-b border-gray-100 pb-2">{title}</h3>
       <ul className="space-y-2">
         {skills.map((skill) => (
-          <li key={skill} className="text-sm text-slate-600 flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+          <li key={skill} className="text-sm text-gray-600 flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-black"></div>
             {skill}
           </li>
         ))}
