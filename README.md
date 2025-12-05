@@ -1,4 +1,4 @@
-# Nomad.Dev Portfolio
+# Nomad.Dev Portfolio 
 
 A modern, responsive portfolio website built with **Next.js 14**, **Tailwind CSS**, and **TypeScript**. This project showcases my work as a Full-Stack Developer specializing in Microservices and AI Solutions.
 
