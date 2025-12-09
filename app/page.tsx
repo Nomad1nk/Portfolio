@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users } from 'lucide-react';
 
 const translations = {
   en: {
@@ -37,11 +37,18 @@ const translations = {
         feat2: "Emotional Alignment: System prompts tuned for psychological support modalities (CBT/DBT principles)."
       },
       p4: {
-        title: "LUX eCommerce",
+        title: "LUXEcommerce",
         status: "Completed",
         desc: "A high-performance headless eCommerce platform designed for luxury retail. Features a seamless checkout experience, real-time inventory management, and AI-driven product recommendations.",
         feat1: "Headless Architecture: Decoupled frontend (Next.js) and backend (Shopify API) for maximum flexibility and speed.",
         feat2: "Global Payments: Integrated Stripe and PayPal for secure, multi-currency transactions."
+      },
+      p5: {
+        title: "BookingSystem",
+        status: "In Development",
+        desc: "A comprehensive booking management system for scheduling appointments and managing resources. Designed for high availability and ease of use.",
+        feat1: "Real-time Availability: Dynamic calendar integration for instant slot booking and conflict resolution.",
+        feat2: "User Management: Role-based access control (RBAC) for admins, staff, and customers."
       },
       viewCode: "View Code on GitHub"
     },
@@ -93,6 +100,13 @@ const translations = {
         feat1: "ヘッドレスアーキテクチャ: 柔軟性と速度を最大化するための分離されたフロントエンド(Next.js)とバックエンド(Shopify API)。",
         feat2: "グローバル決済: 安全な多通貨取引のためにStripeとPayPalを統合。"
       },
+      p5: {
+        title: "BookingSystem",
+        status: "開発中",
+        desc: "予約とリソース管理のための包括的な予約管理システム。高可用性と使いやすさを重視して設計されています。",
+        feat1: "リアルタイムの空き状況: 即時スロット予約と競合解決のための動的カレンダー統合。",
+        feat2: "ユーザー管理: 管理者、スタッフ、顧客のためのロールベースのアクセス制御(RBAC)。"
+      },
       viewCode: "GitHubでコードを見る"
     },
     skills: { title: "技術コンピテンシー" },
@@ -143,6 +157,13 @@ const translations = {
         feat1: "Headless-Architektur: Entkoppeltes Frontend (Next.js) und Backend (Shopify API) für maximale Flexibilität und Geschwindigkeit.",
         feat2: "Globale Zahlungen: Integrierte Stripe und PayPal für sichere Transaktionen in mehreren Währungen."
       },
+      p5: {
+        title: "BookingSystem",
+        status: "In Entwicklung",
+        desc: "Ein umfassendes Buchungsmanagementsystem zur Terminplanung und Ressourcenverwaltung. Entwickelt für hohe Verfügbarkeit und Benutzerfreundlichkeit.",
+        feat1: "Echtzeit-Verfügbarkeit: Dynamische Kalenderintegration für sofortige Slot-Buchung und Konfliktlösung.",
+        feat2: "Benutzerverwaltung: Rollenbasierte Zugriffskontrolle (RBAC) für Administratoren, Mitarbeiter und Kunden."
+      },
       viewCode: "Code auf GitHub ansehen"
     },
     skills: { title: "Technische Kompetenzen" },
@@ -192,6 +213,13 @@ const translations = {
         desc: "Тансаг зэрэглэлийн жижиглэн худалдаанд зориулагдсан өндөр гүйцэтгэлтэй headless eCommerce платформ. Төлбөр тооцооны саадгүй туршлага, бодит цагийн бараа материалын менежмент, AI-д суурилсан бүтээгдэхүүний зөвлөмжийг агуулсан.",
         feat1: "Headless Архитектур: Уян хатан байдал, хурдыг дээд зэргээр нэмэгдүүлэхийн тулд салгагдсан frontend (Next.js) болон backend (Shopify API).",
         feat2: "Дэлхийн төлбөр тооцоо: Олон валютын гүйлгээг найдвартай хийхийн тулд Stripe болон PayPal-г нэгтгэсэн."
+      },
+      p5: {
+        title: "BookingSystem",
+        status: "Хөгжүүлэлтийн шатанд",
+        desc: "Цаг захиалга болон нөөцийн менежментэд зориулсан цогц захиалгын систем. Өндөр хүртээмжтэй, ашиглахад хялбар байхаар бүтээгдсэн.",
+        feat1: "Бодит цагийн боломж: Шууд цаг захиалах, зөрчилдөөнийг шийдвэрлэх динамик хуанлийн интеграцчилал.",
+        feat2: "Хэрэглэгчийн менежмент: Админ, ажилчид болон үйлчлүүлэгчдэд зориулсан үүрэгт суурилсан хандалтын хяналт (RBAC)."
       },
       viewCode: "GitHub дээр код үзэх"
     },
@@ -434,7 +462,7 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* PROJECT 4: Lux eCommerce */}
+              {/* PROJECT 4: LUXEcommerce */}
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="order-2 md:order-1 bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl -rotate-1 hover:rotate-0 transition duration-500">
                   <div className="aspect-video bg-black rounded-lg flex items-center justify-center border-2 border-dashed border-gray-800 overflow-hidden">
@@ -476,6 +504,50 @@ export default function Portfolio() {
                     <a href="https://github.com/Nomad1nk/LuxEcommerce" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
                       {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
                     </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* PROJECT 5: BookingSystem (NEW) */}
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-3xl font-bold text-white">{t.projects.p5.title}</h3>
+                    <span className="px-3 py-1 bg-white/10 text-white text-xs font-bold uppercase tracking-wide rounded-full border border-white/20">{t.projects.p5.status}</span>
+                  </div>
+                  <div className="prose text-gray-400">
+                    <p>{t.projects.p5.desc}</p>
+                    <ul className="space-y-2 mt-4">
+                      <li className="flex items-start gap-3">
+                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
+                        <span>{t.projects.p5.feat1}</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
+                        <span>{t.projects.p5.feat2}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="flex flex-wrap gap-2 pt-4">
+                    <TechBadge icon={Calendar} label="Next.js" />
+                    <TechBadge icon={Database} label="PostgreSQL" />
+                    <TechBadge icon={Users} label="Auth.js" />
+                    <TechBadge icon={Layout} label="Tailwind" />
+                  </div>
+
+                  <div className="pt-4">
+                    <a href="https://github.com/Nomad1nk/BookingSystem" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
+                      {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
+                    </a>
+                  </div>
+                </div>
+                <div className="bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl rotate-1 hover:rotate-0 transition duration-500">
+                  <div className="aspect-video bg-gray-900 rounded-lg flex items-center justify-center border-2 border-dashed border-white/10 overflow-hidden">
+                    <img
+                      src="/Bookingsystem.png"
+                      alt="Booking System Interface"
+                      className="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
+                    />
                   </div>
                 </div>
               </div>
