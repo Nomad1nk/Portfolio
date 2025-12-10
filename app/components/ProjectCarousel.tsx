@@ -1,20 +1,15 @@
 "use client";
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Helper component for individual project card animation
-function ProjectCard({ project, index, t, TechBadge, CheckIcon }: any) {
+function ProjectCard({ project, isActive, t, TechBadge, CheckIcon }: any) {
     return (
         <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 50 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.5 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="min-w-full md:min-w-[80vw] lg:min-w-[70vw] h-full flex items-center justify-center p-4 md:p-12 snap-center"
+            className={`w-full max-w-6xl mx-auto p-4 md:p-8 transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm'}`}
         >
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-black/40 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-2xl w-full max-w-6xl">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-black/40 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-2xl w-full">
 
                 {/* Text Content */}
                 <div className="space-y-6 order-2 md:order-1">
@@ -71,30 +66,96 @@ function ProjectCard({ project, index, t, TechBadge, CheckIcon }: any) {
 }
 
 export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: any) {
-    const containerRef = useRef(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
+    // Mouse tracking for parallax
+    const x = useMotionValue(0);
+    const springX = useSpring(x, { stiffness: 100, damping: 30 });
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (isHovered) return;
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % projects.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [isHovered, projects.length]);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!containerRef.current) return;
+        const { width, left } = containerRef.current.getBoundingClientRect();
+        const mouseX = e.clientX - left;
+        const center = width / 2;
+        // Calculate offset: move opposite to mouse to "peek"
+        const offset = (mouseX - center) * -0.1;
+        x.set(offset);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        x.set(0);
+    };
+
+    const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % projects.length);
+    const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
     return (
-        <div className="relative w-full overflow-hidden py-10">
-            <div
-                ref={containerRef}
-                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-10 px-4 md:px-20 gap-8"
-                style={{ scrollBehavior: 'smooth' }}
+        <div
+            ref={containerRef}
+            className="relative w-full overflow-hidden py-10 min-h-[600px] flex items-center justify-center"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={handleMouseLeave}
+        >
+            {/* Background Track */}
+            <motion.div
+                className="flex absolute left-0 top-0 h-full items-center"
+                style={{
+                    x: springX, // Parallax offset
+                    width: `${projects.length * 100}%`
+                }}
+                animate={{
+                    x: `calc(-${currentIndex * 100}% + ${springX.get()}px)`
+                }}
+                transition={{ type: "spring", stiffness: 50, damping: 20 }}
             >
                 {projects.map((p: any, i: number) => (
-                    <ProjectCard
+                    <div key={i} className="w-full flex justify-center px-4 md:px-20" style={{ width: `${100 / projects.length}%` }}>
+                        <ProjectCard
+                            project={p}
+                            isActive={i === currentIndex}
+                            t={t}
+                            TechBadge={TechBadge}
+                            CheckIcon={CheckIcon}
+                        />
+                    </div>
+                ))}
+            </motion.div>
+
+            {/* Navigation Buttons */}
+            <button
+                onClick={prevSlide}
+                className="absolute left-4 md:left-10 z-20 p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
+            >
+                <ChevronLeft size={32} />
+            </button>
+            <button
+                onClick={nextSlide}
+                className="absolute right-4 md:right-10 z-20 p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
+            >
+                <ChevronRight size={32} />
+            </button>
+
+            {/* Indicators */}
+            <div className="absolute bottom-4 left-0 w-full flex justify-center gap-2 z-20">
+                {projects.map((_: any, i: number) => (
+                    <button
                         key={i}
-                        project={p}
-                        index={i}
-                        t={t}
-                        TechBadge={TechBadge}
-                        CheckIcon={CheckIcon}
+                        onClick={() => setCurrentIndex(i)}
+                        className={`w-3 h-3 rounded-full transition-all ${i === currentIndex ? 'bg-cyan-400 w-8' : 'bg-white/20 hover:bg-white/40'}`}
                     />
                 ))}
-            </div>
-
-            {/* Scroll Hint */}
-            <div className="absolute bottom-0 left-0 w-full flex justify-center pb-4 pointer-events-none opacity-50">
-                <span className="text-white text-sm uppercase tracking-widest animate-pulse">Scroll Horizontal &rarr;</span>
             </div>
         </div>
     );
