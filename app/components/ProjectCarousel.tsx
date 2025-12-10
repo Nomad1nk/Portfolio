@@ -7,28 +7,28 @@ import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }: any) {
     return (
         <div className={`w-full h-full p-4 transition-all duration-500`}>
-            <div className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/10 shadow-2xl w-full h-full transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
+            <div className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center bg-white/80 dark:bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-2xl w-full h-full transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
 
                 {/* Text Content */}
                 <div className={`space-y-4 md:space-y-6 order-2 md:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 md:opacity-30'}`}>
                     <div className="flex items-center gap-3">
-                        <h3 className="font-cartoon text-3d text-2xl md:text-4xl font-bold text-white tracking-wide">{project.title}</h3>
+                        <h3 className="font-cartoon text-3d text-2xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-wide">{project.title}</h3>
                         {project.status && (
-                            <span className="px-2 py-0.5 bg-white/10 text-white text-[10px] md:text-xs font-bold uppercase tracking-wide rounded-full border border-white/20">
+                            <span className="px-2 py-0.5 bg-black/5 dark:bg-white/10 text-gray-700 dark:text-white text-[10px] md:text-xs font-bold uppercase tracking-wide rounded-full border border-black/10 dark:border-white/20">
                                 {project.status}
                             </span>
                         )}
                     </div>
 
-                    <div className="prose text-gray-300 text-sm md:text-lg">
+                    <div className="prose text-gray-600 dark:text-gray-300 text-sm md:text-lg">
                         <p className="line-clamp-3 md:line-clamp-none">{project.desc}</p>
                         <ul className="space-y-2 mt-4 hidden md:block">
                             <li className="flex items-start gap-3">
-                                <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
+                                <span className="bg-black/5 dark:bg-white/10 p-1 rounded text-gray-900 dark:text-white mt-1"><CheckIcon /></span>
                                 <span>{project.feat1}</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
+                                <span className="bg-black/5 dark:bg-white/10 p-1 rounded text-gray-900 dark:text-white mt-1"><CheckIcon /></span>
                                 <span>{project.feat2}</span>
                             </li>
                         </ul>
@@ -41,7 +41,7 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
                     </div>
 
                     <div className="pt-2 md:pt-4">
-                        <a href={project.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-cyan-400 border-b-2 border-white hover:border-cyan-400 pb-0.5 transition-colors text-sm md:text-lg">
+                        <a href={project.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-gray-900 dark:text-white font-bold hover:text-cyan-600 dark:hover:text-cyan-400 border-b-2 border-gray-900 dark:border-white hover:border-cyan-600 dark:hover:border-cyan-400 pb-0.5 transition-colors text-sm md:text-lg">
                             {t.projects.viewCode} <ExternalLink size={16} className="ml-2" />
                         </a>
                     </div>
@@ -49,7 +49,7 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
 
                 {/* Image Content */}
                 <div className="order-1 md:order-2 h-full flex items-center justify-center">
-                    <div className="aspect-video bg-gray-900 rounded-xl flex items-center justify-center overflow-hidden relative border border-white/10 shadow-lg group w-full">
+                    <div className="aspect-video bg-gray-100 dark:bg-gray-900 rounded-xl flex items-center justify-center overflow-hidden relative border border-black/5 dark:border-white/10 shadow-lg group w-full">
                         <img
                             src={project.image}
                             alt={project.title}
@@ -181,13 +181,13 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
             {/* Navigation Buttons */}
             <button
                 onClick={prevSlide}
-                className="absolute left-2 md:left-10 z-30 p-2 md:p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
+                className="absolute left-2 md:left-10 z-30 p-2 md:p-3 bg-white/50 dark:bg-black/50 hover:bg-white/80 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white backdrop-blur-md border border-black/5 dark:border-white/10 transition-all"
             >
                 <ChevronLeft size={24} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-2 md:right-10 z-30 p-2 md:p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
+                className="absolute right-2 md:right-10 z-30 p-2 md:p-3 bg-white/50 dark:bg-black/50 hover:bg-white/80 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white backdrop-blur-md border border-black/5 dark:border-white/10 transition-all"
             >
                 <ChevronRight size={24} />
             </button>
@@ -198,7 +198,7 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
                     <button
                         key={i}
                         onClick={() => setCurrentIndex(i)}
-                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${i === currentIndex ? 'bg-cyan-400 w-6 md:w-8' : 'bg-white/20 hover:bg-white/40'}`}
+                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${i === currentIndex ? 'bg-cyan-500 dark:bg-cyan-400 w-6 md:w-8' : 'bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40'}`}
                     />
                 ))}
             </div>

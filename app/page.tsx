@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users, Container } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users, Container, Facebook, Instagram, Sun, Moon } from 'lucide-react';
 
 import dynamic from 'next/dynamic';
 import ProjectCarousel from './components/ProjectCarousel';
@@ -245,33 +245,42 @@ const translations = {
 
 export default function Portfolio() {
   const [lang, setLang] = useState<'en' | 'jp' | 'de' | 'mn'>('en');
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen font-sans selection:bg-cyan-500 bg-gradient-to-br from-slate-900 via-sky-950 to-gray-900 animate-gradient-xy text-gray-200 relative overflow-hidden">
+    <div className={`min-h-screen font-sans selection:bg-cyan-500 transition-colors duration-500 ${isDarkMode ? 'dark' : ''} bg-gradient-to-br from-gray-50 via-sky-100 to-white dark:from-slate-900 dark:via-sky-950 dark:to-gray-900 animate-gradient-xy text-gray-900 dark:text-gray-200 relative overflow-hidden`}>
 
       {/* --- BACKGROUND ANIMATION --- */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob"></div>
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-gray-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-        <ThreeBackground />
+        <ThreeBackground darkMode={isDarkMode} />
       </div>
 
       <div className="relative z-10">
 
         {/* --- NAV / HERO SECTION --- */}
-        <header className="bg-black/50 border-b border-white/10 sticky top-0 z-50 backdrop-blur-md">
+        <header className="bg-white/70 dark:bg-black/50 border-b border-black/5 dark:border-white/10 sticky top-0 z-50 backdrop-blur-md transition-colors duration-300">
           <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="font-cartoon text-3d text-2xl tracking-wider text-white">Nomad<span className="text-gray-400">.Dev</span></div>
-            <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-              <a href="#about" className="hover:text-white transition">{t.nav.about}</a>
-              <a href="#projects" className="hover:text-white transition">{t.nav.projects}</a>
-              <a href="#skills" className="hover:text-white transition">{t.nav.stack}</a>
-              <a href="#contact" className="hover:text-white transition">{t.nav.contact}</a>
+            <div className="font-cartoon text-3d text-2xl tracking-wider text-gray-800 dark:text-white">Nomad<span className="text-gray-500 dark:text-gray-400">.Dev</span></div>
+            <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+              <a href="#about" className="hover:text-black dark:hover:text-white transition">{t.nav.about}</a>
+              <a href="#projects" className="hover:text-black dark:hover:text-white transition">{t.nav.projects}</a>
+              <a href="#skills" className="hover:text-black dark:hover:text-white transition">{t.nav.stack}</a>
+              <a href="#contact" className="hover:text-black dark:hover:text-white transition">{t.nav.contact}</a>
             </nav>
 
             <div className="flex items-center gap-4">
+
+              {/* Theme Toggle */}
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="p-2 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-300 hover:bg-gray-300 dark:hover:bg-white/20 transition"
+              >
+                {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
 
               {/* Hover Language Switcher */}
               <div className="relative group">
@@ -310,24 +319,24 @@ export default function Portfolio() {
           {/* --- HERO --- */}
           <section id="about" className="pt-20 pb-32 px-6">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs font-bold uppercase tracking-wide mb-6 border border-white/10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300 text-xs font-bold uppercase tracking-wide mb-6 border border-black/5 dark:border-white/10">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-20"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-500 dark:bg-white opacity-20"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500 dark:bg-white"></span>
                 </span>
                 {t.hero.openToWork}
               </div>
-              <h1 className="font-cartoon text-3d text-6xl md:text-7xl font-extrabold text-white tracking-wide mb-6">
-                {t.hero.titlePrefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-white">{t.hero.titleHighlight}</span> {t.hero.titleSuffix}
+              <h1 className="font-cartoon text-3d text-6xl md:text-7xl font-extrabold text-gray-900 dark:text-white tracking-wide mb-6">
+                {t.hero.titlePrefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-gray-400 dark:to-white">{t.hero.titleHighlight}</span> {t.hero.titleSuffix}
               </h1>
-              <p className="text-lg text-gray-400 mb-10 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
                 {t.hero.description}
               </p>
               <div className="flex justify-center gap-4">
-                <a href="#contact" className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition shadow-xl shadow-white/10">
+                <a href="#contact" className="px-6 py-3 bg-gray-900 text-white dark:bg-white dark:text-black rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-200 transition shadow-xl shadow-black/10 dark:shadow-white/10">
                   {t.hero.contact}
                 </a>
-                <a href="https://github.com/nomad1nk" target="_blank" rel="noreferrer" className="px-6 py-3 bg-transparent text-white border border-white/20 rounded-lg font-semibold hover:bg-white/10 transition flex items-center gap-2">
+                <a href="https://github.com/nomad1nk" target="_blank" rel="noreferrer" className="px-6 py-3 bg-transparent text-gray-900 dark:text-white border border-black/20 dark:border-white/20 rounded-lg font-semibold hover:bg-black/5 dark:hover:bg-white/10 transition flex items-center gap-2">
                   <Github size={20} />
                   {t.hero.github}
                 </a>
@@ -336,10 +345,10 @@ export default function Portfolio() {
           </section>
 
           {/* --- FEATURED PROJECTS --- */}
-          <section id="projects" className="py-20 bg-black/20 backdrop-blur-sm border-y border-white/5 overflow-hidden">
+          <section id="projects" className="py-20 bg-white/30 dark:bg-black/20 backdrop-blur-sm border-y border-black/5 dark:border-white/5 overflow-hidden">
             <div className="w-full">
               <div className="max-w-5xl mx-auto px-6 mb-8">
-                <h2 className="font-cartoon text-3d text-xl font-bold text-gray-500 uppercase tracking-wider border-b border-white/10 pb-2 inline-block">{t.projects.title}</h2>
+                <h2 className="font-cartoon text-3d text-xl font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider border-b border-black/5 dark:border-white/10 pb-2 inline-block">{t.projects.title}</h2>
               </div>
 
               <ProjectCarousel
@@ -431,7 +440,7 @@ export default function Portfolio() {
           {/* --- TECH STACK --- */}
           <section id="skills" className="py-20 px-6">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-cartoon text-3d text-4xl font-bold text-white mb-12 text-center tracking-wide">{t.skills.title}</h2>
+              <h2 className="font-cartoon text-3d text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center tracking-wide">{t.skills.title}</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <SkillCard title="Frontend & UI" skills={["Next.js 14 / React", "TypeScript / ES6+", "Tailwind / Framer Motion", "Three.js / WebGL"]} />
                 <SkillCard title="Backend & Core" skills={["NestJS / Node.js", "Python (FastAPI)", "Ruby on Rails", "Microservices / gRPC"]} />
@@ -442,24 +451,27 @@ export default function Portfolio() {
           </section>
 
           {/* --- FOOTER / CONTACT --- */}
-          <footer id="contact" className="bg-black text-gray-500 py-20 px-6 border-t border-white/10">
+          <footer id="contact" className="bg-gray-100 dark:bg-black text-gray-500 py-20 px-6 border-t border-black/10 dark:border-white/10 transition-colors duration-500">
             <div className="max-w-3xl mx-auto text-center space-y-8">
-              <h2 className="text-3xl font-bold text-white">{t.footer.title}</h2>
-              <p className="text-lg text-gray-400">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{t.footer.title}</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
                 {t.footer.desc}
               </p>
               <div className="flex justify-center gap-6">
-                <a href="mailto:nomad2nk@yahoo.com" className="flex items-center gap-2 hover:text-white transition">
-                  <Mail size={20} /> Email
+                <a href="https://www.facebook.com/baysgln.battulga.7/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-black dark:hover:text-white transition">
+                  <Facebook size={20} /> Facebook
                 </a>
-                <a href="https://linkedin.com/in/nomad1nk-30630139a" className="flex items-center gap-2 hover:text-white transition">
+                <a href="https://www.instagram.com/baysakun/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-black dark:hover:text-white transition">
+                  <Instagram size={20} /> Instagram
+                </a>
+                <a href="https://linkedin.com/in/nomad1nk-30630139a" className="flex items-center gap-2 hover:text-black dark:hover:text-white transition">
                   <Linkedin size={20} /> LinkedIn
                 </a>
-                <a href="https://github.com/nomad1nk" className="flex items-center gap-2 hover:text-white transition">
+                <a href="https://github.com/nomad1nk" className="flex items-center gap-2 hover:text-black dark:hover:text-white transition">
                   <Github size={20} /> GitHub
                 </a>
               </div>
-              <div className="border-t border-white/10 pt-8 mt-12 text-sm text-gray-600">
+              <div className="border-t border-black/10 dark:border-white/10 pt-8 mt-12 text-sm text-gray-600">
                 <p>&copy; {new Date().getFullYear()} Nomad. {t.footer.rights}</p>
                 <p className="mt-2">{t.footer.imprint}</p>
               </div>
@@ -475,7 +487,7 @@ export default function Portfolio() {
 
 function TechBadge({ icon: Icon, label }: { icon: any, label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 text-gray-300 text-xs font-semibold border border-white/10 shadow-sm">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300 text-xs font-semibold border border-black/10 dark:border-white/10 shadow-sm">
       <Icon size={14} />
       {label}
     </span>
@@ -484,12 +496,12 @@ function TechBadge({ icon: Icon, label }: { icon: any, label: string }) {
 
 function SkillCard({ title, skills }: { title: string, skills: string[] }) {
   return (
-    <div className="bg-white/5 p-6 rounded-xl border border-white/10 shadow-sm hover:shadow-lg transition duration-300 hover:bg-white/10">
-      <h3 className="font-bold text-white mb-4 border-b border-white/10 pb-2">{title}</h3>
+    <div className="bg-white/60 dark:bg-white/5 p-6 rounded-xl border border-black/5 dark:border-white/10 shadow-sm hover:shadow-lg transition duration-300 hover:bg-white/80 dark:hover:bg-white/10">
+      <h3 className="font-bold text-gray-900 dark:text-white mb-4 border-b border-black/5 dark:border-white/10 pb-2">{title}</h3>
       <ul className="space-y-2">
         {skills.map((skill) => (
-          <li key={skill} className="text-sm text-gray-400 flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+          <li key={skill} className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-white"></div>
             {skill}
           </li>
         ))}

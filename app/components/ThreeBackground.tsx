@@ -12,7 +12,7 @@ function generateParticles(count: number) {
     return positions;
 }
 
-function Stars(props: any) {
+function Stars({ darkMode, ...props }: any) {
     const ref = useRef<any>();
     // Generate 7000 particles for a denser storm
     const [sphere] = useState(() => generateParticles(7000));
@@ -29,7 +29,7 @@ function Stars(props: any) {
             <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
                 <PointMaterial
                     transparent
-                    color="#a5f3fc" // Icy blue
+                    color={darkMode ? "#ffffff" : "#000000"} // White in Dark Mode, Black in Light Mode
                     size={0.003}
                     sizeAttenuation={true}
                     depthWrite={false}
@@ -40,12 +40,12 @@ function Stars(props: any) {
     );
 }
 
-export default function ThreeBackground() {
+export default function ThreeBackground({ darkMode = true }: { darkMode?: boolean }) {
     return (
         <div className="absolute inset-0 w-full h-full z-0">
             <Canvas camera={{ position: [0, 0, 1] }}>
-                <Stars />
-                <Cloud opacity={0.5} speed={0.4} bounds={[10, 2, 1.5]} segments={20} color="#cbd5e1" position={[0, 0, -5]} />
+                <Stars darkMode={darkMode} />
+                <Cloud opacity={0.5} speed={0.4} bounds={[10, 2, 1.5]} segments={20} color={darkMode ? "#cbd5e1" : "#64748b"} position={[0, 0, -5]} />
             </Canvas>
         </div>
     );
