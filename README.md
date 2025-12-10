@@ -2,7 +2,7 @@
 
 A cutting-edge, interactive portfolio website built with **Next.js 14**, **TypeScript**, and **Three.js**. This project demonstrates high-performance web development, featuring immersive 3D backgrounds, a dynamic 3D project carousel, and full internationalization.
 
-![Portfolio Preview](/public/ecoroute.png)
+![Portfolio Preview]
 
 ## 🚀 Tech Stack
 
