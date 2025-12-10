@@ -7,10 +7,10 @@ import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }: any) {
     return (
         <div className={`w-full h-full p-4 transition-all duration-500`}>
-            <div className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center bg-white/80 dark:bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-2xl w-full h-full transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
+            <div className={`grid lg:grid-cols-2 gap-6 lg:gap-12 items-center bg-white/80 dark:bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-2xl w-full h-full transition-all duration-500 overflow-y-auto scrollbar-hide ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
 
                 {/* Text Content */}
-                <div className={`space-y-4 md:space-y-6 order-2 md:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 md:opacity-30'}`}>
+                <div className={`space-y-4 md:space-y-6 order-2 lg:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 lg:opacity-30'}`}>
                     <div className="flex items-center gap-3">
                         <h3 className="font-cartoon text-3d text-2xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-wide">{project.title}</h3>
                         {project.status && (
@@ -22,7 +22,7 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
 
                     <div className="prose text-gray-800 dark:text-gray-200 text-sm md:text-lg font-medium">
                         <p className="line-clamp-3 md:line-clamp-none">{project.desc}</p>
-                        <ul className="space-y-2 mt-4 hidden md:block">
+                        <ul className="space-y-2 mt-4 hidden lg:block">
                             <li className="flex items-start gap-3">
                                 <span className="bg-black/5 dark:bg-white/10 p-1 rounded text-gray-900 dark:text-white mt-1"><CheckIcon /></span>
                                 <span className="text-gray-700 dark:text-gray-300">{project.feat1}</span>
@@ -48,12 +48,12 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
                 </div>
 
                 {/* Image Content */}
-                <div className="order-1 md:order-2 h-full flex items-center justify-center">
-                    <div className="aspect-video bg-gray-100 dark:bg-gray-900 rounded-xl flex items-center justify-center overflow-hidden relative border border-black/5 dark:border-white/10 shadow-lg group w-full">
+                <div className="order-1 lg:order-2 h-48 sm:h-64 lg:h-full flex items-center justify-center">
+                    <div className="w-full h-full lg:aspect-video bg-gray-100 dark:bg-gray-900 rounded-xl flex items-center justify-center overflow-hidden relative border border-black/5 dark:border-white/10 shadow-lg group">
                         <img
                             src={project.image}
                             alt={project.title}
-                            className="object-cover w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                            className="object-contain w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
                         />
                     </div>
                 </div>
@@ -160,7 +160,7 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
             onMouseLeave={handleMouseLeave}
         >
             {/* 3D Stack Container */}
-            <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center">
+            <div className="relative w-full h-[600px] lg:h-[600px] flex items-center justify-center">
                 <AnimatePresence initial={false}>
                     {projects.map((p: any, i: number) => (
                         <CarouselSlide
