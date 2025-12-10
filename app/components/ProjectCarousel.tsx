@@ -20,16 +20,16 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
                         )}
                     </div>
 
-                    <div className="prose text-gray-600 dark:text-gray-300 text-sm md:text-lg">
+                    <div className="prose text-gray-800 dark:text-gray-200 text-sm md:text-lg font-medium">
                         <p className="line-clamp-3 md:line-clamp-none">{project.desc}</p>
                         <ul className="space-y-2 mt-4 hidden md:block">
                             <li className="flex items-start gap-3">
                                 <span className="bg-black/5 dark:bg-white/10 p-1 rounded text-gray-900 dark:text-white mt-1"><CheckIcon /></span>
-                                <span>{project.feat1}</span>
+                                <span className="text-gray-700 dark:text-gray-300">{project.feat1}</span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <span className="bg-black/5 dark:bg-white/10 p-1 rounded text-gray-900 dark:text-white mt-1"><CheckIcon /></span>
-                                <span>{project.feat2}</span>
+                                <span className="text-gray-700 dark:text-gray-300">{project.feat2}</span>
                             </li>
                         </ul>
                     </div>

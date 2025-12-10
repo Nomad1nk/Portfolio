@@ -264,8 +264,8 @@ export default function Portfolio() {
         {/* --- NAV / HERO SECTION --- */}
         <header className="bg-white/70 dark:bg-black/50 border-b border-black/5 dark:border-white/10 sticky top-0 z-50 backdrop-blur-md transition-colors duration-300">
           <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="font-cartoon text-3d text-2xl tracking-wider text-gray-800 dark:text-white">Nomad<span className="text-gray-500 dark:text-gray-400">.Dev</span></div>
-            <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+            <div className="font-cartoon text-3d text-2xl tracking-wider text-gray-900 dark:text-white">Nomad<span className="text-gray-600 dark:text-gray-300">.Dev</span></div>
+            <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-700 dark:text-gray-300">
               <a href="#about" className="hover:text-black dark:hover:text-white transition">{t.nav.about}</a>
               <a href="#projects" className="hover:text-black dark:hover:text-white transition">{t.nav.projects}</a>
               <a href="#skills" className="hover:text-black dark:hover:text-white transition">{t.nav.stack}</a>
@@ -284,7 +284,7 @@ export default function Portfolio() {
 
               {/* Hover Language Switcher */}
               <div className="relative group">
-                <button className="flex items-center gap-1 text-sm font-bold text-gray-300 hover:text-white transition px-2 py-1 rounded-md">
+                <button className="flex items-center gap-1 text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition px-2 py-1 rounded-md">
                   <Globe size={16} />
                   <span className="uppercase">{lang}</span>
                   <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
@@ -329,7 +329,7 @@ export default function Portfolio() {
               <h1 className="font-cartoon text-3d text-6xl md:text-7xl font-extrabold text-gray-900 dark:text-white tracking-wide mb-6">
                 {t.hero.titlePrefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-gray-400 dark:to-white">{t.hero.titleHighlight}</span> {t.hero.titleSuffix}
               </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed font-medium">
                 {t.hero.description}
               </p>
               <div className="flex justify-center gap-4">
@@ -348,7 +348,7 @@ export default function Portfolio() {
           <section id="projects" className="py-20 bg-white/30 dark:bg-black/20 backdrop-blur-sm border-y border-black/5 dark:border-white/5 overflow-hidden">
             <div className="w-full">
               <div className="max-w-5xl mx-auto px-6 mb-8">
-                <h2 className="font-cartoon text-3d text-xl font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider border-b border-black/5 dark:border-white/10 pb-2 inline-block">{t.projects.title}</h2>
+                <h2 className="font-cartoon text-3d text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block">{t.projects.title}</h2>
               </div>
 
               <ProjectCarousel
@@ -454,7 +454,7 @@ export default function Portfolio() {
           <footer id="contact" className="bg-gray-100 dark:bg-black text-gray-500 py-20 px-6 border-t border-black/10 dark:border-white/10 transition-colors duration-500">
             <div className="max-w-3xl mx-auto text-center space-y-8">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{t.footer.title}</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
+              <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">
                 {t.footer.desc}
               </p>
               <div className="flex justify-center gap-6">
@@ -487,7 +487,7 @@ export default function Portfolio() {
 
 function TechBadge({ icon: Icon, label }: { icon: any, label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300 text-xs font-semibold border border-black/10 dark:border-white/10 shadow-sm">
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/5 dark:bg-white/10 text-gray-800 dark:text-gray-200 text-xs font-bold border border-black/10 dark:border-white/10 shadow-sm">
       <Icon size={14} />
       {label}
     </span>
@@ -500,8 +500,8 @@ function SkillCard({ title, skills }: { title: string, skills: string[] }) {
       <h3 className="font-bold text-gray-900 dark:text-white mb-4 border-b border-black/5 dark:border-white/10 pb-2">{title}</h3>
       <ul className="space-y-2">
         {skills.map((skill) => (
-          <li key={skill} className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-white"></div>
+          <li key={skill} className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-600 dark:bg-white"></div>
             {skill}
           </li>
         ))}
