@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users, Container } from 'lucide-react';
 
 import dynamic from 'next/dynamic';
 import ProjectCarousel from './components/ProjectCarousel';
@@ -29,10 +29,11 @@ const translations = {
         feat2: "Real-World Routing: Integrated OSRM to fetch precise road geometry and traffic-adjusted travel times."
       },
       p2: {
-        title: "Virtual Mouse & Eye Tracker",
-        desc: "A hands-free HCI (Human-Computer Interaction) system enabling touchless control using computer vision to translate gestures into precise cursor actions.",
-        feat1: "Gesture Recognition: Controls mouse clicks and scrolling via fingertip tracking and eye blinks.",
-        feat2: "Optimized Performance: Built with OpenCV and MediaPipe for high-FPS real-time processing on standard CPUs."
+        title: "BookingSystem",
+        status: "In Development",
+        desc: "A comprehensive booking management system built with a modern full-stack architecture. Features multi-language support (MN, EN, JP), Stripe payments, and real-time scheduling.",
+        feat1: "Full-Stack Architecture: Next.js (React) frontend with Tailwind CSS v4, connected to a robust NestJS backend.",
+        feat2: "Advanced Features: Stripe payment integration, multi-language support (i18n), and role-based access control."
       },
       p3: {
         title: "MindSync AI",
@@ -49,11 +50,11 @@ const translations = {
         feat2: "Global Payments: Integrated Stripe and PayPal for secure, multi-currency transactions."
       },
       p5: {
-        title: "BookingSystem",
+        title: "AI Receptionist",
         status: "In Development",
-        desc: "A comprehensive booking management system built with a modern full-stack architecture. Features multi-language support (MN, EN, JP), Stripe payments, and real-time scheduling.",
-        feat1: "Full-Stack Architecture: Next.js (React) frontend with Tailwind CSS v4, connected to a robust NestJS backend.",
-        feat2: "Advanced Features: Stripe payment integration, multi-language support (i18n), and role-based access control."
+        desc: "A production-grade AI Voice Operator handling real-time VoIP calls. Solved complex Docker NAT routing and VAD challenges. Developed as a Mongolian prototype, but the architecture is fully scalable to any language or region.",
+        feat1: "Advanced Audio Pipeline: Custom RMS-based Voice Activity Detection (VAD) and Promiscuous RTP Mode for robust audio streaming within Docker.",
+        feat2: "Smart Integration: OpenAI Function Calling for real-time database queries and a custom text normalization engine for error-free TTS."
       },
       viewCode: "View Code on GitHub"
     },
@@ -86,10 +87,11 @@ const translations = {
         feat2: "実世界ルーティング: OSRMを統合して、正確な道路形状と交通調整された移動時間を取得。"
       },
       p2: {
-        title: "Virtual Mouse & Eye Tracker",
-        desc: "コンピュータビジョンを使用してジェスチャーを正確なカーソル操作に変換し、タッチレス制御を可能にするハンズフリーHCIシステム。",
-        feat1: "ジェスチャー認識: 指先の追跡とまばたきによるマウスクリックとスクロールの制御。",
-        feat2: "最適化されたパフォーマンス: OpenCVとMediaPipeを使用して構築され、標準CPUでの高FPSリアルタイム処理を実現。"
+        title: "BookingSystem",
+        status: "開発中",
+        desc: "モダンなフルスタックアーキテクチャで構築された包括的な予約管理システム。多言語サポート(MN, EN, JP)、Stripe決済、リアルタイムスケジューリング機能を備えています。",
+        feat1: "フルスタックアーキテクチャ: Tailwind CSS v4を使用したNext.js (React)フロントエンドと、堅牢なNestJSバックエンドの連携。",
+        feat2: "高度な機能: Stripe決済統合、多言語サポート(i18n)、およびロールベースのアクセス制御。"
       },
       p3: {
         title: "MindSync AI",
@@ -106,11 +108,11 @@ const translations = {
         feat2: "グローバル決済: 安全な多通貨取引のためにStripeとPayPalを統合。"
       },
       p5: {
-        title: "BookingSystem",
+        title: "AI Receptionist",
         status: "開発中",
-        desc: "モダンなフルスタックアーキテクチャで構築された包括的な予約管理システム。多言語サポート(MN, EN, JP)、Stripe決済、リアルタイムスケジューリング機能を備えています。",
-        feat1: "フルスタックアーキテクチャ: Tailwind CSS v4を使用したNext.js (React)フロントエンドと、堅牢なNestJSバックエンドの連携。",
-        feat2: "高度な機能: Stripe決済統合、多言語サポート(i18n)、およびロールベースのアクセス制御。"
+        desc: "リアルタイムVoIP通話を処理する本番レベルのAIオペレーター。Docker NATとVADの課題を解決。モンゴル語で実証実験を行いましたが、あらゆる言語や地域に対応可能な拡張性を持っています。",
+        feat1: "高度な音声パイプライン: Docker内での堅牢な音声ストリーミングのために、独自のRMSベース音声区間検出(VAD)とPromiscuous RTPモードを実装。",
+        feat2: "スマート統合: OpenAI Function CallingによるリアルタイムDB操作と、TTSエラーを防ぐ独自のテキスト正規化エンジンを搭載。"
       },
       viewCode: "GitHubでコードを見る"
     },
@@ -143,10 +145,11 @@ const translations = {
         feat2: "Real-World Routing: Integriertes OSRM zur Erfassung präziser Straßengeometrie und verkehrsbereinigter Reisezeiten."
       },
       p2: {
-        title: "Virtual Mouse & Eye Tracker",
-        desc: "Ein freihändiges HCI-System, das berührungslose Steuerung ermöglicht, indem es Computer Vision nutzt, um Gesten in präzise Cursoraktionen zu übersetzen.",
-        feat1: "Gestenerkennung: Steuert Mausklicks und Scrollen über Fingerspitzentracking und Augenblinzeln.",
-        feat2: "Optimierte Leistung: Gebaut mit OpenCV und MediaPipe für High-FPS-Echtzeitverarbeitung auf Standard-CPUs."
+        title: "BookingSystem",
+        status: "In Entwicklung",
+        desc: "Ein umfassendes Buchungsmanagementsystem, das auf einer modernen Full-Stack-Architektur basiert. Bietet mehrsprachige Unterstützung (MN, EN, JP), Stripe-Zahlungen und Echtzeit-Terminplanung.",
+        feat1: "Full-Stack-Architektur: Next.js (React) Frontend mit Tailwind CSS v4, verbunden mit einem robusten NestJS-Backend.",
+        feat2: "Erweiterte Funktionen: Stripe-Zahlungsintegration, mehrsprachige Unterstützung (i18n) und rollenbasierte Zugriffskontrolle."
       },
       p3: {
         title: "MindSync AI",
@@ -163,11 +166,11 @@ const translations = {
         feat2: "Globale Zahlungen: Integrierte Stripe und PayPal für sichere Transaktionen in mehreren Währungen."
       },
       p5: {
-        title: "BookingSystem",
+        title: "AI Receptionist",
         status: "In Entwicklung",
-        desc: "Ein umfassendes Buchungsmanagementsystem, das auf einer modernen Full-Stack-Architektur basiert. Bietet mehrsprachige Unterstützung (MN, EN, JP), Stripe-Zahlungen und Echtzeit-Terminplanung.",
-        feat1: "Full-Stack-Architektur: Next.js (React) Frontend mit Tailwind CSS v4, verbunden mit einem robusten NestJS-Backend.",
-        feat2: "Erweiterte Funktionen: Stripe-Zahlungsintegration, mehrsprachige Unterstützung (i18n) und rollenbasierte Zugriffskontrolle."
+        desc: "Ein produktionsreifer KI-Sprachoperator für Echtzeit-VoIP-Anrufe. Löst Docker-NAT- und VAD-Probleme. Als mongolischer Prototyp entwickelt, ist die Architektur jedoch für jede Sprache und Region skalierbar.",
+        feat1: "Fortschrittliche Audio-Pipeline: Benutzerdefinierte RMS-basierte Spracherkennung (VAD) und Promiscuous RTP Mode für robustes Streaming in Docker.",
+        feat2: "Intelligente Integration: OpenAI Function Calling für Echtzeit-Datenbankabfragen und eine benutzerdefinierte Textnormalisierungs-Engine für fehlerfreies TTS."
       },
       viewCode: "Code auf GitHub ansehen"
     },
@@ -200,10 +203,11 @@ const translations = {
         feat2: "Бодит маршрутчлал: OSRM-ийг нэгтгэн замын нарийн геометр болон хөдөлгөөнд тохируулсан аялах хугацааг тооцоолдог."
       },
       p2: {
-        title: "Virtual Mouse & Eye Tracker",
-        desc: "Компьютерийн хараа ашиглан дохио зангааг курсорын нарийн үйлдэл болгон хувиргаж, хүрэлцэхгүйгээр удирдах боломжийг олгодог гар ашиглахгүй HCI систем.",
-        feat1: "Дохио таних: Хурууны үзүүрийг хянах болон нүдээ цавчих замаар хулганы товшилт, гүйлгэх үйлдлийг удирддаг.",
-        feat2: "Оновчтой гүйцэтгэл: OpenCV болон MediaPipe ашиглан бүтээгдсэн бөгөөд энгийн CPU дээр өндөр FPS-тэй бодит цагийн боловсруулалт хийдэг."
+        title: "BookingSystem",
+        status: "Хөгжүүлэлтийн шатанд",
+        desc: "Орчин үеийн full-stack архитектураар бүтээгдсэн захиалгын удирдлагын цогц систем. Олон хэлний дэмжлэг (MN, EN, JP), Stripe төлбөр тооцоо, бодит цагийн хуваарь зэрэг боломжуудтай.",
+        feat1: "Full-Stack Архитектур: Tailwind CSS v4 ашигласан Next.js (React) frontend-ийг хүчирхэг NestJS backend-тэй холбосон.",
+        feat2: "Дэвшилтэт боломжууд: Stripe төлбөрийн интеграцчилал, олон хэлний дэмжлэг (i18n), болон үүрэгт суурилсан хандалтын хяналт."
       },
       p3: {
         title: "MindSync AI",
@@ -220,11 +224,11 @@ const translations = {
         feat2: "Дэлхийн төлбөр тооцоо: Олон валютын гүйлгээг найдвартай хийхийн тулд Stripe болон PayPal-г нэгтгэсэн."
       },
       p5: {
-        title: "BookingSystem",
+        title: "AI Receptionist",
         status: "Хөгжүүлэлтийн шатанд",
-        desc: "Орчин үеийн full-stack архитектураар бүтээгдсэн захиалгын удирдлагын цогц систем. Олон хэлний дэмжлэг (MN, EN, JP), Stripe төлбөр тооцоо, бодит цагийн хуваарь зэрэг боломжуудтай.",
-        feat1: "Full-Stack Архитектур: Tailwind CSS v4 ашигласан Next.js (React) frontend-ийг хүчирхэг NestJS backend-тэй холбосон.",
-        feat2: "Дэвшилтэт боломжууд: Stripe төлбөрийн интеграцчилал, олон хэлний дэмжлэг (i18n), болон үүрэгт суурилсан хандалтын хяналт."
+        desc: "Хүний оронд дуудлага хүлээн авах AI Operator. Docker NAT болон RTP урсгалын асуудлыг шийдсэн. Туршилтын хувилбар Монгол хэл дээр байгаа ч, систем нь олон улсын ямар ч хэл дээр ажиллах бүрэн боломжтой.",
+        feat1: "Аудио Шийдэл: WebRTC-ийн алдааг засаж RMS (дууны хүч) хэмжигч болон Promiscuous RTP горимыг ашиглан дуу тасалдах асуудлыг бүрэн шийдсэн.",
+        feat2: "Системийн Сайжруулалт: Тусгай тэмдэгт болон тоог үг рүү хөрвүүлэх текст цэвэрлэгээний функц болон OpenAI Function Calling-ийг нэвтрүүлсэн."
       },
       viewCode: "GitHub дээр код үзэх"
     },
@@ -359,31 +363,19 @@ export default function Portfolio() {
                   },
                   {
                     title: t.projects.p2.title,
+                    status: t.projects.p2.status,
                     desc: t.projects.p2.desc,
                     feat1: t.projects.p2.feat1,
                     feat2: t.projects.p2.feat2,
-                    link: "https://github.com/Nomad1nk/mouseTrack",
-                    image: "/virtualmouse.png",
+                    link: "https://github.com/Nomad1nk/BookingSystem",
+                    image: "/Bookingsystem.png",
                     tech: [
-                      { icon: Cpu, label: "Python" },
-                      { icon: Camera, label: "OpenCV" },
-                      { icon: Eye, label: "MediaPipe" },
-                      { icon: MousePointer2, label: "PyAutoGUI" }
-                    ]
-                  },
-                  {
-                    title: t.projects.p3.title,
-                    status: t.projects.p3.status,
-                    desc: t.projects.p3.desc,
-                    feat1: t.projects.p3.feat1,
-                    feat2: t.projects.p3.feat2,
-                    link: "https://github.com/Nomad1nk/AI-voice-MN-test-version",
-                    image: "/syncAI.png",
-                    tech: [
-                      { icon: Brain, label: "LLM / OpenAI" },
-                      { icon: MessageSquare, label: "LangChain" },
-                      { icon: Database, label: "Vector DB" },
-                      { icon: Sparkles, label: "Next.js" }
+                      { icon: Calendar, label: "Next.js" },
+                      { icon: Server, label: "NestJS" },
+                      { icon: Database, label: "PostgreSQL" },
+                      { icon: Layout, label: "Tailwind v4" },
+                      { icon: CreditCard, label: "Stripe" },
+                      { icon: Globe, label: "i18n" }
                     ]
                   },
                   {
@@ -402,20 +394,33 @@ export default function Portfolio() {
                     ]
                   },
                   {
+                    title: t.projects.p3.title,
+                    status: t.projects.p3.status,
+                    desc: t.projects.p3.desc,
+                    feat1: t.projects.p3.feat1,
+                    feat2: t.projects.p3.feat2,
+                    link: "https://github.com/Nomad1nk/AI-voice-MN-test-version",
+                    image: "/syncAI.png",
+                    tech: [
+                      { icon: Brain, label: "LLM / OpenAI" },
+                      { icon: MessageSquare, label: "LangChain" },
+                      { icon: Database, label: "Vector DB" },
+                      { icon: Sparkles, label: "Next.js" }
+                    ]
+                  },
+                  {
                     title: t.projects.p5.title,
                     status: t.projects.p5.status,
                     desc: t.projects.p5.desc,
                     feat1: t.projects.p5.feat1,
                     feat2: t.projects.p5.feat2,
-                    link: "https://github.com/Nomad1nk/BookingSystem",
-                    image: "/Bookingsystem.png",
+                    link: "https://github.com/Nomad1nk/AI-Receptionist",
+                    image: "/ai-receptionist.png",
                     tech: [
-                      { icon: Calendar, label: "Next.js" },
-                      { icon: Server, label: "NestJS" },
+                      { icon: Cpu, label: "Python" },
+                      { icon: Container, label: "Docker" },
                       { icon: Database, label: "PostgreSQL" },
-                      { icon: Layout, label: "Tailwind v4" },
-                      { icon: CreditCard, label: "Stripe" },
-                      { icon: Globe, label: "i18n" }
+                      { icon: Layout, label: "Admin Dashboard" }
                     ]
                   }
                 ]}

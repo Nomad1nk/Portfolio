@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }: any) {
@@ -9,7 +9,7 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
         <div className={`w-full h-full p-4 transition-all duration-500`}>
             <div className={`grid md:grid-cols-2 gap-6 md:gap-12 items-center bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/10 shadow-2xl w-full h-full transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
 
-                {/* Text Content - Only visible if active or large screen */}
+                {/* Text Content */}
                 <div className={`space-y-4 md:space-y-6 order-2 md:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 md:opacity-30'}`}>
                     <div className="flex items-center gap-3">
                         <h3 className="font-cartoon text-3d text-2xl md:text-4xl font-bold text-white tracking-wide">{project.title}</h3>
@@ -63,6 +63,60 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
     );
 }
 
+// Dedicated Slide Component to handle complex transforms
+function CarouselSlide({ project, index, currentIndex, total, springX, t, TechBadge, CheckIcon }: any) {
+    // Calculate relative index for circular wrapping
+    let relativeIndex = (index - currentIndex + total) % total;
+    if (relativeIndex > total / 2) relativeIndex -= total;
+
+    // Spring for the base position (slide transition)
+    const baseOffset = useSpring(relativeIndex * 65, { stiffness: 50, damping: 20 });
+
+    useEffect(() => {
+        baseOffset.set(relativeIndex * 65);
+    }, [relativeIndex, baseOffset]);
+
+    // Combine transforms: Base Offset (%) + Mouse Parallax (px)
+    // We removed -50% because we are using mx-auto for centering
+    const x = useTransform(
+        [baseOffset, springX],
+        ([base, spring]) => `calc(${base}% + ${spring}px)`
+    );
+
+    // Visibility check
+    const isVisible = Math.abs(relativeIndex) <= 2;
+    if (!isVisible) return null;
+
+    return (
+        <motion.div
+            className="absolute top-0 bottom-0 left-0 right-0 mx-auto w-[85%] md:w-[60%] h-full flex items-center justify-center pointer-events-none"
+            style={{
+                x, // Apply the combined transform here
+                zIndex: 20 - Math.abs(relativeIndex),
+                scale: relativeIndex === 0 ? 1 : 0.8,
+                opacity: relativeIndex === 0 ? 1 : 0.4,
+            }}
+            animate={{
+                scale: relativeIndex === 0 ? 1 : 0.8,
+                opacity: relativeIndex === 0 ? 1 : 0.4,
+                zIndex: 20 - Math.abs(relativeIndex)
+            }}
+            transition={{ type: "spring", stiffness: 50, damping: 20 }}
+        >
+            <div className="w-full h-full pointer-events-auto">
+                <ProjectCard
+                    project={project}
+                    isActive={relativeIndex === 0}
+                    isNeighbor={Math.abs(relativeIndex) === 1}
+                    t={t}
+                    TechBadge={TechBadge}
+                    CheckIcon={CheckIcon}
+                />
+            </div>
+        </motion.div>
+    );
+}
+
 export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: any) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
@@ -97,12 +151,6 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
     const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % projects.length);
     const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
-    const getRelativeIndex = (index: number, current: number, length: number) => {
-        const diff = (index - current + length) % length;
-        if (diff > length / 2) return diff - length;
-        return diff;
-    };
-
     return (
         <div
             ref={containerRef}
@@ -114,46 +162,19 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
             {/* 3D Stack Container */}
             <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center">
                 <AnimatePresence initial={false}>
-                    {projects.map((p: any, i: number) => {
-                        const relativeIndex = getRelativeIndex(i, currentIndex, projects.length);
-                        const isVisible = Math.abs(relativeIndex) <= 2;
-
-                        if (!isVisible) return null;
-
-                        return (
-                            <motion.div
-                                key={i}
-                                // Use left-1/2 and -translate-x-1/2 to center absolutely
-                                className="absolute top-0 left-1/2 w-[85%] md:w-[60%] h-full flex items-center justify-center pointer-events-none origin-center"
-                                style={{
-                                    zIndex: 20 - Math.abs(relativeIndex),
-                                    x: springX, // Apply spring parallax
-                                }}
-                                initial={{ opacity: 0, scale: 0.8, x: `calc(-50% + ${relativeIndex * 100}%)` }}
-                                animate={{
-                                    // Base: -50% (center)
-                                    // Offset: relativeIndex * 65% (shift neighbors)
-                                    // Parallax: springX
-                                    x: `calc(-50% + ${relativeIndex * 65}% + ${springX.get()}px)`,
-                                    scale: relativeIndex === 0 ? 1 : 0.8,
-                                    opacity: relativeIndex === 0 ? 1 : 0.4,
-                                    zIndex: 20 - Math.abs(relativeIndex)
-                                }}
-                                transition={{ type: "spring", stiffness: 50, damping: 20 }}
-                            >
-                                <div className="w-full h-full pointer-events-auto">
-                                    <ProjectCard
-                                        project={p}
-                                        isActive={relativeIndex === 0}
-                                        isNeighbor={Math.abs(relativeIndex) === 1}
-                                        t={t}
-                                        TechBadge={TechBadge}
-                                        CheckIcon={CheckIcon}
-                                    />
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+                    {projects.map((p: any, i: number) => (
+                        <CarouselSlide
+                            key={i}
+                            project={p}
+                            index={i}
+                            currentIndex={currentIndex}
+                            total={projects.length}
+                            springX={springX}
+                            t={t}
+                            TechBadge={TechBadge}
+                            CheckIcon={CheckIcon}
+                        />
+                    ))}
                 </AnimatePresence>
             </div>
 
