@@ -414,8 +414,8 @@ export default function Portfolio() {
                     desc: t.projects.p5.desc,
                     feat1: t.projects.p5.feat1,
                     feat2: t.projects.p5.feat2,
-                    link: "https://github.com/Nomad1nk/AI-Receptionist",
-                    image: "/ai-receptionist.png",
+                    link: "https://github.com/Nomad1nk/No1-projectt",
+                    image: "/receptionAI.png",
                     tech: [
                       { icon: Cpu, label: "Python" },
                       { icon: Container, label: "Docker" },
@@ -433,10 +433,10 @@ export default function Portfolio() {
             <div className="max-w-5xl mx-auto">
               <h2 className="font-cartoon text-3d text-4xl font-bold text-white mb-12 text-center tracking-wide">{t.skills.title}</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <SkillCard title="Frontend" skills={["React / Next.js", "TypeScript", "Tailwind CSS", "Leaflet.js"]} />
-                <SkillCard title="Backend" skills={["Ruby on Rails", "Python (Flask)", "Node.js", "REST APIs"]} />
-                <SkillCard title="Databases" skills={["PostgreSQL", "SQLite", "Redis", "Vector Databases"]} />
-                <SkillCard title="DevOps" skills={["Docker", "Git / GitHub", "Vercel", "CI/CD Basics"]} />
+                <SkillCard title="Frontend & UI" skills={["Next.js 14 / React", "TypeScript / ES6+", "Tailwind / Framer Motion", "Three.js / WebGL"]} />
+                <SkillCard title="Backend & Core" skills={["NestJS / Node.js", "Python (FastAPI)", "Ruby on Rails", "Microservices / gRPC"]} />
+                <SkillCard title="AI & Data" skills={["LLMs / RAG / LangChain", "OpenAI / Whisper API", "Vector DBs / PostgreSQL", "Computer Vision (OpenCV)"]} />
+                <SkillCard title="DevOps & Cloud" skills={["Docker / Kubernetes", "AWS / Vercel", "CI/CD (GitHub Actions)", "Linux / Nginx"]} />
               </div>
             </div>
           </section>
