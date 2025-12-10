@@ -424,7 +424,7 @@ export default function Portfolio() {
                     feat1: t.projects.p5.feat1,
                     feat2: t.projects.p5.feat2,
                     link: "https://github.com/Nomad1nk/No1-projectt",
-                    image: "/receptionAI.png",
+                    image: "/reception-ai.png",
                     tech: [
                       { icon: Cpu, label: "Python" },
                       { icon: Container, label: "Docker" },
