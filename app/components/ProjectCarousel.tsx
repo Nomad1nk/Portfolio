@@ -1,18 +1,16 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
-function ProjectCard({ project, isActive, t, TechBadge, CheckIcon }: any) {
+function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }: any) {
     return (
-        <motion.div
-            className={`w-full max-w-6xl mx-auto p-4 md:p-8 transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm'}`}
-        >
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-black/40 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-2xl w-full">
+        <div className={`w-full h-full p-4 md:p-8 transition-all duration-500`}>
+            <div className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-black/40 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-2xl w-full h-full transition-all duration-500 ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
 
-                {/* Text Content */}
-                <div className="space-y-6 order-2 md:order-1">
+                {/* Text Content - Only visible if active or large screen */}
+                <div className={`space-y-6 order-2 md:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 md:opacity-30'}`}>
                     <div className="flex items-center gap-3">
                         <h3 className="font-cartoon text-3d text-3xl md:text-5xl font-bold text-white tracking-wide">{project.title}</h3>
                         {project.status && (
@@ -23,8 +21,8 @@ function ProjectCard({ project, isActive, t, TechBadge, CheckIcon }: any) {
                     </div>
 
                     <div className="prose text-gray-300 text-lg">
-                        <p>{project.desc}</p>
-                        <ul className="space-y-3 mt-4">
+                        <p className="line-clamp-3 md:line-clamp-none">{project.desc}</p>
+                        <ul className="space-y-3 mt-4 hidden md:block">
                             <li className="flex items-start gap-3">
                                 <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
                                 <span>{project.feat1}</span>
@@ -50,8 +48,8 @@ function ProjectCard({ project, isActive, t, TechBadge, CheckIcon }: any) {
                 </div>
 
                 {/* Image Content */}
-                <div className="order-1 md:order-2">
-                    <div className="aspect-video bg-gray-900 rounded-2xl flex items-center justify-center overflow-hidden relative border border-white/10 shadow-lg group">
+                <div className="order-1 md:order-2 h-full flex items-center">
+                    <div className="aspect-video bg-gray-900 rounded-2xl flex items-center justify-center overflow-hidden relative border border-white/10 shadow-lg group w-full">
                         <img
                             src={project.image}
                             alt={project.title}
@@ -61,7 +59,7 @@ function ProjectCard({ project, isActive, t, TechBadge, CheckIcon }: any) {
                 </div>
 
             </div>
-        </motion.div>
+        </div>
     );
 }
 
@@ -88,7 +86,7 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
         const mouseX = e.clientX - left;
         const center = width / 2;
         // Calculate offset: move opposite to mouse to "peek"
-        const offset = (mouseX - center) * -0.1;
+        const offset = (mouseX - center) * -0.05;
         x.set(offset);
     };
 
@@ -100,55 +98,77 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
     const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % projects.length);
     const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
+    // Helper to get relative index for circular wrapping
+    const getRelativeIndex = (index: number, current: number, length: number) => {
+        const diff = (index - current + length) % length;
+        if (diff > length / 2) return diff - length;
+        return diff;
+    };
+
     return (
         <div
             ref={containerRef}
-            className="relative w-full overflow-hidden py-10 min-h-[600px] flex items-center justify-center"
+            className="relative w-full overflow-hidden py-10 min-h-[700px] flex items-center justify-center perspective-1000"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Background Track */}
-            <motion.div
-                className="flex absolute left-0 top-0 h-full items-center"
-                style={{
-                    x: springX, // Parallax offset
-                    width: `${projects.length * 100}%`
-                }}
-                animate={{
-                    x: `calc(-${currentIndex * 100}% + ${springX.get()}px)`
-                }}
-                transition={{ type: "spring", stiffness: 50, damping: 20 }}
-            >
-                {projects.map((p: any, i: number) => (
-                    <div key={i} className="w-full flex justify-center px-4 md:px-20" style={{ width: `${100 / projects.length}%` }}>
-                        <ProjectCard
-                            project={p}
-                            isActive={i === currentIndex}
-                            t={t}
-                            TechBadge={TechBadge}
-                            CheckIcon={CheckIcon}
-                        />
-                    </div>
-                ))}
-            </motion.div>
+            {/* 3D Stack Container */}
+            <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center">
+                <AnimatePresence initial={false}>
+                    {projects.map((p: any, i: number) => {
+                        const relativeIndex = getRelativeIndex(i, currentIndex, projects.length);
+                        const isVisible = Math.abs(relativeIndex) <= 1; // Only show center and immediate neighbors
+
+                        if (!isVisible) return null;
+
+                        return (
+                            <motion.div
+                                key={i}
+                                className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
+                                style={{
+                                    zIndex: 20 - Math.abs(relativeIndex),
+                                    x: springX
+                                }}
+                                initial={{ opacity: 0, scale: 0.8, x: relativeIndex * 1000 }}
+                                animate={{
+                                    x: `calc(${relativeIndex * 65}% + ${springX.get()}px)`, // 65% offset for neighbors
+                                    scale: relativeIndex === 0 ? 1 : 0.85,
+                                    opacity: relativeIndex === 0 ? 1 : 0.5,
+                                    zIndex: 20 - Math.abs(relativeIndex)
+                                }}
+                                transition={{ type: "spring", stiffness: 50, damping: 20 }}
+                            >
+                                <ProjectCard
+                                    project={p}
+                                    isActive={relativeIndex === 0}
+                                    isNeighbor={Math.abs(relativeIndex) === 1}
+                                    t={t}
+                                    TechBadge={TechBadge}
+                                    CheckIcon={CheckIcon}
+                                />
+                            </motion.div>
+                        );
+                    })}
+                </AnimatePresence>
+            </div>
 
             {/* Navigation Buttons */}
             <button
                 onClick={prevSlide}
-                className="absolute left-4 md:left-10 z-20 p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
+                className="absolute left-4 md:left-10 z-30 p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
             >
                 <ChevronLeft size={32} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-4 md:right-10 z-20 p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
+                className="absolute right-4 md:right-10 z-30 p-3 bg-black/50 hover:bg-white/20 rounded-full text-white backdrop-blur-md border border-white/10 transition-all"
             >
                 <ChevronRight size={32} />
             </button>
 
             {/* Indicators */}
-            <div className="absolute bottom-4 left-0 w-full flex justify-center gap-2 z-20">
+            <div className="absolute bottom-0 left-0 w-full flex justify-center gap-2 z-30">
                 {projects.map((_: any, i: number) => (
                     <button
                         key={i}
