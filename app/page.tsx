@@ -243,7 +243,7 @@ export default function Portfolio() {
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen font-sans selection:bg-gray-700 bg-gradient-to-br from-gray-950 via-slate-900 to-black animate-gradient-xy text-gray-200 relative overflow-hidden">
+    <div className="min-h-screen font-sans selection:bg-cyan-500 bg-gradient-to-br from-slate-900 via-sky-950 to-gray-900 animate-gradient-xy text-gray-200 relative overflow-hidden">
 
       {/* --- BACKGROUND ANIMATION --- */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">

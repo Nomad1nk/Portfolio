@@ -14,13 +14,13 @@ function generateParticles(count: number) {
 
 function Stars(props: any) {
     const ref = useRef<any>();
-    // Generate 5000 particles
-    const [sphere] = useState(() => generateParticles(5000));
+    // Generate 7000 particles for a denser storm
+    const [sphere] = useState(() => generateParticles(7000));
 
     useFrame((state, delta) => {
         if (ref.current) {
-            ref.current.rotation.x -= delta / 10;
-            ref.current.rotation.y -= delta / 15;
+            ref.current.rotation.x -= delta / 4; // Faster rotation for storm effect
+            ref.current.rotation.y -= delta / 5;
         }
     });
 
@@ -29,7 +29,7 @@ function Stars(props: any) {
             <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
                 <PointMaterial
                     transparent
-                    color="#ffffff"
+                    color="#a5f3fc" // Icy blue
                     size={0.003}
                     sizeAttenuation={true}
                     depthWrite={false}
