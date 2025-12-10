@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users } from 'lucide-react';
 
 import dynamic from 'next/dynamic';
+import ProjectCarousel from './components/ProjectCarousel';
 
 const ThreeBackground = dynamic(() => import('./components/ThreeBackground'), { ssr: false });
 
@@ -331,233 +332,94 @@ export default function Portfolio() {
           </section>
 
           {/* --- FEATURED PROJECTS --- */}
-          <section id="projects" className="py-20 bg-black/20 backdrop-blur-sm border-y border-white/5">
-            <div className="max-w-5xl mx-auto px-6 space-y-24">
-              <h2 className="font-cartoon text-3d text-xl font-bold text-gray-500 uppercase tracking-wider mb-8 border-b border-white/10 pb-2 inline-block">{t.projects.title}</h2>
-
-              {/* PROJECT 1: EcoRoute */}
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <h3 className="font-cartoon text-3d text-4xl font-bold text-white tracking-wide">{t.projects.p1.title}</h3>
-                  <div className="prose text-gray-400">
-                    <p>{t.projects.p1.desc}</p>
-                    <ul className="space-y-2 mt-4">
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p1.feat1}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p1.feat2}</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    <TechBadge icon={Layout} label="Next.js 14" />
-                    <TechBadge icon={Server} label="Ruby on Rails" />
-                    <TechBadge icon={Cpu} label="Python Flask" />
-                    <TechBadge icon={MapPin} label="Leaflet / OSRM" />
-                  </div>
-
-                  <div className="pt-4">
-                    <a href="https://github.com/Nomad1nk/RouteChecker" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
-                      {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
-                    </a>
-                  </div>
-                </div>
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl rotate-1 hover:rotate-0 transition duration-500">
-                  <div className="aspect-video bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden relative border border-white/5">
-                    <img
-                      src="/ecoroute.png"
-                      alt="EcoRoute Dashboard Interface"
-                      className="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
-                      <p className="text-white font-medium text-sm">Live Map Dashboard View</p>
-                    </div>
-                  </div>
-                </div>
+          <section id="projects" className="py-20 bg-black/20 backdrop-blur-sm border-y border-white/5 overflow-hidden">
+            <div className="w-full">
+              <div className="max-w-5xl mx-auto px-6 mb-8">
+                <h2 className="font-cartoon text-3d text-xl font-bold text-gray-500 uppercase tracking-wider border-b border-white/10 pb-2 inline-block">{t.projects.title}</h2>
               </div>
 
-              {/* PROJECT 2: Virtual Mouse */}
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1 bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl -rotate-1 hover:rotate-0 transition duration-500">
-                  <div className="aspect-video bg-gray-900 rounded-lg flex items-center justify-center border-2 border-dashed border-white/10 overflow-hidden">
-                    <img
-                      src="/virtualmouse.png"
-                      alt="AI Hand Gesture Recognition"
-                      className="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
-                    />
-                  </div>
-                </div>
-
-                <div className="order-1 md:order-2 space-y-6">
-                  <h3 className="font-cartoon text-3d text-4xl font-bold text-white tracking-wide">{t.projects.p2.title}</h3>
-                  <div className="prose text-gray-400">
-                    <p>{t.projects.p2.desc}</p>
-                    <ul className="space-y-2 mt-4">
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p2.feat1}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p2.feat2}</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    <TechBadge icon={Cpu} label="Python" />
-                    <TechBadge icon={Camera} label="OpenCV" />
-                    <TechBadge icon={Eye} label="MediaPipe" />
-                    <TechBadge icon={MousePointer2} label="PyAutoGUI" />
-                  </div>
-
-                  <div className="pt-4">
-                    <a href="https://github.com/Nomad1nk/mouseTrack" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
-                      {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* PROJECT 3: MindSync AI */}
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-cartoon text-3d text-4xl font-bold text-white tracking-wide">{t.projects.p3.title}</h3>
-                    <span className="px-3 py-1 bg-white/10 text-white text-xs font-bold uppercase tracking-wide rounded-full border border-white/20">{t.projects.p3.status}</span>
-                  </div>
-                  <div className="prose text-gray-400">
-                    <p>{t.projects.p3.desc}</p>
-                    <ul className="space-y-2 mt-4">
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p3.feat1}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p3.feat2}</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    <TechBadge icon={Brain} label="LLM / OpenAI" />
-                    <TechBadge icon={MessageSquare} label="LangChain" />
-                    <TechBadge icon={Database} label="Vector DB" />
-                    <TechBadge icon={Sparkles} label="Next.js" />
-                  </div>
-
-                  <div className="pt-4">
-                    <a href="https://github.com/Nomad1nk/AI-voice-MN-test-version" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
-                      {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
-                    </a>
-                  </div>
-                </div>
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl rotate-1 hover:rotate-0 transition duration-500">
-                  <div className="aspect-video bg-gray-900 rounded-lg flex items-center justify-center border-2 border-dashed border-white/10 overflow-hidden">
-                    <img
-                      src="/syncAI.png"
-                      alt="AI Chat Interface"
-                      className="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* PROJECT 4: LUXEcommerce */}
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1 bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl -rotate-1 hover:rotate-0 transition duration-500">
-                  <div className="aspect-video bg-black rounded-lg flex items-center justify-center border-2 border-dashed border-gray-800 overflow-hidden">
-                    <img
-                      src="/luxeComm.png"
-                      alt="Lux eCommerce Interface"
-                      className="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
-                    />
-                  </div>
-                </div>
-
-                <div className="order-1 md:order-2 space-y-6">
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-cartoon text-3d text-4xl font-bold text-white tracking-wide">{t.projects.p4.title}</h3>
-                    <span className="px-3 py-1 bg-white text-black text-xs font-bold uppercase tracking-wide rounded-full border border-gray-200">{t.projects.p4.status}</span>
-                  </div>
-                  <div className="prose text-gray-400">
-                    <p>{t.projects.p4.desc}</p>
-                    <ul className="space-y-2 mt-4">
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p4.feat1}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p4.feat2}</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    <TechBadge icon={Layout} label="Next.js" />
-                    <TechBadge icon={ShoppingBag} label="Shopify API" />
-                    <TechBadge icon={CreditCard} label="Stripe" />
-                    <TechBadge icon={Database} label="Redis" />
-                  </div>
-
-                  <div className="pt-4">
-                    <a href="https://github.com/Nomad1nk/LuxEcommerce" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
-                      {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* PROJECT 5: BookingSystem (NEW) */}
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-cartoon text-3d text-4xl font-bold text-white tracking-wide">{t.projects.p5.title}</h3>
-                    <span className="px-3 py-1 bg-white/10 text-white text-xs font-bold uppercase tracking-wide rounded-full border border-white/20">{t.projects.p5.status}</span>
-                  </div>
-                  <div className="prose text-gray-400">
-                    <p>{t.projects.p5.desc}</p>
-                    <ul className="space-y-2 mt-4">
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p5.feat1}</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <span className="bg-white/10 p-1 rounded text-white mt-1"><CheckIcon /></span>
-                        <span>{t.projects.p5.feat2}</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    <TechBadge icon={Calendar} label="Next.js" />
-                    <TechBadge icon={Server} label="NestJS" />
-                    <TechBadge icon={Database} label="PostgreSQL" />
-                    <TechBadge icon={Layout} label="Tailwind v4" />
-                    <TechBadge icon={CreditCard} label="Stripe" />
-                    <TechBadge icon={Globe} label="i18n" />
-                  </div>
-
-                  <div className="pt-4">
-                    <a href="https://github.com/Nomad1nk/BookingSystem" target="_blank" rel="noreferrer" className="inline-flex items-center text-white font-bold hover:text-gray-300 border-b-2 border-white hover:border-gray-300 pb-0.5 transition-colors">
-                      {t.projects.viewCode} <ExternalLink size={16} className="ml-1" />
-                    </a>
-                  </div>
-                </div>
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl rotate-1 hover:rotate-0 transition duration-500">
-                  <div className="aspect-video bg-gray-900 rounded-lg flex items-center justify-center border-2 border-dashed border-white/10 overflow-hidden">
-                    <img
-                      src="/Bookingsystem.png"
-                      alt="Booking System Interface"
-                      className="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 hover:scale-105"
-                    />
-                  </div>
-                </div>
-              </div>
-
+              <ProjectCarousel
+                t={t}
+                TechBadge={TechBadge}
+                CheckIcon={CheckIcon}
+                projects={[
+                  {
+                    title: t.projects.p1.title,
+                    desc: t.projects.p1.desc,
+                    feat1: t.projects.p1.feat1,
+                    feat2: t.projects.p1.feat2,
+                    link: "https://github.com/Nomad1nk/RouteChecker",
+                    image: "/ecoroute.png",
+                    tech: [
+                      { icon: Layout, label: "Next.js 14" },
+                      { icon: Server, label: "Ruby on Rails" },
+                      { icon: Cpu, label: "Python Flask" },
+                      { icon: MapPin, label: "Leaflet / OSRM" }
+                    ]
+                  },
+                  {
+                    title: t.projects.p2.title,
+                    desc: t.projects.p2.desc,
+                    feat1: t.projects.p2.feat1,
+                    feat2: t.projects.p2.feat2,
+                    link: "https://github.com/Nomad1nk/mouseTrack",
+                    image: "/virtualmouse.png",
+                    tech: [
+                      { icon: Cpu, label: "Python" },
+                      { icon: Camera, label: "OpenCV" },
+                      { icon: Eye, label: "MediaPipe" },
+                      { icon: MousePointer2, label: "PyAutoGUI" }
+                    ]
+                  },
+                  {
+                    title: t.projects.p3.title,
+                    status: t.projects.p3.status,
+                    desc: t.projects.p3.desc,
+                    feat1: t.projects.p3.feat1,
+                    feat2: t.projects.p3.feat2,
+                    link: "https://github.com/Nomad1nk/AI-voice-MN-test-version",
+                    image: "/syncAI.png",
+                    tech: [
+                      { icon: Brain, label: "LLM / OpenAI" },
+                      { icon: MessageSquare, label: "LangChain" },
+                      { icon: Database, label: "Vector DB" },
+                      { icon: Sparkles, label: "Next.js" }
+                    ]
+                  },
+                  {
+                    title: t.projects.p4.title,
+                    status: t.projects.p4.status,
+                    desc: t.projects.p4.desc,
+                    feat1: t.projects.p4.feat1,
+                    feat2: t.projects.p4.feat2,
+                    link: "https://github.com/Nomad1nk/LuxEcommerce",
+                    image: "/luxeComm.png",
+                    tech: [
+                      { icon: Layout, label: "Next.js" },
+                      { icon: ShoppingBag, label: "Shopify API" },
+                      { icon: CreditCard, label: "Stripe" },
+                      { icon: Database, label: "Redis" }
+                    ]
+                  },
+                  {
+                    title: t.projects.p5.title,
+                    status: t.projects.p5.status,
+                    desc: t.projects.p5.desc,
+                    feat1: t.projects.p5.feat1,
+                    feat2: t.projects.p5.feat2,
+                    link: "https://github.com/Nomad1nk/BookingSystem",
+                    image: "/Bookingsystem.png",
+                    tech: [
+                      { icon: Calendar, label: "Next.js" },
+                      { icon: Server, label: "NestJS" },
+                      { icon: Database, label: "PostgreSQL" },
+                      { icon: Layout, label: "Tailwind v4" },
+                      { icon: CreditCard, label: "Stripe" },
+                      { icon: Globe, label: "i18n" }
+                    ]
+                  }
+                ]}
+              />
             </div>
           </section>
 
