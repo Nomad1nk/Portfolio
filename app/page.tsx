@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users, Container, Facebook, Instagram, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, ExternalLink, Download, Database, Layout, Server, Cpu, Camera, Eye, MousePointer2, Brain, MessageSquare, Sparkles, Globe, ChevronDown, ShoppingBag, CreditCard, Calendar, Users, Container, Facebook, Instagram, Sun, Moon, Mic, Code } from 'lucide-react';
 
 import dynamic from 'next/dynamic';
 import ProjectCarousel from './components/ProjectCarousel';
@@ -38,9 +38,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "In Development",
-        desc: "An empathetic AI companion designed for deep psychological context retention. It utilizes Vector Memory to maintain \"perfect sync\" with the user's long-term history and emotional state.",
-        feat1: "RAG Architecture: Retrieval-Augmented Generation using vector embeddings to recall past conversations accurately.",
-        feat2: "Emotional Alignment: System prompts tuned for psychological support modalities (CBT/DBT principles)."
+        desc: "A voice-first empathetic AI companion powered by GPT-4o. Features real-time bidirectional voice interaction with a distinct persona ('Dr. Alan').",
+        feat1: "Full Voice Pipeline: Integrated Whisper-1 for STT and TTS-1 (Onyx) for a deep, calming voice response.",
+        feat2: "High-Performance Backend: Asynchronous Python FastAPI server handling real-time audio streams and logic."
       },
       p4: {
         title: "LUXEcommerce",
@@ -96,9 +96,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "開発中",
-        desc: "ユーザーの感情に寄り添うAIパートナー。ベクトルメモリ技術により、過去の会話や文脈を長期的に記憶し、自然な対話を実現。",
-        feat1: "RAGアーキテクチャ: ベクトル検索を活用し、過去の会話内容を正確に呼び出して応答に反映。",
-        feat2: "感情分析: 心理療法 (CBT/DBT) の原則に基づいたプロンプト設計で、ユーザーをサポート。"
+        desc: "GPT-4oを搭載した音声対話型の共感型AIパートナー。リアルタイムの双方向音声対話と、独自の人格（Dr. Alan）を特徴としています。",
+        feat1: "完全な音声パイプライン: Whisper-1による音声認識と、TTS-1 (Onyx) による落ち着いた男性の声での応答。",
+        feat2: "高性能バックエンド: 非同期Python FastAPIサーバーにより、リアルタイムのオーディオストリームとロジックを処理。"
       },
       p4: {
         title: "LUXEcommerce",
@@ -154,9 +154,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "In Entwicklung",
-        desc: "Ein empathischer KI-Begleiter, der für tiefes psychologisches Kontextverständnis entwickelt wurde. Nutzt Vektorspeicher, um eine \"perfekte Synchronisation\" mit der langfristigen Geschichte und dem emotionalen Zustand des Nutzers aufrechtzuerhalten.",
-        feat1: "RAG-Architektur: Retrieval-Augmented Generation unter Verwendung von Vektoreinbettungen, um vergangene Gespräche genau abzurufen.",
-        feat2: "Emotionale Ausrichtung: System-Prompts, die auf psychologische Unterstützungsmodalitäten (CBT/DBT-Prinzipien) abgestimmt sind."
+        desc: "Ein sprachgesteuerter, empathischer KI-Begleiter, angetrieben von GPT-4o. Bietet bidirektionale Sprachinteraktion in Echtzeit mit einer ausgeprägten Persönlichkeit ('Dr. Alan').",
+        feat1: "Vollständige Sprach-Pipeline: Integriertes Whisper-1 für STT und TTS-1 (Onyx) für eine tiefe, beruhigende Sprachantwort.",
+        feat2: "Hochleistungs-Backend: Asynchroner Python FastAPI-Server für die Verarbeitung von Echtzeit-Audiostreams."
       },
       p4: {
         title: "LUXEcommerce",
@@ -212,9 +212,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "Хөгжүүлэлтийн шатанд",
-        desc: "Сэтгэл зүйн гүн гүнзгий контекстийг хадгалахад зориулагдсан эмпатик AI хамтрагч. Вектор санах ой ашиглан хэрэглэгчийн урт хугацааны түүх болон сэтгэл хөдлөлийн байдалтай \"төгс синхрончлол\"-ыг хадгалдаг.",
-        feat1: "RAG Архитектур: Өнгөрсөн харилцан яриаг нарийн санахын тулд вектор шигтгээ ашиглан Retrieval-Augmented Generation хийдэг.",
-        feat2: "Сэтгэл хөдлөлийн тохируулга: Сэтгэл зүйн дэмжлэг үзүүлэх аргууд (CBT/DBT зарчим)-д тохируулсан системийн промптууд."
+        desc: "GPT-4o дээр суурилсан, дуу хоолойгоор харилцдаг сэтгэл зүйн AI туслах. 'Dr. Alan' гэсэн өвөрмөц дүр төрхтэйгээр бодит цагт ярилцах боломжтой.",
+        feat1: "Дуу хоолойн систем: Whisper-1 (Яриаг бичвэр болгох) болон TTS-1 Onyx (Хариуг дуу хоолой болгох) технологиудыг бүрэн нэгтгэсэн.",
+        feat2: "Өндөр хурдны Backend: Python FastAPI ашиглан аудио урсгалыг бодит цагт, хоцрогдолгүй боловсруулдаг."
       },
       p4: {
         title: "LUXEcommerce",
@@ -408,13 +408,13 @@ export default function Portfolio() {
                     desc: t.projects.p3.desc,
                     feat1: t.projects.p3.feat1,
                     feat2: t.projects.p3.feat2,
-                    link: "https://github.com/Nomad1nk/AI-voice-MN-test-version",
+                    link: "https://github.com/Nomad1nk/MindSync-Psychologist-AI",
                     image: "/syncAI.png",
                     tech: [
-                      { icon: Brain, label: "LLM / OpenAI" },
-                      { icon: MessageSquare, label: "LangChain" },
-                      { icon: Database, label: "Vector DB" },
-                      { icon: Sparkles, label: "Next.js" }
+                      { icon: Brain, label: "GPT-4o / Whisper" },
+                      { icon: Server, label: "Python FastAPI" },
+                      { icon: Mic, label: "Voice / TTS" },
+                      { icon: Code, label: "Vanilla JS" }
                     ]
                   },
                   {
