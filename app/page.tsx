@@ -30,14 +30,14 @@ const translations = {
       },
       p2: {
         title: "BookingSystem",
-        status: "In Development",
+        status: "Completed",
         desc: "A comprehensive booking management system built with a modern full-stack architecture. Features multi-language support (MN, EN, JP), Stripe payments, and real-time scheduling.",
         feat1: "Full-Stack Architecture: Next.js (React) frontend with Tailwind CSS v4, connected to a robust NestJS backend.",
         feat2: "Advanced Features: Stripe payment integration, multi-language support (i18n), and role-based access control."
       },
       p3: {
         title: "MindSync AI",
-        status: "In Development",
+        status: "Completed",
         desc: "A compassionate, voice-enabled AI psychologist localized in Japanese. Features secure authentication, persistent chat history, and a premium subscription model.",
         feat1: "Full Voice Interaction: 'Hold to Speak' functionality using OpenAI Whisper (STT) and TTS-1 for natural conversations.",
         feat2: "Monetization & Security: Integrated Stripe for monthly subscriptions and secure Email/Password authentication with SQLite storage."
@@ -88,14 +88,14 @@ const translations = {
       },
       p2: {
         title: "BookingSystem",
-        status: "開発中",
+        status: "完了",
         desc: "最新技術で構築した予約管理システム。多言語対応 (MN, EN, JP)、Stripe決済、リアルタイム予約機能を完備。",
         feat1: "フルスタック構成: Next.js (React) + Tailwind v4 のモダンなUIと、堅牢な NestJS バックエンド。",
         feat2: "高度な機能: Stripe決済、多言語対応 (i18n)、権限管理機能 (RBAC) を実装。"
       },
       p3: {
         title: "MindSync AI",
-        status: "開発中",
+        status: "完了",
         desc: "日本語に完全対応した、音声対話型のAI心理カウンセラー。安全な認証システム、チャット履歴の保存、およびプレミアムサブスクリプション機能を備えています。",
         feat1: "音声対話: OpenAI Whisper (STT) と TTS-1 を使用した「長押しして話す」機能により、自然な会話を実現。",
         feat2: "収益化とセキュリティ: Stripeによる月額サブスクリプションと、SQLiteを使用した安全なメール/パスワード認証を統合。"
@@ -146,14 +146,14 @@ const translations = {
       },
       p2: {
         title: "BookingSystem",
-        status: "In Entwicklung",
+        status: "Abgeschlossen",
         desc: "Ein umfassendes Buchungsmanagementsystem, das auf einer modernen Full-Stack-Architektur basiert. Bietet mehrsprachige Unterstützung (MN, EN, JP), Stripe-Zahlungen und Echtzeit-Terminplanung.",
         feat1: "Full-Stack-Architektur: Next.js (React) Frontend mit Tailwind CSS v4, verbunden mit einem robusten NestJS-Backend.",
         feat2: "Erweiterte Funktionen: Stripe-Zahlungsintegration, mehrsprachige Unterstützung (i18n) und rollenbasierte Zugriffskontrolle."
       },
       p3: {
         title: "MindSync AI",
-        status: "In Entwicklung",
+        status: "Abgeschlossen",
         desc: "Ein mitfühlender, sprachgesteuerter KI-Psychologe, lokalisiert auf Japanisch. Bietet sichere Authentifizierung, dauerhaften Chatverlauf und ein Premium-Abonnementmodell.",
         feat1: "Vollständige Sprachinteraktion: 'Hold to Speak'-Funktion mit OpenAI Whisper (STT) und TTS-1 für natürliche Gespräche.",
         feat2: "Monetarisierung & Sicherheit: Integriertes Stripe für monatliche Abonnements und sichere E-Mail/Passwort-Authentifizierung mit SQLite-Speicherung."
@@ -204,14 +204,14 @@ const translations = {
       },
       p2: {
         title: "BookingSystem",
-        status: "Хөгжүүлэлтийн шатанд",
+        status: "Дууссан",
         desc: "Орчин үеийн full-stack архитектураар бүтээгдсэн захиалгын удирдлагын цогц систем. Олон хэлний дэмжлэг (MN, EN, JP), Stripe төлбөр тооцоо, бодит цагийн хуваарь зэрэг боломжуудтай.",
         feat1: "Full-Stack Архитектур: Tailwind CSS v4 ашигласан Next.js (React) frontend-ийг хүчирхэг NestJS backend-тэй холбосон.",
         feat2: "Дэвшилтэт боломжууд: Stripe төлбөрийн интеграцчилал, олон хэлний дэмжлэг (i18n), болон үүрэгт суурилсан хандалтын хяналт."
       },
       p3: {
         title: "MindSync AI",
-        status: "Хөгжүүлэлтийн шатанд",
+        status: "Дууссан",
         desc: "Япон хэл дээр бүрэн ажилладаг, дуу хоолойгоор харилцдаг сэтгэл зүйн AI зөвлөх. Аюулгүй нэвтрэх систем, чат түүх хадгалах болон төлбөртэй эрхийн (Premium) боломжуудтай.",
         feat1: "Дуу хоолойн харилцаа: OpenAI Whisper (STT) болон TTS-1 ашиглан 'Дарж ярих' функцээр байгалийн яриа өрнүүлнэ.",
         feat2: "Төлбөр ба Аюулгүй байдал: Stripe сарын хураамжийн систем болон SQLite дээр суурилсан найдвартай бүртгэлийн системтэй."
