@@ -46,8 +46,8 @@ A high-performance headless eCommerce platform designed for luxury retail. Featu
 
 
 ### 4. MindSync AI
-An empathetic AI companion designed for deep psychological context retention using Vector Memory.
-- **Stack:** Next.js, OpenAI, LangChain, Vector DB.
+A compassionate, voice-enabled AI psychologist localized in Japanese. Features secure authentication, persistent chat history, and a premium subscription model.
+- **Stack:** FastAPI, SQLite, Stripe, GPT-4o, Whisper.
 
 
 ### 5. AI Receptionist
