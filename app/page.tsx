@@ -24,6 +24,7 @@ const translations = {
       title: "Featured Projects",
       p1: {
         title: "EcoRoute Optimizer",
+        status: "Completed",
         desc: "A sustainable logistics platform that reduces carbon emissions by optimizing delivery routes using real-world physics and traffic data.",
         feat1: "Microservice Architecture: Decoupled services for Logic (Python), Management (Rails), and UI (Next.js).",
         feat2: "Real-World Routing: Integrated OSRM to fetch precise road geometry and traffic-adjusted travel times."
@@ -82,6 +83,7 @@ const translations = {
       title: "主なプロジェクト",
       p1: {
         title: "EcoRoute Optimizer",
+        status: "完了",
         desc: "物理データと交通情報を活用し、配送ルートを最適化。CO2排出を削減するサステナブルな物流プラットフォーム。",
         feat1: "マイクロサービス: Logic (Python), Management (Rails), UI (Next.js) に機能を分割。",
         feat2: "実用的なルーティング: OSRMを統合し、正確な道路情報と交通状況を反映した移動時間を算出。"
@@ -140,6 +142,7 @@ const translations = {
       title: "Ausgewählte Projekte",
       p1: {
         title: "EcoRoute Optimizer",
+        status: "Abgeschlossen",
         desc: "Eine nachhaltige Logistikplattform, die CO2-Emissionen reduziert, indem sie Lieferrouten unter Verwendung realer Physik- und Verkehrsdaten optimiert.",
         feat1: "Microservice-Architektur: Entkoppelte Dienste für Logik (Python), Management (Rails) und UI (Next.js).",
         feat2: "Real-World Routing: Integriertes OSRM zur Erfassung präziser Straßengeometrie und verkehrsbereinigter Reisezeiten."
@@ -198,6 +201,7 @@ const translations = {
       title: "Онцлох төслүүд",
       p1: {
         title: "EcoRoute Optimizer",
+        status: "Дууссан",
         desc: "Бодит физик болон замын хөдөлгөөний өгөгдлийг ашиглан хүргэлтийн маршрутыг оновчтой болгож, нүүрстөрөгчийн ялгарлыг бууруулдаг тогтвортой ложистикийн платформ.",
         feat1: "Микросервис архитектур: Логик (Python), Удирдлага (Rails), болон UI (Next.js)-д зориулсан тусдаа үйлчилгээнүүд.",
         feat2: "Бодит маршрутчлал: OSRM-ийг нэгтгэн замын нарийн геометр болон хөдөлгөөнд тохируулсан аялах хугацааг тооцоолдог."
