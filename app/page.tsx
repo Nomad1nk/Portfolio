@@ -38,9 +38,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "In Development",
-        desc: "A voice-first empathetic AI companion powered by GPT-4o. Features real-time bidirectional voice interaction with a distinct persona ('Dr. Alan').",
-        feat1: "Full Voice Pipeline: Integrated Whisper-1 for STT and TTS-1 (Onyx) for a deep, calming voice response.",
-        feat2: "High-Performance Backend: Asynchronous Python FastAPI server handling real-time audio streams and logic."
+        desc: "A compassionate, voice-enabled AI psychologist localized in Japanese. Features secure authentication, persistent chat history, and a premium subscription model.",
+        feat1: "Full Voice Interaction: 'Hold to Speak' functionality using OpenAI Whisper (STT) and TTS-1 for natural conversations.",
+        feat2: "Monetization & Security: Integrated Stripe for monthly subscriptions and secure Email/Password authentication with SQLite storage."
       },
       p4: {
         title: "LUXEcommerce",
@@ -96,9 +96,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "開発中",
-        desc: "GPT-4oを搭載した音声対話型の共感型AIパートナー。リアルタイムの双方向音声対話と、独自の人格（Dr. Alan）を特徴としています。",
-        feat1: "完全な音声パイプライン: Whisper-1による音声認識と、TTS-1 (Onyx) による落ち着いた男性の声での応答。",
-        feat2: "高性能バックエンド: 非同期Python FastAPIサーバーにより、リアルタイムのオーディオストリームとロジックを処理。"
+        desc: "日本語に完全対応した、音声対話型のAI心理カウンセラー。安全な認証システム、チャット履歴の保存、およびプレミアムサブスクリプション機能を備えています。",
+        feat1: "音声対話: OpenAI Whisper (STT) と TTS-1 を使用した「長押しして話す」機能により、自然な会話を実現。",
+        feat2: "収益化とセキュリティ: Stripeによる月額サブスクリプションと、SQLiteを使用した安全なメール/パスワード認証を統合。"
       },
       p4: {
         title: "LUXEcommerce",
@@ -154,9 +154,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "In Entwicklung",
-        desc: "Ein sprachgesteuerter, empathischer KI-Begleiter, angetrieben von GPT-4o. Bietet bidirektionale Sprachinteraktion in Echtzeit mit einer ausgeprägten Persönlichkeit ('Dr. Alan').",
-        feat1: "Vollständige Sprach-Pipeline: Integriertes Whisper-1 für STT und TTS-1 (Onyx) für eine tiefe, beruhigende Sprachantwort.",
-        feat2: "Hochleistungs-Backend: Asynchroner Python FastAPI-Server für die Verarbeitung von Echtzeit-Audiostreams."
+        desc: "Ein mitfühlender, sprachgesteuerter KI-Psychologe, lokalisiert auf Japanisch. Bietet sichere Authentifizierung, dauerhaften Chatverlauf und ein Premium-Abonnementmodell.",
+        feat1: "Vollständige Sprachinteraktion: 'Hold to Speak'-Funktion mit OpenAI Whisper (STT) und TTS-1 für natürliche Gespräche.",
+        feat2: "Monetarisierung & Sicherheit: Integriertes Stripe für monatliche Abonnements und sichere E-Mail/Passwort-Authentifizierung mit SQLite-Speicherung."
       },
       p4: {
         title: "LUXEcommerce",
@@ -212,9 +212,9 @@ const translations = {
       p3: {
         title: "MindSync AI",
         status: "Хөгжүүлэлтийн шатанд",
-        desc: "GPT-4o дээр суурилсан, дуу хоолойгоор харилцдаг сэтгэл зүйн AI туслах. 'Dr. Alan' гэсэн өвөрмөц дүр төрхтэйгээр бодит цагт ярилцах боломжтой.",
-        feat1: "Дуу хоолойн систем: Whisper-1 (Яриаг бичвэр болгох) болон TTS-1 Onyx (Хариуг дуу хоолой болгох) технологиудыг бүрэн нэгтгэсэн.",
-        feat2: "Өндөр хурдны Backend: Python FastAPI ашиглан аудио урсгалыг бодит цагт, хоцрогдолгүй боловсруулдаг."
+        desc: "Япон хэл дээр бүрэн ажилладаг, дуу хоолойгоор харилцдаг сэтгэл зүйн AI зөвлөх. Аюулгүй нэвтрэх систем, чат түүх хадгалах болон төлбөртэй эрхийн (Premium) боломжуудтай.",
+        feat1: "Дуу хоолойн харилцаа: OpenAI Whisper (STT) болон TTS-1 ашиглан 'Дарж ярих' функцээр байгалийн яриа өрнүүлнэ.",
+        feat2: "Төлбөр ба Аюулгүй байдал: Stripe сарын хураамжийн систем болон SQLite дээр суурилсан найдвартай бүртгэлийн системтэй."
       },
       p4: {
         title: "LUXEcommerce",
@@ -411,10 +411,10 @@ export default function Portfolio() {
                     link: "https://github.com/Nomad1nk/MindSync-Psychologist-AI",
                     image: "/syncAI.png",
                     tech: [
-                      { icon: Brain, label: "GPT-4o / Whisper" },
-                      { icon: Server, label: "Python FastAPI" },
-                      { icon: Mic, label: "Voice / TTS" },
-                      { icon: Code, label: "Vanilla JS" }
+                      { icon: Server, label: "FastAPI" },
+                      { icon: Database, label: "SQLite" },
+                      { icon: CreditCard, label: "Stripe" },
+                      { icon: Brain, label: "GPT-4o / Whisper" }
                     ]
                   },
                   {
