@@ -249,18 +249,17 @@ const translations = {
 
 export default function Portfolio() {
   const [lang, setLang] = useState<'en' | 'jp' | 'de' | 'mn'>('en');
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const t = translations[lang];
 
   return (
-    <div className={`min-h-screen font-sans selection:bg-cyan-500 transition-colors duration-500 ${isDarkMode ? 'dark' : ''} bg-gradient-to-br from-gray-50 via-sky-100 to-white dark:from-slate-900 dark:via-sky-950 dark:to-gray-900 animate-gradient-xy text-gray-900 dark:text-gray-200 relative overflow-hidden`}>
+    <div className={`min-h-screen font-sans selection:bg-cyan-500 transition-colors duration-500 dark bg-gradient-to-br from-slate-900 via-sky-950 to-gray-900 animate-gradient-xy text-gray-200 relative overflow-hidden`}>
 
 
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob"></div>
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-gray-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-        <ThreeBackground darkMode={isDarkMode} />
+        <ThreeBackground />
       </div>
 
       <div className="relative z-10">
@@ -279,12 +278,7 @@ export default function Portfolio() {
             <div className="flex items-center gap-4">
 
 
-              <button
-                onClick={() => setIsDarkMode(!isDarkMode)}
-                className="p-2 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-300 hover:bg-gray-300 dark:hover:bg-white/20 transition"
-              >
-                {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
+
 
 
               <div className="relative group">
