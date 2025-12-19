@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function ThreeBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,15 +23,17 @@ export default function ThreeBackground() {
             drops[i] = 1;
         }
 
+        // Ancient Romaji (Latin + Runic)
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛈᛇᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ";
 
         const draw = () => {
-            // Fade effect (Dark Mode)
+            // Fade effect - transparent black to allow image to show through slightly if needed, 
+            // but mostly we want the rain to be visible. 
+            // Using a very low opacity clear rect or fill rect to create trails.
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, width, height);
 
-            // Black, White, Silver Theme
-            // Silver/White text (Dark Mode)
+            // Silver/White text
             ctx.fillStyle = '#C0C0C0'; // Silver
             ctx.font = '15px monospace';
 
@@ -71,8 +74,23 @@ export default function ThreeBackground() {
     }, []);
 
     return (
-        <div className="absolute inset-0 w-full h-full z-0 opacity-30 pointer-events-none">
-            <canvas ref={canvasRef} className="w-full h-full" />
+        <div className="absolute inset-0 w-full h-full z-0">
+            {/* Static Background Image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/futuristic-bg.png"
+                    alt="Futuristic Background"
+                    fill
+                    className="object-cover opacity-30" // Lower opacity to blend with dark theme
+                    priority
+                />
+            </div>
+
+            {/* Digital Rain Canvas Overlay */}
+            <canvas
+                ref={canvasRef}
+                className="absolute inset-0 w-full h-full z-10 opacity-60 mix-blend-screen"
+            />
         </div>
     );
 }
