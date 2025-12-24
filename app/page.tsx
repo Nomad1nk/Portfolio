@@ -305,7 +305,11 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              <a href="/MainRirekiSho.xlsx" className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition shadow-lg shadow-white/5">
+              <a
+                href={lang === 'jp' ? "/MainRirekiSho.xlsx" : "/BaysaCVv.pdf"}
+                className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition shadow-lg shadow-white/5"
+                download
+              >
                 <Download size={16} />
                 <span className="hidden sm:inline">{t.cv}</span>
               </a>
