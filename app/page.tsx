@@ -58,7 +58,7 @@ const translations = {
         feat2: "Smart Integration: OpenAI Function Calling for real-time database queries and a custom text normalization engine for error-free TTS."
       },
       p6: {
-        title: "MouseTrack",
+        title: "Hand & Eye Gesture Mouse",
         status: "Completed",
         desc: "A computer vision application that allows users to control their mouse cursor and perform clicks using hand gestures and eye movements.",
         feat1: "Hand Tracking: Uses Mediapipe to detect hand landmarks for precise cursor control and gesture-based clicking.",
@@ -124,7 +124,7 @@ const translations = {
         feat2: "スマートな統合: OpenAI Function Calling によるDB操作と、読み上げエラーを防ぐテキスト正規化エンジンを搭載。"
       },
       p6: {
-        title: "MouseTrack",
+        title: "Hand & Eye Gesture Mouse",
         status: "完了",
         desc: "手のジェスチャーと視線移動を使用してマウスカーソルを操作し、クリックを実行できるコンピュータビジョンアプリケーション。",
         feat1: "ハンドトラッキング: Mediapipeを使用して手のランドマークを検出し、正確なカーソル操作とジェスチャーによるクリックを実現。",
@@ -190,7 +190,7 @@ const translations = {
         feat2: "Intelligente Integration: OpenAI Function Calling für Echtzeit-Datenbankabfragen und eine benutzerdefinierte Textnormalisierungs-Engine für fehlerfreies TTS."
       },
       p6: {
-        title: "MouseTrack",
+        title: "Hand & Eye Gesture Mouse",
         status: "Abgeschlossen",
         desc: "Eine Computer-Vision-Anwendung, mit der Benutzer ihren Mauszeiger steuern und Klicks mit Handgesten und Augenbewegungen ausführen können.",
         feat1: "Hand-Tracking: Verwendet Mediapipe zur Erkennung von Hand-Landmarken für präzise Cursorsteuerung und gestenbasiertes Klicken.",
@@ -256,7 +256,7 @@ const translations = {
         feat2: "Системийн Сайжруулалт: Тусгай тэмдэгт болон тоог үг рүү хөрвүүлэх текст цэвэрлэгээний функц болон OpenAI Function Calling-ийг нэвтрүүлсэн."
       },
       p6: {
-        title: "MouseTrack",
+        title: "Hand & Eye Gesture Mouse",
         status: "Дууссан",
         desc: "Гарын хөдөлгөөн болон нүдний харцаар хулганы курсорыг удирдах, товч дарах боломжтой компьютерийн харааны програм.",
         feat1: "Гарын хяналт: Mediapipe ашиглан гарын цэгүүдийг таньж, курсорыг нарийн удирдах болон дохио зангаагаар товч дарах боломжтой.",
