@@ -57,6 +57,13 @@ const translations = {
         feat1: "Advanced Audio Pipeline: Custom RMS-based Voice Activity Detection (VAD) and Promiscuous RTP Mode for robust audio streaming within Docker.",
         feat2: "Smart Integration: OpenAI Function Calling for real-time database queries and a custom text normalization engine for error-free TTS."
       },
+      p6: {
+        title: "MouseTrack",
+        status: "Completed",
+        desc: "A computer vision application that allows users to control their mouse cursor and perform clicks using hand gestures and eye movements.",
+        feat1: "Hand Tracking: Uses Mediapipe to detect hand landmarks for precise cursor control and gesture-based clicking.",
+        feat2: "Eye Tracking: Implements eye gaze estimation to move the cursor, providing an alternative input method for accessibility."
+      },
       viewCode: "View Code on GitHub"
     },
     skills: { title: "Technical Competencies" },
@@ -115,6 +122,13 @@ const translations = {
         desc: "電話応対を自動化するAIボイスオペレーター。Docker環境での音声遅延や通信課題を解決。現在はモンゴル語版ですが、他言語への拡張も容易な設計です。",
         feat1: "高度な音声処理: 独自の音声区間検出 (VAD) と RTPモードにより、Docker内でも安定した通話を実現。",
         feat2: "スマートな統合: OpenAI Function Calling によるDB操作と、読み上げエラーを防ぐテキスト正規化エンジンを搭載。"
+      },
+      p6: {
+        title: "MouseTrack",
+        status: "完了",
+        desc: "手のジェスチャーと視線移動を使用してマウスカーソルを操作し、クリックを実行できるコンピュータビジョンアプリケーション。",
+        feat1: "ハンドトラッキング: Mediapipeを使用して手のランドマークを検出し、正確なカーソル操作とジェスチャーによるクリックを実現。",
+        feat2: "アイトラッキング: 視線推定を実装してカーソルを移動させ、アクセシビリティのための代替入力方法を提供。"
       },
       viewCode: "GitHubでコードを見る"
     },
@@ -175,6 +189,13 @@ const translations = {
         feat1: "Fortschrittliche Audio-Pipeline: Benutzerdefinierte RMS-basierte Spracherkennung (VAD) und Promiscuous RTP Mode für robustes Streaming in Docker.",
         feat2: "Intelligente Integration: OpenAI Function Calling für Echtzeit-Datenbankabfragen und eine benutzerdefinierte Textnormalisierungs-Engine für fehlerfreies TTS."
       },
+      p6: {
+        title: "MouseTrack",
+        status: "Abgeschlossen",
+        desc: "Eine Computer-Vision-Anwendung, mit der Benutzer ihren Mauszeiger steuern und Klicks mit Handgesten und Augenbewegungen ausführen können.",
+        feat1: "Hand-Tracking: Verwendet Mediapipe zur Erkennung von Hand-Landmarken für präzise Cursorsteuerung und gestenbasiertes Klicken.",
+        feat2: "Eye-Tracking: Implementiert Blickrichtungsschätzung zum Bewegen des Cursors und bietet eine alternative Eingabemethode für Barrierefreiheit."
+      },
       viewCode: "Code auf GitHub ansehen"
     },
     skills: { title: "Technische Kompetenzen" },
@@ -233,6 +254,13 @@ const translations = {
         desc: "Хүний оронд дуудлага хүлээн авах AI Operator. Docker NAT болон RTP урсгалын асуудлыг шийдсэн. Туршилтын хувилбар Монгол хэл дээр байгаа ч, систем нь олон улсын ямар ч хэл дээр ажиллах бүрэн боломжтой.",
         feat1: "Аудио Шийдэл: WebRTC-ийн алдааг засаж RMS (дууны хүч) хэмжигч болон Promiscuous RTP горимыг ашиглан дуу тасалдах асуудлыг бүрэн шийдсэн.",
         feat2: "Системийн Сайжруулалт: Тусгай тэмдэгт болон тоог үг рүү хөрвүүлэх текст цэвэрлэгээний функц болон OpenAI Function Calling-ийг нэвтрүүлсэн."
+      },
+      p6: {
+        title: "MouseTrack",
+        status: "Дууссан",
+        desc: "Гарын хөдөлгөөн болон нүдний харцаар хулганы курсорыг удирдах, товч дарах боломжтой компьютерийн харааны програм.",
+        feat1: "Гарын хяналт: Mediapipe ашиглан гарын цэгүүдийг таньж, курсорыг нарийн удирдах болон дохио зангаагаар товч дарах боломжтой.",
+        feat2: "Нүдний хяналт: Нүдний харцаар курсорыг хөдөлгөх технологийг нэвтрүүлсэн нь хөгжлийн бэрхшээлтэй иргэдэд туслах шинэ боломж юм."
       },
       viewCode: "GitHub дээр код үзэх"
     },
@@ -432,6 +460,21 @@ export default function Portfolio() {
                       { icon: Container, label: "Docker" },
                       { icon: Database, label: "PostgreSQL" },
                       { icon: Layout, label: "Admin Dashboard" }
+                    ]
+                  },
+                  {
+                    title: t.projects.p6.title,
+                    status: t.projects.p6.status,
+                    desc: t.projects.p6.desc,
+                    feat1: t.projects.p6.feat1,
+                    feat2: t.projects.p6.feat2,
+                    link: "https://github.com/Nomad1nk/MouseTrack",
+                    image: "/mousetrack.png",
+                    tech: [
+                      { icon: Cpu, label: "Python" },
+                      { icon: Camera, label: "OpenCV" },
+                      { icon: Eye, label: "Mediapipe" },
+                      { icon: MousePointer2, label: "PyAutoGUI" }
                     ]
                   }
                 ]}
