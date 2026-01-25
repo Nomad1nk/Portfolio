@@ -467,11 +467,10 @@ export default function Portfolio() {
                       <button
                         key={l}
                         onClick={() => setLang(l)}
-                        className={`px-4 py-2 text-left text-sm font-medium hover:bg-white/10 transition flex items-center justify-between ${
-                          lang === l
+                        className={`px-4 py-2 text-left text-sm font-medium hover:bg-white/10 transition flex items-center justify-between ${lang === l
                             ? "text-white bg-white/5 font-bold"
                             : "text-gray-400"
-                        }`}
+                          }`}
                       >
                         <span className="uppercase">{l}</span>
                         {lang === l && (
@@ -484,7 +483,7 @@ export default function Portfolio() {
               </div>
 
               <a
-                href={lang === "jp" ? "/MainRirekiSho.xlsx" : "/BaysaCVv.pdf"}
+                href={lang === "jp" ? "/MainRirekiSho.xlsx" : "/BayasgalanCV.pdf"}
                 className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition shadow-lg shadow-white/5"
                 download
               >
@@ -654,39 +653,39 @@ export default function Portfolio() {
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <SkillCard
-                  title="Frontend & UI"
+                  title="Frontend Ecosystem"
                   skills={[
-                    "Next.js 14 / React",
-                    "TypeScript / ES6+",
-                    "Tailwind / Framer Motion",
-                    "Three.js / WebGL",
+                    "Next.js 14 (App Router) / React",
+                    "TypeScript / Tailwind CSS (v4)",
+                    "Framer Motion / Three.js",
+                    "Modern Web Standards (ES6+)",
                   ]}
                 />
                 <SkillCard
-                  title="Backend & Core"
+                  title="Backend & API Architecture"
                   skills={[
                     "NestJS / Node.js",
-                    "Python (FastAPI)",
-                    "Ruby on Rails",
+                    "Python (FastAPI) / Rails",
+                    "GraphQL / REST APIs",
                     "Microservices / gRPC",
                   ]}
                 />
                 <SkillCard
-                  title="AI & Data"
+                  title="Cloud Infrastructure"
                   skills={[
-                    "LLMs / RAG / LangChain",
-                    "OpenAI / Whisper API",
-                    "Vector DBs / PostgreSQL",
-                    "Computer Vision (OpenCV)",
+                    "AWS (Lambda, S3, DynamoDB)",
+                    "Docker / Vercel / Supabase",
+                    "CI/CD (GitHub Actions)",
+                    "Linux / Nginx",
                   ]}
                 />
                 <SkillCard
-                  title="DevOps & Cloud"
+                  title="AI Integration"
                   skills={[
-                    "Docker / Kubernetes",
-                    "AWS / Vercel",
-                    "CI/CD (GitHub Actions)",
-                    "Linux / Nginx",
+                    "OpenAI API (Function Calling)",
+                    "RAG / Vector Databases",
+                    "Computer Vision (OpenCV)",
+                    "Mediapipe / Whisper",
                   ]}
                 />
               </div>
