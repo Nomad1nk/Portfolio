@@ -468,8 +468,8 @@ export default function Portfolio() {
                         key={l}
                         onClick={() => setLang(l)}
                         className={`px-4 py-2 text-left text-sm font-medium hover:bg-white/10 transition flex items-center justify-between ${lang === l
-                            ? "text-white bg-white/5 font-bold"
-                            : "text-gray-400"
+                          ? "text-white bg-white/5 font-bold"
+                          : "text-gray-400"
                           }`}
                       >
                         <span className="uppercase">{l}</span>
@@ -483,7 +483,7 @@ export default function Portfolio() {
               </div>
 
               <a
-                href={lang === "jp" ? "/MainRirekiSho.xlsx" : "/BayasgalanCV.pdf"}
+                href={lang === "jp" ? "/Bayasgalan.xlsx" : "/BayasgalanCV.pdf"}
                 className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition shadow-lg shadow-white/5"
                 download
               >
