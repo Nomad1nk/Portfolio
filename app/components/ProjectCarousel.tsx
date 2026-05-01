@@ -40,10 +40,15 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
                         ))}
                     </div>
 
-                    <div className="pt-2 md:pt-4">
+                    <div className="pt-2 md:pt-4 flex flex-wrap gap-x-6 gap-y-3">
                         <a href={project.link} target="_blank" rel="noreferrer" className="inline-flex items-center text-gray-900 dark:text-white font-bold hover:text-cyan-600 dark:hover:text-cyan-400 border-b-2 border-gray-900 dark:border-white hover:border-cyan-600 dark:hover:border-cyan-400 pb-0.5 transition-colors text-sm md:text-lg">
                             {t.projects.viewCode} <ExternalLink size={16} className="ml-2" />
                         </a>
+                        {project.liveLink && (
+                            <a href={project.liveLink} target="_blank" rel="noreferrer" className="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-bold hover:text-cyan-500 border-b-2 border-cyan-600 dark:border-cyan-400 pb-0.5 transition-colors text-sm md:text-lg">
+                                {t.projects.liveDemo || "Live Demo"} <ExternalLink size={16} className="ml-2" />
+                            </a>
+                        )}
                     </div>
                 </div>
 
