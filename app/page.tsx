@@ -58,11 +58,11 @@ const translations = {
       p0: {
         title: "Bedel AI Box",
         status: "Худалдаалагдаж буй",
-        desc: "Монголын бизнесүүдэд зориулсан AI хүлээн авагч төхөөрөмж. Жинхэнэ дуудлагыг GSM-ээр хүлээн авч, монголоор ярьж захиалга авах, QPay-ээр нэхэмжлэх илгээж чаддаг. Хардвер (Mini PC + Yeastar TG100), софтвер, License систем, Admin Dashboard, Grafana мониторинг бүгдийг ганцаараа бүтээсэн.",
+        desc: "Монголын бизнесүүдэд зориулсан AI хүлээн авагч. Хэрэглэгчийн жинхэнэ дуудлагыг хүлээн авч, монголоор ярилцан захиалга авах, төлбөр тооцох цогц шийдэл. Үүсгэн байгуулагч, цорын ганц хөгжүүлэгчийн хувьд бүтээгдэхүүний архитектур, бизнес моделиос эхлээд live deploy хүртэл бүх үе шатыг ганцаараа удирдсан.",
         feat1:
-          "Дуудлагын Pipeline: Yeastar TG100 → SIP/RTP → Custom RMS VAD → Chimege STT → OpenAI Function Calling → Chimege TTS, бүгд Docker дотор.",
+          "End-to-end voice AI систем: Утасны сүлжээний интеграц, бодит цагийн ярианы боловсруулалт, Монгол хэлний STT/TTS, AI логик — Docker дээр найдвартай ажилладаг бүтэц.",
         feat2:
-          "Бизнесийн Логик: QPay нэхэмжлэх автомат илгээх, Telegram мэдэгдэл, Tailscale алсын хандалт, License Manager, Code-гүй Admin Dashboard (Prompt + Бараа удирдах).",
+          "Бодит бизнест нэвтрүүлсэн: QPay төлбөрийн автомат интеграц, Telegram мэдэгдэл, мониторинг dashboard, харилцагч өөрөө prompt/бараа удирддаг no-code админ хэсэг.",
       },
       p1: {
         title: "EcoRoute Optimizer",
@@ -143,11 +143,11 @@ const translations = {
       p0: {
         title: "Bedel AI Box",
         status: "Commercial Product",
-        desc: "An AI receptionist appliance for Mongolian businesses. Receives real GSM phone calls, speaks Mongolian, takes orders, and sends QPay invoices. I built the full stack alone — hardware (Mini PC + Yeastar TG100), software, license server, admin dashboard, and Grafana monitoring.",
+        desc: "An AI receptionist for Mongolian businesses — answers real customer phone calls, takes orders in Mongolian, and handles payment end-to-end. As founder and sole engineer, I drove the product from architecture and business model through to live deployment with paying customers.",
         feat1:
-          "Call Pipeline: Yeastar TG100 → SIP/RTP → Custom RMS VAD → Chimege STT → OpenAI Function Calling → Chimege TTS, fully containerized in Docker.",
+          "End-to-end voice AI system: telephony integration, real-time speech processing, Mongolian-language STT/TTS, and AI reasoning — all containerized for reliable deployment.",
         feat2:
-          "Business Layer: Automatic QPay invoicing, Telegram alerts, Tailscale remote access, license manager, and a no-code admin dashboard for prompts and product catalog.",
+          "Production-ready business layer: automated payment invoicing, alerts, monitoring dashboard, and a no-code admin panel that lets each customer manage their own prompts and product catalog.",
       },
       p1: {
         title: "EcoRoute Optimizer",
@@ -228,11 +228,11 @@ const translations = {
       p0: {
         title: "Bedel AI Box",
         status: "商用製品",
-        desc: "モンゴル企業向けのAI受付アプライアンス。実際のGSM電話を受け、モンゴル語で会話し、注文を受けてQPayで請求書を送る。ハードウェア（Mini PC + Yeastar TG100）、ソフトウェア、ライセンスサーバー、管理画面、Grafana監視まで一人で構築。",
+        desc: "モンゴル企業向けのAI受付システム。実際の顧客電話に応答し、モンゴル語で会話して注文・決済まで対応するエンドツーエンドのソリューション。創業者兼唯一のエンジニアとして、アーキテクチャ設計・ビジネスモデルから本番運用まで一貫して構築。",
         feat1:
-          "通話パイプライン: Yeastar TG100 → SIP/RTP → カスタムRMS VAD → Chimege STT → OpenAI Function Calling → Chimege TTS、すべてDocker化。",
+          "エンドツーエンドの音声AIシステム: 電話網との統合、リアルタイム音声処理、モンゴル語のSTT/TTS、AI対話ロジックを、Docker化された安定アーキテクチャで実現。",
         feat2:
-          "ビジネスレイヤー: QPay自動請求、Telegram通知、Tailscaleリモートアクセス、ライセンス管理、ノーコード管理画面（プロンプト・商品管理）。",
+          "実運用向けビジネス層: 自動決済請求、通知、監視ダッシュボード、顧客自身がプロンプトや商品を管理できるノーコード管理画面を提供。",
       },
       p1: {
         title: "EcoRoute Optimizer",
@@ -452,12 +452,12 @@ export default function Portfolio() {
                     liveLink: "https://bedel.mn",
                     image: "/bedel-logo.png",
                     tech: [
-                      { icon: Phone, label: "Yeastar SIP/RTP" },
-                      { icon: Mic, label: "Chimege STT/TTS" },
+                      { icon: Phone, label: "VoIP / SIP" },
+                      { icon: Mic, label: "Voice AI (STT/TTS)" },
                       { icon: Brain, label: "OpenAI Function Calling" },
-                      { icon: CreditCard, label: "QPay" },
+                      { icon: CreditCard, label: "Payment Gateway" },
                       { icon: Container, label: "Docker" },
-                      { icon: Radio, label: "Grafana" },
+                      { icon: Radio, label: "Monitoring" },
                       { icon: Cpu, label: "Python (FastAPI)" },
                       { icon: Database, label: "PostgreSQL" },
                     ],
@@ -577,12 +577,12 @@ export default function Portfolio() {
                   ]}
                 />
                 <SkillCard
-                  title="AI & Voice (Mongolia)"
+                  title="AI & Voice Systems"
                   skills={[
                     "OpenAI Function Calling",
-                    "Chimege STT/TTS (Монгол хэл)",
-                    "Yeastar SIP/RTP / VAD",
-                    "QPay / Telegram Bot API",
+                    "Voice AI / STT-TTS (Mongolian)",
+                    "VoIP / SIP / RTP / VAD",
+                    "Payment & Messaging APIs",
                   ]}
                 />
               </div>
