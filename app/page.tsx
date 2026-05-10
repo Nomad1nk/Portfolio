@@ -49,7 +49,7 @@ const translations = {
       titleHighlight: "Full-Stack",
       titleSuffix: "хөгжүүлэгч.",
       description:
-        "Япон улсад суралцсан, олон хэлний (Англи C1/C2, Япон N1/N2, Монгол) Full-Stack хөгжүүлэгч. Bedel AI Box — Chimege, QPay, Yeastar SIP/RTP интегралтай Монголын анхны худалдаалсан AI хүлээн авагчийг бүтээсэн. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling-аар бодит бизнест зориулсан системийг бүтнээр нь ганцаараа барьж чадна. Улаанбаатарт буцаж ажиллахаар бэлэн.",
+        "Япон улсад суралцсан, олон хэлний (Англи C1/C2, Япон N1/N2, Монгол) Full-Stack хөгжүүлэгч. Bedel AI Box — Монголын анхны худалдаалсан AI хүлээн авагчийг үүсгэн байгуулж, ганцаараа бүтээсэн. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling зэргийг ашиглан бодит бизнест зориулсан системийг архитектураас deploy хүртэл бүтнээр нь барьж чадна. Улаанбаатарт буцаж ажиллахаар бэлэн.",
       contact: "Надтай холбогдох",
       github: "GitHub",
     },
@@ -62,12 +62,12 @@ const translations = {
         feat1:
           "End-to-end voice AI систем: Утасны сүлжээний интеграц, бодит цагийн ярианы боловсруулалт, Монгол хэлний STT/TTS, AI логик — Docker дээр найдвартай ажилладаг бүтэц.",
         feat2:
-          "Бодит бизнест нэвтрүүлсэн: QPay төлбөрийн автомат интеграц, Telegram мэдэгдэл, мониторинг dashboard, харилцагч өөрөө prompt/бараа удирддаг no-code админ хэсэг.",
+          "Бодит бизнест нэвтрүүлсэн: автомат төлбөрийн интеграц, мэдэгдлийн систем, мониторинг dashboard, харилцагч өөрөө prompt болон бараагаа удирддаг no-code админ хэсэг.",
       },
       p1: {
         title: "EcoRoute Optimizer",
         status: "Дууссан",
-        desc: "Бодит физик болон замын хөдөлгөөний өгөгдлийг ашиглан хүргэлтийн маршрутыг оновчтой болгож, нүүрстөрөгчийн ялгарлыг бууруулдаг тогтвортой ложистикийн платформ.",
+        desc: "Бодит физик болон замын хөдөлгөөний өгөгдлийг ашиглан хүргэлтийн маршрутыг оновчтой болгож, нүүрстөрөгчийн ялгарлыг бууруулдаг тогтвортой логистикийн платформ.",
         feat1:
           "Микросервис архитектур: Логик (Python), Удирдлага (Rails), болон UI (Next.js)-д зориулсан тусдаа үйлчилгээнүүд.",
         feat2:
@@ -80,7 +80,7 @@ const translations = {
         feat1:
           "Full-Stack Архитектур: Tailwind CSS v4 ашигласан Next.js (React) frontend-ийг хүчирхэг NestJS backend-тэй холбосон.",
         feat2:
-          "Дэвшилтэт боломжууд: Stripe төлбөрийн интеграцчилал, олон хэлний дэмжлэг (i18n), болон үүрэгт суурилсан хандалтын хяналт.",
+          "Дэвшилтэт боломжууд: Stripe төлбөрийн интеграц, олон хэлний дэмжлэг (i18n), болон үүрэгт суурилсан хандалтын хяналт.",
       },
       p3: {
         title: "MindSync AI",
@@ -94,11 +94,11 @@ const translations = {
       p4: {
         title: "E-Commerce Website",
         status: "Дууссан",
-        desc: "Онлайн худалдааны бүх үндсэн функцтай, бүрэн төлөвлөгөөтэй e-commerce платформ. Бүтээгдэхүүний каталог, сагс, хэрэглэгчийн нэвтрэх систем, захиалгын удирдлага, найдвартай төлбөр тооцоо бүхий.",
+        desc: "Онлайн худалдааны бүх үндсэн функцийг агуулсан, иж бүрэн e-commerce платформ. Бүтээгдэхүүний каталог, сагс, хэрэглэгчийн нэвтрэх систем, захиалгын удирдлага, найдвартай төлбөр тооцоо бүхий.",
         feat1:
           "Бүрэн худалдааны туршлага: Бүтээгдэхүүн үзэх, шүүлтүүр, хайлтын функц, сагсны удирдлага, хүслийн жагсаалт.",
         feat2:
-          "Найдвартай гүйлгээ: Хэрэглэгчийн нэвтрэх, захиалгын түүх, төлбөр интеграцчилал (Stripe/PayPal), захиалгын имэйл мэдэгдэл.",
+          "Найдвартай гүйлгээ: Хэрэглэгчийн нэвтрэх, захиалгын түүх, төлбөрийн интеграц (Stripe/PayPal), захиалгын имэйл мэдэгдэл.",
       },
       p6: {
         title: "Hand & Eye Gesture Mouse",
@@ -115,7 +115,7 @@ const translations = {
     skills: { title: "Техникийн ур чадвар" },
     footer: {
       title: "Хамтран ажиллахад бэлэн.",
-      desc: "Улаанбаатарт байнгын ажилд орох эсвэл ремоут гэрээт ажилд бэлэн. Bedel Tech — AI Воис Системийн founder.",
+      desc: "Улаанбаатарт байнгын ажилд орох эсвэл ремоут гэрээт ажилд бэлэн. Bedel Tech — AI Войс Системийн үүсгэн байгуулагч.",
       rights: "Бүх эрх хуулиар хамгаалагдсан.",
       imprint: "Нууцлалын бодлого",
     },
@@ -134,7 +134,7 @@ const translations = {
       titleHighlight: "Full-Stack",
       titleSuffix: "Developer.",
       description:
-        "Multilingual Full-Stack Developer (English C1/C2, Japanese N1/N2, Mongolian). Built Bedel AI Box — Mongolia's first commercially deployed AI receptionist, integrating Chimege STT/TTS, QPay, and Yeastar SIP/RTP. I architect and ship complete systems end-to-end with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling. Returning to Ulaanbaatar and ready to contribute.",
+        "Multilingual Full-Stack Developer (English C1/C2, Japanese N1/N2, Mongolian). Founded and built Bedel AI Box — Mongolia's first commercially deployed AI receptionist, handling real phone calls in Mongolian end-to-end. I architect and ship complete production systems with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling. Returning to Ulaanbaatar and ready to contribute.",
       contact: "Contact Me",
       github: "GitHub",
     },
@@ -219,7 +219,7 @@ const translations = {
       titleHighlight: "フルスタック",
       titleSuffix: "エンジニア。",
       description:
-        "日本留学経験のある、多言語フルスタックエンジニア（英語C1/C2、日本語N1/N2、モンゴル語）。モンゴル初の商用AI受付システム『Bedel AI Box』を一人で開発。Chimege音声認識、QPay決済、Yeastar SIP/RTPを統合し、Next.js/Rails/Python/Dockerでビジネス向けシステムを設計から運用まで一貫して構築可能。",
+        "日本留学経験のある、多言語フルスタックエンジニア（英語C1/C2、日本語N1/N2、モンゴル語）。モンゴル初の商用AI受付システム『Bedel AI Box』を創業者として一人で開発し、実際の電話対応をモンゴル語でエンドツーエンドに実現。Next.js / Rails / Python (FastAPI) / Docker / OpenAI Function Callingを駆使し、ビジネス向け本番システムを設計から運用まで一貫して構築可能。",
       contact: "お問い合わせ",
       github: "GitHub",
     },
