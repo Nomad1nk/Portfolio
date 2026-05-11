@@ -44,12 +44,12 @@ const translations = {
       contact: "Холбоо барих",
     },
     hero: {
-      openToWork: "Улаанбаатарт ажилд орох / Ремоут",
-      titlePrefix: "Bedel AI-ын үүсгэн байгуулагч,",
+      openToWork: "Улаанбаатарт ажилд орох / Алсын зайнаас",
+      titlePrefix: "Bedel Tech-ийн үүсгэн байгуулагч,",
       titleHighlight: "Full-Stack",
       titleSuffix: "хөгжүүлэгч.",
       description:
-        "Япон улсад суралцсан, олон хэлний (Англи C1/C2, Япон N1/N2, Монгол) Full-Stack хөгжүүлэгч. Bedel AI Box — Монголын анхны худалдаалсан AI хүлээн авагчийг үүсгэн байгуулж, ганцаараа бүтээсэн. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling зэргийг ашиглан бодит бизнест зориулсан системийг архитектураас deploy хүртэл бүтнээр нь барьж чадна. Улаанбаатарт буцаж ажиллахаар бэлэн.",
+        "Япон улсад IT Engineer & Full-Stack Developer мэргэжлээр амжилттай сурч төгссөн хөгжүүлэгч. Англи, Япон хэлээр чөлөөтэй ярьдаг бөгөөд Герман хэлний анхан-дунд шатны мэдлэгтэй. Үргэлж шинэ зүйл сурч, мэргэжлийн хувьд өсөж дээшлэх хүсэлтэй. Монголын анхны худалдаалсан AI ресепшн систем — Bedel AI Box-ийг үүсгэн байгуулж, ганцаараа бүтээсэн юм. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling зэрэг технологийг ашиглан бодит бизнест зориулсан системийг архитектурын зураглалаас эхлээд бодитоор ажиллуулах хүртэл бүтнээр нь хариуцаж хөгжүүлдэг. Одоо Улаанбаатарт ажиллахад бэлэн байна.",
       contact: "Надтай холбогдох",
       github: "GitHub",
     },
@@ -58,7 +58,7 @@ const translations = {
       p0: {
         title: "Bedel AI Box",
         status: "Худалдаалагдаж буй",
-        desc: "Монголын бизнесүүдэд зориулсан AI хүлээн авагч. Хэрэглэгчийн жинхэнэ дуудлагыг хүлээн авч, монголоор ярилцан захиалга авах, төлбөр тооцох цогц шийдэл. Үүсгэн байгуулагч, цорын ганц хөгжүүлэгчийн хувьд бүтээгдэхүүний архитектур, бизнес моделиос эхлээд live deploy хүртэл бүх үе шатыг ганцаараа удирдсан.",
+        desc: "Монголын бизнесүүдэд зориулсан AI хүлээн авагч. Хэрэглэгчийн жинхэнэ дуудлагыг хүлээн авч, монголоор ярилцан захиалга авах, төлбөр тооцох цогц шийдэл. Үүсгэн байгуулагч, цорын ганц хөгжүүлэгчийн хувьд бүтээгдэхүүний архитектур, бизнес моделоос эхлээд live deploy хүртэл бүх үе шатыг ганцаараа удирдсан.",
         feat1:
           "End-to-end voice AI систем: Утасны сүлжээний интеграц, бодит цагийн ярианы боловсруулалт, Монгол хэлний STT/TTS, AI логик — Docker дээр найдвартай ажилладаг бүтэц.",
         feat2:
@@ -115,7 +115,7 @@ const translations = {
     skills: { title: "Техникийн ур чадвар" },
     footer: {
       title: "Хамтран ажиллахад бэлэн.",
-      desc: "Улаанбаатарт байнгын ажилд орох эсвэл ремоут гэрээт ажилд бэлэн. Bedel Tech — AI Войс Системийн үүсгэн байгуулагч.",
+      desc: "Улаанбаатарт байнгын ажилд орох эсвэл алсын зайнаас гэрээт ажил гүйцэтгэхэд бэлэн байна. Bedel Tech — AI дуу хоолойн системийн үүсгэн байгуулагч.",
       rights: "Бүх эрх хуулиар хамгаалагдсан.",
       imprint: "Нууцлалын бодлого",
     },
@@ -130,11 +130,11 @@ const translations = {
     },
     hero: {
       openToWork: "Open to Work — Ulaanbaatar / Remote",
-      titlePrefix: "Founder of Bedel AI,",
+      titlePrefix: "Founder of Bedel Tech,",
       titleHighlight: "Full-Stack",
       titleSuffix: "Developer.",
       description:
-        "Multilingual Full-Stack Developer (English C1/C2, Japanese N1/N2, Mongolian). Founded and built Bedel AI Box — Mongolia's first commercially deployed AI receptionist, handling real phone calls in Mongolian end-to-end. I architect and ship complete production systems with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling. Returning to Ulaanbaatar and ready to contribute.",
+        "A Full-Stack Developer who successfully completed an IT Engineer & Full-Stack Developer program in Japan. Fluent in English and Japanese, with elementary-to-intermediate German. Always eager to keep learning and growing professionally. Founded and built Bedel AI Box — Mongolia's first commercially deployed AI receptionist, handling real phone calls in Mongolian end-to-end. I architect and ship complete production systems with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling. Based in Ulaanbaatar and ready to contribute.",
       contact: "Contact Me",
       github: "GitHub",
     },
@@ -215,11 +215,11 @@ const translations = {
     },
     hero: {
       openToWork: "ウランバートルで就職活動中 / リモート可",
-      titlePrefix: "Bedel AIの創業者、",
+      titlePrefix: "Bedel Techの創業者、",
       titleHighlight: "フルスタック",
       titleSuffix: "エンジニア。",
       description:
-        "日本留学経験のある、多言語フルスタックエンジニア（英語C1/C2、日本語N1/N2、モンゴル語）。モンゴル初の商用AI受付システム『Bedel AI Box』を創業者として一人で開発し、実際の電話対応をモンゴル語でエンドツーエンドに実現。Next.js / Rails / Python (FastAPI) / Docker / OpenAI Function Callingを駆使し、ビジネス向け本番システムを設計から運用まで一貫して構築可能。",
+        "日本でIT Engineer & Full-Stack Developerの専門課程を修了したフルスタックエンジニアです。英語・日本語ともに流暢で、ドイツ語は初〜中級レベル。常に新しい技術を学び、より一層成長していきたいという思いを大切にしています。モンゴル初の商用AI受付システム『Bedel AI Box』を創業者として一人で開発し、実際の電話対応をモンゴル語でエンドツーエンドに実現しました。Next.js / Rails / Python (FastAPI) / Docker / OpenAI Function Callingを駆使し、ビジネス向け本番システムを設計から運用まで一貫して構築可能です。現在、ウランバートルにて勤務可能です。",
       contact: "お問い合わせ",
       github: "GitHub",
     },
