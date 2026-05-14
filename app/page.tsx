@@ -26,9 +26,14 @@ import {
   Phone,
   Mic,
   Radio,
+  Code2,
+  Cloud,
+  Wrench,
+  Sparkles,
 } from "lucide-react";
 
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import ProjectCarousel from "./components/ProjectCarousel";
 
 const ThreeBackground = dynamic(() => import("./components/ThreeBackground"), {
@@ -387,43 +392,93 @@ export default function Portfolio() {
         </header>
 
         <main>
-          <section id="about" className="pt-20 pb-32 px-6">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-700 dark:text-gray-300 text-xs font-bold uppercase tracking-wide mb-6 border border-black/5 dark:border-white/10">
+          <section id="about" className="pt-20 pb-32 px-6 relative">
+            <motion.div
+              className="max-w-3xl mx-auto text-center"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+                },
+              }}
+            >
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: -10 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 text-gray-200 text-xs font-bold uppercase tracking-wider mb-6 border border-cyan-400/20 glow-cyan backdrop-blur-sm"
+              >
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-500 dark:bg-white opacity-20"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500 dark:bg-white"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-60"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
                 </span>
                 {t.hero.openToWork}
-              </div>
-              <h1 className="font-cartoon text-3d text-6xl md:text-7xl font-extrabold text-gray-900 dark:text-white tracking-wide mb-6">
+              </motion.div>
+
+              <motion.h1
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+                className="font-cartoon text-3d text-6xl md:text-7xl font-extrabold text-white tracking-wide mb-6"
+              >
                 {t.hero.titlePrefix}{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-gray-400 dark:to-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 animate-gradient-x inline-block">
                   {t.hero.titleHighlight}
                 </span>{" "}
                 {t.hero.titleSuffix}
-              </h1>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed font-medium">
+              </motion.h1>
+
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+                className="text-lg text-gray-300 mb-10 leading-relaxed font-medium"
+              >
                 {t.hero.description}
-              </p>
-              <div className="flex justify-center gap-4">
+              </motion.p>
+
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+                className="flex justify-center gap-4 flex-wrap"
+              >
                 <a
                   href="#contact"
-                  className="px-6 py-3 bg-gray-900 text-white dark:bg-white dark:text-black rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-200 transition shadow-xl shadow-black/10 dark:shadow-white/10"
+                  className="group relative px-6 py-3 bg-white text-black rounded-lg font-semibold transition-all shadow-xl shadow-white/10 hover:shadow-cyan-400/30 hover:-translate-y-0.5 overflow-hidden"
                 >
-                  {t.hero.contact}
+                  <span className="relative z-10">{t.hero.contact}</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </a>
                 <a
                   href="https://github.com/nomad1nk"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-3 bg-transparent text-gray-900 dark:text-white border border-black/20 dark:border-white/20 rounded-lg font-semibold hover:bg-black/5 dark:hover:bg-white/10 transition flex items-center gap-2"
+                  className="px-6 py-3 bg-transparent text-white border border-white/20 rounded-lg font-semibold hover:bg-white/10 hover:border-cyan-400/40 hover:-translate-y-0.5 transition-all flex items-center gap-2"
                 >
-                  <Github size={20} />
+                  <Github size={20} className="group-hover:rotate-12 transition-transform" />
                   {t.hero.github}
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
+
+            <motion.a
+              href="#projects"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+              className="absolute left-1/2 -translate-x-1/2 bottom-8 text-gray-400 hover:text-cyan-400 transition-colors animate-bounce-slow"
+              aria-label="Scroll to projects"
+            >
+              <ChevronDown size={28} />
+            </motion.a>
           </section>
 
           <section
@@ -545,11 +600,19 @@ export default function Portfolio() {
 
           <section id="skills" className="py-20 px-6">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-cartoon text-3d text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center tracking-wide">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="font-cartoon text-3d text-4xl font-bold text-white mb-12 text-center tracking-wide"
+              >
                 {t.skills.title}
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              </motion.h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <SkillCard
+                  icon={Layout}
+                  accent="from-cyan-400 to-sky-500"
                   title="Frontend Development"
                   skills={[
                     "Next.js 14 (App Router) / React",
@@ -558,8 +621,11 @@ export default function Portfolio() {
                     "Framer Motion / Three.js / WebGL",
                     "Responsive & Accessible UI",
                   ]}
+                  index={0}
                 />
                 <SkillCard
+                  icon={Server}
+                  accent="from-emerald-400 to-teal-500"
                   title="Backend Engineering"
                   skills={[
                     "NestJS / Node.js / Express",
@@ -568,8 +634,11 @@ export default function Portfolio() {
                     "REST / GraphQL / WebSocket",
                     "Microservices / gRPC",
                   ]}
+                  index={1}
                 />
                 <SkillCard
+                  icon={Database}
+                  accent="from-violet-400 to-purple-500"
                   title="Database & Storage"
                   skills={[
                     "PostgreSQL / MySQL",
@@ -578,8 +647,11 @@ export default function Portfolio() {
                     "Prisma / TypeORM / SQLAlchemy",
                     "Schema Design & Optimization",
                   ]}
+                  index={2}
                 />
                 <SkillCard
+                  icon={Cloud}
+                  accent="from-amber-400 to-orange-500"
                   title="Cloud & DevOps"
                   skills={[
                     "AWS (Lambda, S3, DynamoDB)",
@@ -588,8 +660,11 @@ export default function Portfolio() {
                     "CI/CD (GitHub Actions)",
                     "Linux / Nginx",
                   ]}
+                  index={3}
                 />
                 <SkillCard
+                  icon={Sparkles}
+                  accent="from-pink-400 to-rose-500"
                   title="AI & Voice Systems"
                   skills={[
                     "OpenAI (GPT-4o, Whisper, TTS)",
@@ -598,8 +673,11 @@ export default function Portfolio() {
                     "VoIP / SIP / RTP / VAD",
                     "Computer Vision (OpenCV, Mediapipe)",
                   ]}
+                  index={4}
                 />
                 <SkillCard
+                  icon={Wrench}
+                  accent="from-blue-400 to-indigo-500"
                   title="Integrations & Tooling"
                   skills={[
                     "Stripe / PayPal Integration",
@@ -608,6 +686,7 @@ export default function Portfolio() {
                     "Testing (Jest, Pytest)",
                     "Git / GitHub Workflow",
                   ]}
+                  index={5}
                 />
               </div>
             </div>
@@ -615,70 +694,61 @@ export default function Portfolio() {
 
           <footer
             id="contact"
-            className="bg-gray-100 dark:bg-black text-gray-500 py-20 px-6 border-t border-black/10 dark:border-white/10 transition-colors duration-500"
+            className="relative bg-black text-gray-400 py-24 px-6 border-t border-white/10 overflow-hidden"
           >
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/[0.02] to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"></div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="relative max-w-3xl mx-auto text-center space-y-8"
+            >
+              <h2 className="font-cartoon text-3d text-4xl md:text-5xl font-bold text-white tracking-wide">
                 {t.footer.title}
               </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">
+              <p className="text-lg text-gray-300 font-medium max-w-2xl mx-auto leading-relaxed">
                 {t.footer.desc}
               </p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <a
-                  href="mailto:nomad2nk@gmail.com"
-                  className="flex items-center gap-2 hover:text-black dark:hover:text-white transition"
-                >
-                  <Mail size={20} /> nomad2nk@gmail.com
-                </a>
-                <a
-                  href="https://m.me/baysgln.battulga.7"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-black dark:hover:text-white transition"
-                >
-                  <Facebook size={20} /> Messenger
-                </a>
-                <a
-                  href="https://www.facebook.com/baysgln.battulga.7/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-black dark:hover:text-white transition"
-                >
-                  <Facebook size={20} /> Facebook
-                </a>
-                <a
-                  href="https://www.instagram.com/baysakun/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-black dark:hover:text-white transition"
-                >
-                  <Instagram size={20} /> Instagram
-                </a>
-                <a
-                  href="https://linkedin.com/in/nomad1nk-30630139a"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-black dark:hover:text-white transition"
-                >
-                  <Linkedin size={20} /> LinkedIn
-                </a>
-                <a
-                  href="https://github.com/nomad1nk"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-black dark:hover:text-white transition"
-                >
-                  <Github size={20} /> GitHub
-                </a>
+
+              <a
+                href="mailto:nomad2nk@gmail.com"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-white/5 hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 rounded-full text-white font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-500/20"
+              >
+                <Mail size={18} className="text-cyan-400 group-hover:scale-110 transition-transform" />
+                nomad2nk@gmail.com
+              </a>
+
+              <div className="flex flex-wrap justify-center gap-3 pt-4">
+                {[
+                  { href: "https://m.me/baysgln.battulga.7", icon: Facebook, label: "Messenger" },
+                  { href: "https://www.facebook.com/baysgln.battulga.7/", icon: Facebook, label: "Facebook" },
+                  { href: "https://www.instagram.com/baysakun/", icon: Instagram, label: "Instagram" },
+                  { href: "https://linkedin.com/in/nomad1nk-30630139a", icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://github.com/nomad1nk", icon: Github, label: "GitHub" },
+                ].map(({ href, icon: Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/30 rounded-full text-sm text-gray-300 hover:text-white transition-all hover:-translate-y-0.5"
+                  >
+                    <Icon size={16} className="group-hover:text-cyan-400 transition-colors" />
+                    {label}
+                  </a>
+                ))}
               </div>
-              <div className="border-t border-black/10 dark:border-white/10 pt-8 mt-12 text-sm text-gray-600">
+
+              <div className="border-t border-white/10 pt-8 mt-12 text-sm text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-3">
                 <p>
                   &copy; {new Date().getFullYear()} Nomad. {t.footer.rights}
                 </p>
-                <p className="mt-2">{t.footer.imprint}</p>
+                <p>{t.footer.imprint}</p>
               </div>
-            </div>
+            </motion.div>
           </footer>
         </main>
       </div>
@@ -695,24 +765,54 @@ function TechBadge({ icon: Icon, label }: { icon: any; label: string }) {
   );
 }
 
-function SkillCard({ title, skills }: { title: string; skills: string[] }) {
+function SkillCard({
+  title,
+  skills,
+  icon: Icon,
+  accent,
+  index,
+}: {
+  title: string;
+  skills: string[];
+  icon: any;
+  accent: string;
+  index: number;
+}) {
   return (
-    <div className="bg-white/60 dark:bg-white/5 p-6 rounded-xl border border-black/5 dark:border-white/10 shadow-sm hover:shadow-lg transition duration-300 hover:bg-white/80 dark:hover:bg-white/10">
-      <h3 className="font-bold text-gray-900 dark:text-white mb-4 border-b border-black/5 dark:border-white/10 pb-2">
-        {title}
-      </h3>
-      <ul className="space-y-2">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="group relative bg-white/5 p-6 rounded-2xl border border-white/10 shadow-sm hover:shadow-2xl transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 overflow-hidden"
+    >
+      <div
+        className={`absolute -top-16 -right-16 w-32 h-32 rounded-full bg-gradient-to-br ${accent} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500`}
+      ></div>
+
+      <div className="relative flex items-center gap-3 mb-5 pb-3 border-b border-white/10">
+        <div
+          className={`p-2 rounded-lg bg-gradient-to-br ${accent} bg-opacity-10 shadow-md group-hover:scale-110 transition-transform duration-300`}
+        >
+          <Icon size={18} className="text-white" strokeWidth={2.5} />
+        </div>
+        <h3 className="font-bold text-white text-base">{title}</h3>
+      </div>
+
+      <ul className="space-y-2.5 relative">
         {skills.map((skill) => (
           <li
             key={skill}
-            className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium"
+            className="text-sm text-gray-300 flex items-start gap-2.5 font-medium group-hover:text-gray-100 transition-colors"
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-cyan-600 dark:bg-white"></div>
-            {skill}
+            <div
+              className={`w-1.5 h-1.5 mt-1.5 shrink-0 rounded-full bg-gradient-to-br ${accent}`}
+            ></div>
+            <span>{skill}</span>
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }
 

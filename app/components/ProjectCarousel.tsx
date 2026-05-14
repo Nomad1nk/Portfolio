@@ -7,14 +7,17 @@ import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }: any) {
     return (
         <div className={`w-full h-full p-4 transition-all duration-500`}>
-            <div className={`grid lg:grid-cols-2 gap-6 lg:gap-12 items-center bg-white/80 dark:bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-2xl w-full h-full transition-all duration-500 overflow-y-auto scrollbar-hide ${isActive ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-90 blur-sm grayscale'}`}>
+            <div className={`relative grid lg:grid-cols-2 gap-6 lg:gap-12 items-center bg-black/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border w-full h-full transition-all duration-500 overflow-y-auto scrollbar-hide ${isActive ? 'opacity-100 scale-100 blur-0 border-cyan-400/30 shadow-2xl shadow-cyan-500/10' : 'opacity-40 scale-90 blur-sm grayscale border-white/10 shadow-2xl'}`}>
 
+                {isActive && (
+                    <div className="absolute inset-0 rounded-3xl pointer-events-none bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5"></div>
+                )}
 
-                <div className={`space-y-4 md:space-y-6 order-2 lg:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 lg:opacity-30'}`}>
-                    <div className="flex items-center gap-3">
-                        <h3 className="font-cartoon text-3d text-2xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-wide">{project.title}</h3>
+                <div className={`relative space-y-4 md:space-y-6 order-2 lg:order-1 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 lg:opacity-30'}`}>
+                    <div className="flex items-center gap-3 flex-wrap">
+                        <h3 className="font-cartoon text-3d text-2xl md:text-4xl font-bold text-white tracking-wide">{project.title}</h3>
                         {project.status && (
-                            <span className="px-2 py-0.5 bg-black/5 dark:bg-white/10 text-gray-700 dark:text-white text-[10px] md:text-xs font-bold uppercase tracking-wide rounded-full border border-black/10 dark:border-white/20">
+                            <span className="px-2.5 py-1 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 text-cyan-200 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full border border-cyan-400/30">
                                 {project.status}
                             </span>
                         )}
@@ -53,12 +56,13 @@ function ProjectCard({ project, isActive, isNeighbor, t, TechBadge, CheckIcon }:
                 </div>
 
 
-                <div className="order-1 lg:order-2 h-48 sm:h-64 lg:h-full flex items-center justify-center">
-                    <div className="w-full h-full lg:aspect-video bg-gray-100 dark:bg-gray-900 rounded-xl flex items-center justify-center overflow-hidden relative border border-black/5 dark:border-white/10 shadow-lg group">
+                <div className="relative order-1 lg:order-2 h-48 sm:h-64 lg:h-full flex items-center justify-center">
+                    <div className="w-full h-full lg:aspect-video bg-gradient-to-br from-gray-900 to-black rounded-xl flex items-center justify-center overflow-hidden relative border border-white/10 shadow-lg group">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/0 via-transparent to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 transition-all duration-700"></div>
                         <img
                             src={project.image}
                             alt={project.title}
-                            className="object-contain w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700"
+                            className="object-contain w-full h-full opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-700 relative z-10"
                         />
                     </div>
                 </div>
@@ -185,25 +189,44 @@ export default function ProjectCarousel({ projects, t, TechBadge, CheckIcon }: a
 
             <button
                 onClick={prevSlide}
-                className="absolute left-2 md:left-10 z-30 p-2 md:p-3 bg-white/50 dark:bg-black/50 hover:bg-white/80 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white backdrop-blur-md border border-black/5 dark:border-white/10 transition-all"
+                aria-label="Previous project"
+                className="group absolute left-2 md:left-10 z-30 p-2.5 md:p-3 bg-black/50 hover:bg-cyan-500/20 rounded-full text-white backdrop-blur-md border border-white/10 hover:border-cyan-400/40 hover:scale-110 transition-all duration-300"
             >
-                <ChevronLeft size={24} />
+                <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-2 md:right-10 z-30 p-2 md:p-3 bg-white/50 dark:bg-black/50 hover:bg-white/80 dark:hover:bg-white/20 rounded-full text-gray-900 dark:text-white backdrop-blur-md border border-black/5 dark:border-white/10 transition-all"
+                aria-label="Next project"
+                className="group absolute right-2 md:right-10 z-30 p-2.5 md:p-3 bg-black/50 hover:bg-cyan-500/20 rounded-full text-white backdrop-blur-md border border-white/10 hover:border-cyan-400/40 hover:scale-110 transition-all duration-300"
             >
-                <ChevronRight size={24} />
+                <ChevronRight size={24} className="group-hover:translate-x-0.5 transition-transform" />
             </button>
 
 
-            <div className="absolute bottom-0 left-0 w-full flex justify-center gap-2 z-30">
+            <div className="absolute bottom-2 left-0 w-full flex justify-center gap-2 z-30">
                 {projects.map((_: any, i: number) => (
                     <button
                         key={i}
                         onClick={() => setCurrentIndex(i)}
-                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${i === currentIndex ? 'bg-cyan-500 dark:bg-cyan-400 w-6 md:w-8' : 'bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40'}`}
-                    />
+                        aria-label={`Go to project ${i + 1}`}
+                        className={`relative h-2 rounded-full transition-all duration-500 overflow-hidden ${i === currentIndex
+                                ? 'w-10 bg-white/10 border border-cyan-400/40'
+                                : 'w-2 bg-white/20 hover:bg-white/40'
+                            }`}
+                    >
+                        {i === currentIndex && !isHovered && (
+                            <motion.span
+                                key={currentIndex}
+                                initial={{ width: 0 }}
+                                animate={{ width: "100%" }}
+                                transition={{ duration: 5, ease: "linear" }}
+                                className="absolute inset-y-0 left-0 bg-gradient-to-r from-cyan-400 to-sky-400 rounded-full"
+                            />
+                        )}
+                        {i === currentIndex && isHovered && (
+                            <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-400 rounded-full" />
+                        )}
+                    </button>
                 ))}
             </div>
         </div>
