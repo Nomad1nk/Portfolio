@@ -30,6 +30,8 @@ import {
   Cloud,
   Wrench,
   Sparkles,
+  Award,
+  ExternalLink,
 } from "lucide-react";
 
 import dynamic from "next/dynamic";
@@ -118,6 +120,15 @@ const translations = {
       liveDemo: "Live Demo",
     },
     skills: { title: "Техникийн ур чадвар" },
+    certifications: {
+      title: "Сертификатууд",
+      aws: {
+        name: "AWS Cloud Practitioner",
+        issuer: "HelloAI Academy",
+        year: "2026",
+        verify: "Баталгаажуулах",
+      },
+    },
     footer: {
       title: "Хамтран ажиллахад бэлэн.",
       desc: "Улаанбаатарт байнгын ажилд орох эсвэл алсын зайнаас гэрээт ажил гүйцэтгэхэд бэлэн байна. Bedel Tech — AI дуу хоолойн системийн үүсгэн байгуулагч.",
@@ -203,6 +214,15 @@ const translations = {
       liveDemo: "Live Demo",
     },
     skills: { title: "Technical Competencies" },
+    certifications: {
+      title: "Certifications",
+      aws: {
+        name: "AWS Cloud Practitioner",
+        issuer: "HelloAI Academy",
+        year: "2026",
+        verify: "Verify",
+      },
+    },
     footer: {
       title: "Ready to make an impact.",
       desc: "Open to full-time roles in Ulaanbaatar or remote contracts. Founder of Bedel Tech — AI Voice Systems.",
@@ -288,6 +308,15 @@ const translations = {
       liveDemo: "ライブデモ",
     },
     skills: { title: "技術スキル" },
+    certifications: {
+      title: "認定資格",
+      aws: {
+        name: "AWS Cloud Practitioner",
+        issuer: "HelloAI Academy",
+        year: "2026",
+        verify: "認証する",
+      },
+    },
     footer: {
       title: "ご一緒できる機会をお待ちしております。",
       desc: "ウランバートルでの正社員、またはリモート契約案件を募集中。Bedel Tech — AIボイスシステムの創業者。",
@@ -689,6 +718,51 @@ export default function Portfolio() {
                   index={5}
                 />
               </div>
+            </div>
+          </section>
+
+          <section id="certifications" className="py-16 px-6">
+            <div className="max-w-3xl mx-auto">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="font-cartoon text-3d text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block mb-10"
+              >
+                {t.certifications.title}
+              </motion.h2>
+
+              <motion.a
+                href="https://helloai.ink/verify/HBC-AWS-MPEH2K5U"
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5 }}
+                className="group relative flex items-center gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-400/30 transition-all hover:-translate-y-1 hover:shadow-2xl overflow-hidden"
+              >
+                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500"></div>
+
+                <div className="relative shrink-0 p-3 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <Award size={26} className="text-white" strokeWidth={2.5} />
+                </div>
+
+                <div className="relative flex-1 min-w-0">
+                  <h3 className="font-bold text-white text-base sm:text-lg truncate">
+                    {t.certifications.aws.name}
+                  </h3>
+                  <p className="text-sm text-gray-400 font-medium">
+                    {t.certifications.aws.issuer} · {t.certifications.aws.year}
+                  </p>
+                </div>
+
+                <div className="relative shrink-0 flex items-center gap-1.5 text-xs sm:text-sm text-cyan-400 font-semibold opacity-80 group-hover:opacity-100 transition-opacity">
+                  <span className="hidden sm:inline">{t.certifications.aws.verify}</span>
+                  <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+              </motion.a>
             </div>
           </section>
 
