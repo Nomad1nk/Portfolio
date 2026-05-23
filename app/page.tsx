@@ -552,6 +552,7 @@ export default function Portfolio() {
                     feat1: t.projects.p1.feat1,
                     feat2: t.projects.p1.feat2,
                     link: "https://github.com/Nomad1nk/RouteChecker",
+                    liveLink: "https://route-checker.vercel.app",
                     image: "/ecoroute.png",
                     tech: [
                       { icon: Layout, label: "Next.js 14" },
@@ -567,6 +568,7 @@ export default function Portfolio() {
                     feat1: t.projects.p2.feat1,
                     feat2: t.projects.p2.feat2,
                     link: "https://github.com/Nomad1nk/BookingSystem",
+                    liveLink: "https://bookingsystemn.vercel.app",
                     image: "/Bookingsystem.png",
                     tech: [
                       { icon: Calendar, label: "Next.js" },
@@ -584,6 +586,7 @@ export default function Portfolio() {
                     feat1: t.projects.p4.feat1,
                     feat2: t.projects.p4.feat2,
                     link: "https://github.com/Nomad1nk/LuxEcommerce",
+                    liveLink: "https://lux-ecommerce.vercel.app",
                     image: "/luxeComm.png",
                     tech: [
                       { icon: Layout, label: "Next.js" },
@@ -599,6 +602,7 @@ export default function Portfolio() {
                     feat1: t.projects.p3.feat1,
                     feat2: t.projects.p3.feat2,
                     link: "https://github.com/Nomad1nk/MindSync-Psychologist-AI",
+                    liveLink: "https://mind-sync-psychologist-ai.vercel.app",
                     image: "/syncAI.png",
                     tech: [
                       { icon: Server, label: "FastAPI" },
