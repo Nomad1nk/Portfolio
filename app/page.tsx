@@ -36,7 +36,7 @@ import {
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import ProjectCarousel from "./components/ProjectCarousel";
+import ProjectBentoGrid from "./components/ProjectBentoGrid";
 
 const ThreeBackground = dynamic(() => import("./components/ThreeBackground"), {
   ssr: false,
@@ -521,7 +521,7 @@ export default function Portfolio() {
                 </h2>
               </div>
 
-              <ProjectCarousel
+              <ProjectBentoGrid
                 t={t}
                 TechBadge={TechBadge}
                 CheckIcon={CheckIcon}
