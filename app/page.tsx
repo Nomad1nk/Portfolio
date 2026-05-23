@@ -683,11 +683,11 @@ export default function Portfolio() {
                   accent="from-amber-400 to-orange-500"
                   title="Cloud & DevOps"
                   skills={[
-                    "AWS (Lambda, S3, DynamoDB)",
-                    "Docker / Docker Compose",
-                    "Vercel / Netlify",
-                    "CI/CD (GitHub Actions)",
-                    "Linux / Nginx",
+                    "AWS Compute & Storage: EC2, Lambda, S3, EBS",
+                    "AWS Data & Networking: RDS, DynamoDB, VPC, CloudFront",
+                    "AWS Security & Ops: IAM, CloudWatch, Pricing/Billing",
+                    "Docker / Docker Compose / Linux / Nginx",
+                    "CI/CD (GitHub Actions) / Vercel / Netlify",
                   ]}
                   index={3}
                 />
