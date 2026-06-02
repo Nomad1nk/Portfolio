@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import {
   Github,
-  Linkedin,
   Mail,
   MapPin,
   Download,
@@ -52,11 +51,11 @@ const translations = {
     },
     hero: {
       openToWork: "Улаанбаатарт ажилд орох / Алсын зайнаас",
-      titlePrefix: "Bedel Tech-ийн үүсгэн байгуулагч,",
-      titleHighlight: "Full-Stack",
-      titleSuffix: "хөгжүүлэгч.",
+      titlePrefix: "Full-Stack хөгжүүлэгч &",
+      titleHighlight: "AI",
+      titleSuffix: "инженер.",
       description:
-        "Япон улсад IT Engineer & Full-Stack Developer мэргэжлээр амжилттай сурч төгссөн хөгжүүлэгч. Англи, Япон хэлээр чөлөөтэй ярьдаг бөгөөд Герман хэлний анхан-дунд шатны мэдлэгтэй. Үргэлж шинэ зүйл сурч, мэргэжлийн хувьд өсөж дээшлэх хүсэлтэй. Монголын анхны худалдаалсан AI ресепшн систем — Bedel AI Box-ийг үүсгэн байгуулж, ганцаараа бүтээсэн юм. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling зэрэг технологийг ашиглан бодит бизнест зориулсан системийг архитектурын зураглалаас эхлээд бодитоор ажиллуулах хүртэл бүтнээр нь хариуцаж хөгжүүлдэг. Одоо Улаанбаатарт ажиллахад бэлэн байна.",
+        "Япон улсад IT Engineer & Full-Stack Developer чиглэлээр суралцаж төгссөн хөгжүүлэгч. Англи, япон хэлээр чөлөөтэй харилцдаг, герман хэлний анхан-дунд шатны мэдлэгтэй. Bedel AI Box — утсаар залгасан үйлчлүүлэгчтэй монголоор ярьж, захиалга авч, төлбөр тооцдог AI ресепшн системийг үүсгэн байгуулж, эхнээс нь дангаараа бүтээсэн. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling зэрэг технологи ашиглан бодит бизнест зориулсан системийг архитектураас нь эхлээд ажиллуулах хүртэл бүтнээр нь хариуцдаг.",
       contact: "Надтай холбогдох",
       github: "GitHub",
     },
@@ -146,11 +145,11 @@ const translations = {
     },
     hero: {
       openToWork: "Open to Work — Ulaanbaatar / Remote",
-      titlePrefix: "Founder of Bedel Tech,",
-      titleHighlight: "Full-Stack",
-      titleSuffix: "Developer.",
+      titlePrefix: "Full-Stack Developer &",
+      titleHighlight: "AI",
+      titleSuffix: "Engineer.",
       description:
-        "A Full-Stack Developer who successfully completed an IT Engineer & Full-Stack Developer program in Japan. Fluent in English and Japanese, with elementary-to-intermediate German. Always eager to keep learning and growing professionally. Founded and built Bedel AI Box — Mongolia's first commercially deployed AI receptionist, handling real phone calls in Mongolian end-to-end. I architect and ship complete production systems with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling. Based in Ulaanbaatar and ready to contribute.",
+        "A Full-Stack Developer who completed an IT Engineer & Full-Stack Developer program in Japan. Fluent in English and Japanese, with elementary-to-intermediate German. I founded and built Bedel AI Box — an AI receptionist that answers real customer phone calls in Mongolian, takes orders, and handles payment — building it end-to-end on my own. I work with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling to take production systems for real businesses from architecture through to deployment.",
       contact: "Contact Me",
       github: "GitHub",
     },
@@ -240,11 +239,11 @@ const translations = {
     },
     hero: {
       openToWork: "ウランバートルで就職活動中 / リモート可",
-      titlePrefix: "Bedel Techの創業者、",
-      titleHighlight: "フルスタック",
+      titlePrefix: "フルスタック &",
+      titleHighlight: "AI",
       titleSuffix: "エンジニア。",
       description:
-        "日本でIT Engineer & Full-Stack Developerの専門課程を修了したフルスタックエンジニアです。英語・日本語ともに流暢で、ドイツ語は初〜中級レベル。常に新しい技術を学び、より一層成長していきたいという思いを大切にしています。モンゴル初の商用AI受付システム『Bedel AI Box』を創業者として一人で開発し、実際の電話対応をモンゴル語でエンドツーエンドに実現しました。Next.js / Rails / Python (FastAPI) / Docker / OpenAI Function Callingを駆使し、ビジネス向け本番システムを設計から運用まで一貫して構築可能です。現在、ウランバートルにて勤務可能です。",
+        "日本でIT Engineer & Full-Stack Developerの専門課程を修了したフルスタックエンジニアです。英語・日本語ともに流暢で、ドイツ語は初〜中級レベル。AI受付システム『Bedel AI Box』を創業者として一人で開発し、実際の顧客電話にモンゴル語で応答し、注文・決済まで対応する仕組みを構築しました。Next.js / Rails / Python (FastAPI) / Docker / OpenAI Function Callingを用いて、ビジネス向けの本番システムを設計から運用まで一貫して構築します。",
       contact: "お問い合わせ",
       github: "GitHub",
     },
@@ -336,16 +335,14 @@ export default function Portfolio() {
       className={`min-h-screen font-sans selection:bg-cyan-500 transition-colors duration-500 dark bg-gradient-to-br from-slate-900 via-sky-950 to-gray-900 animate-gradient-xy text-gray-200 relative overflow-hidden`}
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-gray-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full mix-blend-overlay filter blur-3xl opacity-20 animate-blob"></div>
         <ThreeBackground />
       </div>
 
       <div className="relative z-10">
         <header className="bg-white/70 dark:bg-black/50 border-b border-black/5 dark:border-white/10 sticky top-0 z-50 backdrop-blur-md transition-colors duration-300">
           <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="font-cartoon text-3d text-2xl tracking-wider text-gray-900 dark:text-white">
+            <div className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
               Nomad
               <span className="text-gray-600 dark:text-gray-300">.Dev</span>
             </div>
@@ -453,7 +450,7 @@ export default function Portfolio() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
                 }}
-                className="font-cartoon text-3d text-6xl md:text-7xl font-extrabold text-white tracking-wide mb-6"
+                className="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6"
               >
                 {t.hero.titlePrefix}{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 animate-gradient-x inline-block">
@@ -516,7 +513,7 @@ export default function Portfolio() {
           >
             <div className="w-full">
               <div className="max-w-5xl mx-auto px-6 mb-8">
-                <h2 className="font-cartoon text-3d text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block">
+                <h2 className="text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block">
                   {t.projects.title}
                 </h2>
               </div>
@@ -638,7 +635,7 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
-                className="font-cartoon text-3d text-4xl font-bold text-white mb-12 text-center tracking-wide"
+                className="text-4xl font-bold text-white mb-12 text-center tracking-tight"
               >
                 {t.skills.title}
               </motion.h2>
@@ -732,7 +729,7 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
-                className="font-cartoon text-3d text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block mb-10"
+                className="text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block mb-10"
               >
                 {t.certifications.title}
               </motion.h2>
@@ -784,7 +781,7 @@ export default function Portfolio() {
               transition={{ duration: 0.6 }}
               className="relative max-w-3xl mx-auto text-center space-y-8"
             >
-              <h2 className="font-cartoon text-3d text-4xl md:text-5xl font-bold text-white tracking-wide">
+              <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
                 {t.footer.title}
               </h2>
               <p className="text-lg text-gray-300 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -801,10 +798,8 @@ export default function Portfolio() {
 
               <div className="flex flex-wrap justify-center gap-3 pt-4">
                 {[
-                  { href: "https://m.me/baysgln.battulga.7", icon: Facebook, label: "Messenger" },
                   { href: "https://www.facebook.com/baysgln.battulga.7/", icon: Facebook, label: "Facebook" },
                   { href: "https://www.instagram.com/baysakun/", icon: Instagram, label: "Instagram" },
-                  { href: "https://linkedin.com/in/nomad1nk-30630139a", icon: Linkedin, label: "LinkedIn" },
                   { href: "https://github.com/nomad1nk", icon: Github, label: "GitHub" },
                 ].map(({ href, icon: Icon, label }) => (
                   <a

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Fredoka, Bangers } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const fredoka = Fredoka({ subsets: ["latin"], variable: '--font-fredoka' });
-const bangers = Bangers({ weight: "400", subsets: ["latin"], variable: '--font-bangers' });
+const inter = Inter({
+    subsets: ["latin", "cyrillic"],
+    variable: "--font-inter",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: "Bayasgalan Battulga — Full-Stack Developer & Bedel AI Founder",
@@ -37,7 +40,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="mn">
-            <body className={`${fredoka.variable} ${bangers.variable} font-sans`}>{children}</body>
+            <body className={`${inter.variable} font-sans`}>{children}</body>
         </html>
     );
 }

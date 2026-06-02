@@ -24,12 +24,6 @@
         animation: rise 15s infinite linear;
     }
 
-    .text-3d {
-        text-shadow:
-            2px 2px 0px #000,
-            4px 4px 0px rgba(0, 0, 0, 0.2);
-    }
-
     .animate-gradient-x {
         background-size: 200% 200%;
         animation: gradient-x 6s ease infinite;

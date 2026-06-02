@@ -10,8 +10,7 @@ const config: Config = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['var(--font-fredoka)', 'sans-serif'],
-                cartoon: ['var(--font-bangers)', 'cursive'],
+                sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -41,7 +41,7 @@ export default function ThreeBackground() {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
 
                 // Randomly vary opacity for "glitch" effect
-                ctx.globalAlpha = Math.random() * 0.5 + 0.5;
+                ctx.globalAlpha = Math.random() * 0.3 + 0.15;
 
                 ctx.fillText(text, i * 20, drops[i] * 20);
 
@@ -53,7 +53,7 @@ export default function ThreeBackground() {
             ctx.globalAlpha = 1.0;
         };
 
-        const interval = setInterval(draw, 33);
+        const interval = setInterval(draw, 50);
 
         const handleResize = () => {
             width = canvas.width = window.innerWidth;
@@ -89,7 +89,7 @@ export default function ThreeBackground() {
             {/* Digital Rain Canvas Overlay */}
             <canvas
                 ref={canvasRef}
-                className="absolute inset-0 w-full h-full z-10 opacity-60 mix-blend-screen"
+                className="absolute inset-0 w-full h-full z-10 opacity-25 mix-blend-screen"
             />
         </div>
     );
