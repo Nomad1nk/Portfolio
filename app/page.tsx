@@ -127,6 +127,12 @@ const translations = {
         year: "2026",
         verify: "Баталгаажуулах",
       },
+      sql: {
+        name: "SQL Database Knowledge",
+        issuer: "HelloAI Academy",
+        year: "2026",
+        verify: "Баталгаажуулах",
+      },
     },
     footer: {
       title: "Хамтран ажиллахад бэлэн.",
@@ -217,6 +223,12 @@ const translations = {
       title: "Certifications",
       aws: {
         name: "AWS Cloud Practitioner",
+        issuer: "HelloAI Academy",
+        year: "2026",
+        verify: "Verify",
+      },
+      sql: {
+        name: "SQL Database Knowledge",
         issuer: "HelloAI Academy",
         year: "2026",
         verify: "Verify",
@@ -315,6 +327,12 @@ const translations = {
         year: "2026",
         verify: "認証する",
       },
+      sql: {
+        name: "SQL Database Knowledge",
+        issuer: "HelloAI Academy",
+        year: "2026",
+        verify: "認証する",
+      },
     },
     footer: {
       title: "ご一緒できる機会をお待ちしております。",
@@ -390,10 +408,11 @@ export default function Portfolio() {
                       <button
                         key={l}
                         onClick={() => setLang(l)}
-                        className={`px-4 py-2 text-left text-sm font-medium hover:bg-white/10 transition flex items-center justify-between ${lang === l
-                          ? "text-white bg-white/5 font-bold"
-                          : "text-gray-400"
-                          }`}
+                        className={`px-4 py-2 text-left text-sm font-medium hover:bg-white/10 transition flex items-center justify-between ${
+                          lang === l
+                            ? "text-white bg-white/5 font-bold"
+                            : "text-gray-400"
+                        }`}
                       >
                         <span className="uppercase">{l}</span>
                         {lang === l && (
@@ -495,7 +514,10 @@ export default function Portfolio() {
                   rel="noreferrer"
                   className="px-6 py-3 bg-transparent text-white border border-white/20 rounded-lg font-semibold hover:bg-white/10 hover:border-cyan-400/40 hover:-translate-y-0.5 transition-all flex items-center gap-2"
                 >
-                  <Github size={20} className="group-hover:rotate-12 transition-transform" />
+                  <Github
+                    size={20}
+                    className="group-hover:rotate-12 transition-transform"
+                  />
                   {t.hero.github}
                 </a>
               </motion.div>
@@ -703,7 +725,7 @@ export default function Portfolio() {
                   accent="from-pink-400 to-rose-500"
                   title="AI & Voice Systems"
                   skills={[
-                    "OpenAI (GPT-4o, Whisper, TTS)",
+                    "OpenAI (GPT, Whisper, TTS)",
                     "Function Calling / RAG",
                     "Voice AI / STT-TTS (Mongolian)",
                     "VoIP / SIP / RTP / VAD",
@@ -740,36 +762,79 @@ export default function Portfolio() {
                 {t.certifications.title}
               </motion.h2>
 
-              <motion.a
-                href="https://helloai.ink/verify/HBC-AWS-MPEH2K5U"
-                target="_blank"
-                rel="noreferrer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5 }}
-                className="group relative flex items-center gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-400/30 transition-all hover:-translate-y-1 hover:shadow-2xl overflow-hidden"
-              >
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500"></div>
+              <div className="flex flex-col gap-4">
+                <motion.a
+                  href="https://helloai.ink/verify/HBC-AWS-MPEH2K5U"
+                  target="_blank"
+                  rel="noreferrer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5 }}
+                  className="group relative flex items-center gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-400/30 transition-all hover:-translate-y-1 hover:shadow-2xl overflow-hidden"
+                >
+                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500"></div>
 
-                <div className="relative shrink-0 p-3 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Award size={26} className="text-white" strokeWidth={2.5} />
-                </div>
+                  <div className="relative shrink-0 p-3 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <Award size={26} className="text-white" strokeWidth={2.5} />
+                  </div>
 
-                <div className="relative flex-1 min-w-0">
-                  <h3 className="font-bold text-white text-base sm:text-lg truncate">
-                    {t.certifications.aws.name}
-                  </h3>
-                  <p className="text-sm text-gray-400 font-medium">
-                    {t.certifications.aws.issuer} · {t.certifications.aws.year}
-                  </p>
-                </div>
+                  <div className="relative flex-1 min-w-0">
+                    <h3 className="font-bold text-white text-base sm:text-lg truncate">
+                      {t.certifications.aws.name}
+                    </h3>
+                    <p className="text-sm text-gray-400 font-medium">
+                      {t.certifications.aws.issuer} · {t.certifications.aws.year}
+                    </p>
+                  </div>
 
-                <div className="relative shrink-0 flex items-center gap-1.5 text-xs sm:text-sm text-cyan-400 font-semibold opacity-80 group-hover:opacity-100 transition-opacity">
-                  <span className="hidden sm:inline">{t.certifications.aws.verify}</span>
-                  <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
-              </motion.a>
+                  <div className="relative shrink-0 flex items-center gap-1.5 text-xs sm:text-sm text-cyan-400 font-semibold opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span className="hidden sm:inline">
+                      {t.certifications.aws.verify}
+                    </span>
+                    <ExternalLink
+                      size={14}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  </div>
+                </motion.a>
+
+                <motion.a
+                  href="https://helloai.ink/verify/HBC-SQL-MQHKPJIL"
+                  target="_blank"
+                  rel="noreferrer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="group relative flex items-center gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-400/30 transition-all hover:-translate-y-1 hover:shadow-2xl overflow-hidden"
+                >
+                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500"></div>
+
+                  <div className="relative shrink-0 p-3 rounded-xl bg-gradient-to-br from-sky-400 to-blue-500 shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <Database size={26} className="text-white" strokeWidth={2.5} />
+                  </div>
+
+                  <div className="relative flex-1 min-w-0">
+                    <h3 className="font-bold text-white text-base sm:text-lg truncate">
+                      {t.certifications.sql.name}
+                    </h3>
+                    <p className="text-sm text-gray-400 font-medium">
+                      {t.certifications.sql.issuer} · {t.certifications.sql.year}
+                    </p>
+                  </div>
+
+                  <div className="relative shrink-0 flex items-center gap-1.5 text-xs sm:text-sm text-cyan-400 font-semibold opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span className="hidden sm:inline">
+                      {t.certifications.sql.verify}
+                    </span>
+                    <ExternalLink
+                      size={14}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  </div>
+                </motion.a>
+              </div>
             </div>
           </section>
 
@@ -798,15 +863,30 @@ export default function Portfolio() {
                 href="mailto:nomad2nk@gmail.com"
                 className="group inline-flex items-center gap-3 px-6 py-3.5 bg-white/5 hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 rounded-full text-white font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-500/20"
               >
-                <Mail size={18} className="text-cyan-400 group-hover:scale-110 transition-transform" />
+                <Mail
+                  size={18}
+                  className="text-cyan-400 group-hover:scale-110 transition-transform"
+                />
                 nomad2nk@gmail.com
               </a>
 
               <div className="flex flex-wrap justify-center gap-3 pt-4">
                 {[
-                  { href: "https://www.facebook.com/baysgln.battulga.7/", icon: Facebook, label: "Facebook" },
-                  { href: "https://www.instagram.com/baysakun/", icon: Instagram, label: "Instagram" },
-                  { href: "https://github.com/nomad1nk", icon: Github, label: "GitHub" },
+                  {
+                    href: "https://www.facebook.com/baysgln.battulga.7/",
+                    icon: Facebook,
+                    label: "Facebook",
+                  },
+                  {
+                    href: "https://www.instagram.com/baysakun/",
+                    icon: Instagram,
+                    label: "Instagram",
+                  },
+                  {
+                    href: "https://github.com/nomad1nk",
+                    icon: Github,
+                    label: "GitHub",
+                  },
                 ].map(({ href, icon: Icon, label }) => (
                   <a
                     key={label}
@@ -815,7 +895,10 @@ export default function Portfolio() {
                     rel="noreferrer"
                     className="group flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/30 rounded-full text-sm text-gray-300 hover:text-white transition-all hover:-translate-y-0.5"
                   >
-                    <Icon size={16} className="group-hover:text-cyan-400 transition-colors" />
+                    <Icon
+                      size={16}
+                      className="group-hover:text-cyan-400 transition-colors"
+                    />
                     {label}
                   </a>
                 ))}
