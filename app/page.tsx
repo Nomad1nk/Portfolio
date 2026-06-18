@@ -725,10 +725,10 @@ export default function Portfolio() {
                   accent="from-pink-400 to-rose-500"
                   title="AI & Voice Systems"
                   skills={[
-                    "OpenAI (GPT, Whisper, TTS)",
-                    "Function Calling / RAG",
                     "Voice AI / STT-TTS (Mongolian)",
                     "VoIP / SIP / RTP / VAD",
+                    "LLMs: OpenAI (GPT), Claude",
+                    "Function Calling / RAG",
                     "Computer Vision (OpenCV, Mediapipe)",
                   ]}
                   index={4}
