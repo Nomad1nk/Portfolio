@@ -114,6 +114,7 @@ export const translations = {
     contact: {
       title: "Төслөө ярилцъя",
       desc: "Бизнес тань юу хийдэг, ямар асуудлыг шийдмээр байгаа, хэзээ хэрэгтэй байгааг товч бичээд илгээгээрэй. Удалгүй хариу өгнө.",
+      call: "Утсаар ярих",
       email: "Имэйл бичих",
       messenger: "Facebook-ээр бичих",
       employer: "Ажил олгогч бол",
@@ -354,6 +355,7 @@ export const translations = {
     contact: {
       title: "Let's talk about your project",
       desc: "Write a few lines about what your business does, what you'd like to solve, and when you need it. I'll get back to you soon.",
+      call: "Call me",
       email: "Send an email",
       messenger: "Message on Facebook",
       employer: "Hiring?",
@@ -594,6 +596,7 @@ export const translations = {
     contact: {
       title: "プロジェクトについてお話ししましょう",
       desc: "事業内容、解決したい課題、ご希望の時期を簡単にお書きください。折り返しご連絡いたします。",
+      call: "電話する",
       email: "メールを送る",
       messenger: "Facebookでメッセージ",
       employer: "採用ご担当の方",

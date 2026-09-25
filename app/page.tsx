@@ -62,6 +62,7 @@ const CV: Record<Lang, string> = {
 };
 
 const EMAIL = "nomad2nk@gmail.com";
+const PHONES = ["9921-6456", "8839-0306"];
 const FACEBOOK = "https://www.facebook.com/baysgln.battulga.7/";
 
 const TECH = [
@@ -568,6 +569,23 @@ export default function Portfolio() {
               </p>
             </div>
             <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
+              <div className="flex items-center gap-3 px-6 py-4 rounded-xl bg-khukh">
+                <Phone size={18} className="shrink-0" />
+                <span>
+                  <span className="block font-semibold">{t.contact.call}</span>
+                  <span className="flex flex-wrap gap-x-3 text-white/85">
+                    {PHONES.map((ph) => (
+                      <a
+                        key={ph}
+                        href={`tel:+976${ph.replace("-", "")}`}
+                        className="tabular-nums underline underline-offset-4 decoration-white/40 hover:decoration-white rounded"
+                      >
+                        {ph}
+                      </a>
+                    ))}
+                  </span>
+                </span>
+              </div>
               <a
                 href={`mailto:${EMAIL}`}
                 className="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-white text-ink font-semibold hover:bg-khukh-soft transition-colors"
