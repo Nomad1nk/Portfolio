@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const onest = Onest({
     subsets: ["latin", "cyrillic"],
-    variable: "--font-inter",
+    variable: "--font-onest",
     display: "swap",
 });
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     metadataBase: new URL("https://www.nomad1nk.org"),
     title: "Bayasgalan Battulga — Full-Stack Developer & AI Engineer",
     description:
-        "Full-Stack Developer & AI Engineer in Ulaanbaatar. Builder of Bedel AI Box, a Mongolian-language AI phone receptionist, plus Haiguul, BedelERP and more. Next.js, Python, Java/Spring, Claude, Docker. Available in English, Mongolian and Japanese.",
+        "I build AI phone receptionists, websites and business systems for companies in Mongolia and abroad — from first idea to launch. Maker of Bedel AI Box. Working in Mongolian, English and Japanese.",
     keywords: [
         "Full-Stack Developer",
         "AI Engineer",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Bayasgalan Battulga — Full-Stack Developer & AI Engineer",
         description:
-            "Production voice AI for Mongolian businesses, full-stack web apps and a double-entry accounting core. Portfolio in English, Mongolian and Japanese.",
+            "AI phone receptionists, websites and business systems — built end to end by one developer in Ulaanbaatar.",
         url: "https://www.nomad1nk.org",
         locale: "en_US",
         alternateLocale: ["mn_MN", "ja_JP"],
@@ -53,7 +53,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="mn">
-            <body className={`${inter.variable} font-sans`}>{children}</body>
+            <body className={`${onest.variable} font-sans`}>{children}</body>
         </html>
     );
 }

@@ -10,7 +10,15 @@ const config: Config = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+                sans: ['var(--font-onest)', '"Hiragino Sans"', '"Yu Gothic"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+                paper: '#F6F8FB',
+                ink: '#0E1A2B',
+                slate: { DEFAULT: '#556070' },
+                line: '#D9E0EA',
+                khukh: { DEFAULT: '#1B45D6', deep: '#12319F', soft: '#E6ECFC' },
+                live: '#12A150',
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
