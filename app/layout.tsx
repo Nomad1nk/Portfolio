@@ -9,26 +9,39 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "Bayasgalan Battulga — Full-Stack Developer & Bedel AI Founder",
+    metadataBase: new URL("https://www.nomad1nk.org"),
+    title: "Bayasgalan Battulga — Full-Stack Developer & AI Engineer",
     description:
-        "Full-Stack хөгжүүлэгч, Bedel AI Box (ухаалаг хүлээн авагч)-ын үүсгэн байгуулагч. Next.js, Rails, Python, OpenAI, Chimege, QPay, Yeastar SIP/RTP, Docker.",
+        "Full-Stack Developer & AI Engineer in Ulaanbaatar. Builder of Bedel AI Box, a Mongolian-language AI phone receptionist, plus Haiguul, BedelERP and more. Next.js, Python, Java/Spring, Claude, Docker. Available in English, Mongolian and Japanese.",
     keywords: [
         "Full-Stack Developer",
+        "AI Engineer",
         "Mongolia",
+        "Ulaanbaatar",
         "Улаанбаатар",
         "Bedel AI",
         "AI Receptionist",
-        "Chimege",
-        "QPay",
+        "Mongolian Voice AI",
         "Next.js",
-        "Rails",
         "Python",
+        "Java",
+        "Spring Boot",
     ],
+    alternates: {
+        canonical: "/",
+        languages: {
+            en: "/?lang=en",
+            mn: "/?lang=mn",
+            ja: "/?lang=jp",
+        },
+    },
     openGraph: {
-        title: "Bayasgalan Battulga — Full-Stack Developer & Bedel AI Founder",
+        title: "Bayasgalan Battulga — Full-Stack Developer & AI Engineer",
         description:
-            "Bedel AI Box — Монголын анхны худалдаалсан AI хүлээн авагч. Full-Stack, AI интеграц, бодит бизнесийн шийдлүүд.",
-        locale: "mn_MN",
+            "Production voice AI for Mongolian businesses, full-stack web apps and a double-entry accounting core. Portfolio in English, Mongolian and Japanese.",
+        url: "https://www.nomad1nk.org",
+        locale: "en_US",
+        alternateLocale: ["mn_MN", "ja_JP"],
         type: "website",
     },
 };

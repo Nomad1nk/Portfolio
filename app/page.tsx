@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Github,
   Mail,
@@ -31,6 +31,13 @@ import {
   Sparkles,
   Award,
   ExternalLink,
+  Calculator,
+  AudioLines,
+  Coffee,
+  Network,
+  FlaskConical,
+  Workflow,
+  Search,
 } from "lucide-react";
 
 import dynamic from "next/dynamic";
@@ -58,6 +65,11 @@ const translations = {
         "Япон улсад IT Engineer & Full-Stack Developer чиглэлээр суралцаж төгссөн хөгжүүлэгч. Англи, япон хэлээр чөлөөтэй харилцдаг, герман хэлний анхан-дунд шатны мэдлэгтэй. Bedel AI Box — утсаар залгасан үйлчлүүлэгчтэй монголоор ярьж, захиалга авч, төлбөр тооцдог AI ресепшн системийг үүсгэн байгуулж, эхнээс нь дангаараа бүтээсэн. Next.js, Rails, Python (FastAPI), Docker, OpenAI Function Calling зэрэг технологи ашиглан бодит бизнест зориулсан системийг архитектураас нь эхлээд ажиллуулах хүртэл бүтнээр нь хариуцдаг.",
       contact: "Надтай холбогдох",
       github: "GitHub",
+      stats: {
+        projects: "Бүтээсэн төсөл",
+        live: "Онлайн ажиллаж буй",
+        languages: "Ажлын хэл",
+      },
     },
     projects: {
       title: "Онцлох төслүүд",
@@ -115,8 +127,43 @@ const translations = {
         feat2:
           "Нүдний хяналт: нүдний харцаар курсорыг хөдөлгөх энэхүү технологи нь хөгжлийн бэрхшээлтэй иргэдэд хэрэглэхэд тохиромжтой шинэ боломж юм.",
       },
+      p7: {
+        title: "Хайгуул",
+        status: "Туршилтын хувилбар",
+        desc: "Монголд үйлчилгээ хэрэгтэй хүнийг тэр үйлчилгээг үзүүлдэг хүнтэй холбодог платформ. Хэрэглэгч «Баянгол дүүрэгт сантехникч яаралтай хэрэгтэй байна» гэж энгийн монголоор бичихэд хүсэлт нь шалгагдсан, чөлөөтэй байгаа эрхлэгч рүү шууд очно. Лавлах сайт шиг хайж суух шаардлагагүй.",
+        feat1:
+          "Claude хүсэлтийг задлан оператор руу санал болгодог бөгөөд эцсийн шийдвэрийг хүн гаргана. Засвар бүр «загвар юу гэсэн, хүн юу гэсэн» гэсэн хос болж хадгалагдан, eval корпус аяндаа хуримтлагддаг.",
+        feat2:
+          "Next.js 15, BullMQ worker, Prisma/PostgreSQL бүхий monorepo. Монгол текстийг хэвийн болгох, ойролцоо хайлт хийх боломжтой, утсанд суулгадаг PWA, SMS/Messenger/Push сувагтай бөгөөд Fly.io дээр ажиллаж байна.",
+      },
+      p8: {
+        title: "Хурлын протокол AI",
+        status: "Хөгжүүлж буй",
+        desc: "Монгол хэлээрх хурлын бичлэгээс хэн юу ярьсныг тэмдэглэж, шийдвэр болон даалгаврын хамт бүтэцлэгдсэн протоколыг автоматаар гаргадаг систем.",
+        feat1:
+          "Эхлээд pyannote-оор хэн хэзээ ярьсныг тогтоож, бүртгэлтэй дуу хоолойтой тулган илтгэгчийг нэрээр нь таньдаг. Дараа нь ээлж бүрийг Chimege STT-ээр текст болгож, Claude-аар протокол бичүүлдэг.",
+        feat2:
+          "API-ийн бодит хязгаарт тохируулсан: ASR-ийн 15 секундын хязгаарт багтаахын тулд урт ээлжийг ярианы завсраар хувааж, хэт богино бичлэгийг цагийн тэмдгийг нь алдагдуулалгүйгээр уртасгадаг.",
+      },
+      p9: {
+        title: "BedelERP",
+        status: "Хөгжүүлж буй",
+        desc: "Монголын жижиг, дунд бизнест зориулсан, дуу хоолойгоор удирддаг нягтлан бодох бүртгэлийн цөм. «Өнөөдөр 3 шуудай гурил зарлаа» гэх мэт яриаг зөв санхүүгийн бүртгэл болгоно. Bedel AI Box-ийн ард ажиллах санхүүгийн систем юм.",
+        feat1:
+          "Давхар бичилттэй ledger: бичилтийг засдаггүй, зөвхөн эсрэг бичилтээр залруулдаг (Postgres trigger-ээр хамгаалсан). Мөнгөн дүнг BigDecimal-аар тооцож, idempotency key болон optimistic locking-оор давхар бүртгэл, үлдэгдлээс хэтэрсэн борлуулалтаас сэргийлдэг.",
+        feat2:
+          "НӨАТ-ын тооцоо, eBarimt баримт, жигнэсэн дундаж өртгөөр бараа материал ба өртөг, ашиг/НӨАТ/балансын тайлантай. Bedel-тэй gRPC-ээр холбогдоно. Testcontainers бүхий 77 тест, GitHub Actions CI-тэй.",
+      },
+      filters: {
+        all: "Бүгд",
+        ai: "AI ба дуу хоолой",
+        web: "Full-Stack ба Backend",
+      },
       viewCode: "GitHub дээр код үзэх",
       liveDemo: "Live Demo",
+      privateCode: "Код хаалттай — хүсвэл танилцуулна",
+      showMore: "Дэлгэрэнгүй",
+      showLess: "Хураах",
     },
     skills: { title: "Техникийн ур чадвар" },
     certifications: {
@@ -158,6 +205,11 @@ const translations = {
         "A Full-Stack Developer who completed an IT Engineer & Full-Stack Developer program in Japan. Fluent in English and Japanese, with elementary-to-intermediate German. I founded and built Bedel AI Box — an AI receptionist that answers real customer phone calls in Mongolian, takes orders, and handles payment — building it end-to-end on my own. I work with Next.js, Rails, Python (FastAPI), Docker, and OpenAI Function Calling to take production systems for real businesses from architecture through to deployment.",
       contact: "Contact Me",
       github: "GitHub",
+      stats: {
+        projects: "Projects built",
+        live: "Live deployments",
+        languages: "Working languages",
+      },
     },
     projects: {
       title: "Featured Projects",
@@ -215,8 +267,43 @@ const translations = {
         feat2:
           "Eye Tracking: Implements eye gaze estimation to move the cursor, providing an alternative input method for accessibility.",
       },
+      p7: {
+        title: "Haiguul",
+        status: "Live Beta",
+        desc: "A demand-routing service marketplace for Mongolia. Customers describe what they need in plain Mongolian — “I urgently need a plumber in Bayangol” — and the request goes straight to vetted, available providers. No directory browsing.",
+        feat1:
+          "Claude parses each request and suggests a triage to a human operator, who makes the final call. Every correction is stored as a model-vs-human pair, so an eval corpus grows out of normal operations.",
+        feat2:
+          "Monorepo with Next.js 15, BullMQ workers and Prisma/PostgreSQL. Mongolian text normalization and fuzzy matching, installable PWA, SMS/Messenger/Push channels — deployed on Fly.io.",
+      },
+      p8: {
+        title: "Meeting Protocol AI",
+        status: "In Development",
+        desc: "Turns Mongolian meeting recordings into structured minutes that record who said what — with decisions and action items extracted automatically.",
+        feat1:
+          "Speaker diarization (pyannote) runs before ASR, then voice-print matching names each speaker. Every turn is transcribed with Chimege STT, and Claude drafts the final protocol.",
+        feat2:
+          "Engineered around real API limits: long turns are split at speech pauses to fit a 15-second ASR cap, and very short clips are padded without losing their true timestamps.",
+      },
+      p9: {
+        title: "BedelERP",
+        status: "In Development",
+        desc: "A voice-driven accounting core for Mongolian SMEs: spoken business events like “sold 3 sacks of flour today” become correct accounting records. The financial backbone behind Bedel AI Box.",
+        feat1:
+          "Append-only double-entry ledger (enforced by Postgres triggers) — corrections are reversing entries, never edits. BigDecimal money, idempotency keys and optimistic locking prevent double-booking and overselling.",
+        feat2:
+          "VAT split, eBarimt receipts, weighted-average inventory with COGS, and P&L / VAT / balance-sheet reports. gRPC bridge from Bedel's Python stack; 77 tests including Testcontainers, with GitHub Actions CI.",
+      },
+      filters: {
+        all: "All",
+        ai: "AI & Voice",
+        web: "Full-Stack & Backend",
+      },
       viewCode: "View Code on GitHub",
       liveDemo: "Live Demo",
+      privateCode: "Private code — walkthrough on request",
+      showMore: "Show details",
+      showLess: "Show less",
     },
     skills: { title: "Technical Competencies" },
     certifications: {
@@ -258,6 +345,11 @@ const translations = {
         "日本でIT Engineer & Full-Stack Developerの専門課程を修了したフルスタックエンジニアです。英語・日本語ともに流暢で、ドイツ語は初〜中級レベル。AI受付システム『Bedel AI Box』を創業者として一人で開発し、実際の顧客電話にモンゴル語で応答し、注文・決済まで対応する仕組みを構築しました。Next.js / Rails / Python (FastAPI) / Docker / OpenAI Function Callingを用いて、ビジネス向けの本番システムを設計から運用まで一貫して構築します。",
       contact: "お問い合わせ",
       github: "GitHub",
+      stats: {
+        projects: "制作プロジェクト",
+        live: "公開中",
+        languages: "対応言語",
+      },
     },
     projects: {
       title: "主なプロジェクト",
@@ -315,8 +407,43 @@ const translations = {
         feat2:
           "アイトラッキング: 視線推定を実装してカーソルを移動させ、アクセシビリティのための代替入力方法を提供。",
       },
+      p7: {
+        title: "Haiguul",
+        status: "ベータ公開中",
+        desc: "モンゴルでサービスを必要とする人と提供者をつなぐプラットフォーム。「バヤンゴル区で至急配管工が必要」と普段のモンゴル語で書くだけで、審査済みで対応可能な事業者へ依頼が直接届きます。電話帳のように探し回る必要はありません。",
+        feat1:
+          "Claudeが依頼内容を解析してオペレーターに提案し、最終判断は人が行います。修正はすべて「モデルの判断 vs 人の判断」のペアとして記録され、評価用コーパスが自然に蓄積されます。",
+        feat2:
+          "Next.js 15、BullMQワーカー、Prisma/PostgreSQLによるモノレポ構成。モンゴル語テキストの正規化とあいまい検索、インストール可能なPWA、SMS/Messenger/Push通知に対応し、Fly.ioで稼働中。",
+      },
+      p8: {
+        title: "議事録AI",
+        status: "開発中",
+        desc: "モンゴル語の会議録音から「誰が何を話したか」を記録し、決定事項やタスクを含む構造化された議事録を自動生成するシステム。",
+        feat1:
+          "pyannoteで話者分離を行い、登録済みの声紋と照合して話者を名前で識別。各発話をChimege STTでテキスト化し、Claudeで議事録を作成します。",
+        feat2:
+          "実際のAPI制限に合わせた設計: ASRの15秒制限に収まるよう長い発話を無音区間で分割し、短すぎる音声は実際のタイムスタンプを保ったまま補完します。",
+      },
+      p9: {
+        title: "BedelERP",
+        status: "開発中",
+        desc: "モンゴルの中小企業向け、音声で操作する会計システムのコア。「今日小麦粉を3袋売った」といった発話を正確な会計記録に変換します。Bedel AI Boxを支える会計基盤です。",
+        feat1:
+          "追記専用の複式簿記元帳（Postgresトリガーで保護）で、修正は逆仕訳のみ。金額はBigDecimalで扱い、冪等キーと楽観的ロックで二重計上や在庫超過販売を防止。",
+        feat2:
+          "付加価値税（VAT）計算、eBarimt電子レシート、移動平均法による在庫・売上原価、損益・VAT・貸借対照表レポート。BedelとはgRPCで連携。Testcontainersを含む77件のテストとGitHub Actions CI。",
+      },
+      filters: {
+        all: "すべて",
+        ai: "AI・音声",
+        web: "フルスタック・バックエンド",
+      },
       viewCode: "GitHubでコードを見る",
       liveDemo: "ライブデモ",
+      privateCode: "非公開リポジトリ（ご要望に応じてご説明可）",
+      showMore: "詳細を見る",
+      showLess: "閉じる",
     },
     skills: { title: "技術スキル" },
     certifications: {
@@ -344,9 +471,209 @@ const translations = {
   },
 };
 
+type Lang = keyof typeof translations;
+type T = (typeof translations)[Lang];
+
+const LANGS: { code: Lang; label: string }[] = [
+  { code: "mn", label: "MN" },
+  { code: "en", label: "EN" },
+  { code: "jp", label: "日本語" },
+];
+
+function isLang(v: unknown): v is Lang {
+  return v === "mn" || v === "en" || v === "jp";
+}
+
+type Project = {
+  id: string;
+  featured?: boolean;
+  categories: ("ai" | "web")[];
+  title: string;
+  status?: string;
+  desc: string;
+  feat1: string;
+  feat2: string;
+  link?: string;
+  liveLink?: string;
+  image?: string;
+  icon?: React.ElementType;
+  accent?: string;
+  tech: { icon: React.ElementType; label: string }[];
+};
+
+function getProjects(t: T): Project[] {
+  const p = t.projects;
+  return [
+    {
+      id: "bedel",
+      featured: true,
+      categories: ["ai", "web"],
+      ...p.p0,
+      liveLink: "https://bedel.mn",
+      image: "/bedel-logo.png",
+      tech: [
+        { icon: Phone, label: "VoIP / SIP" },
+        { icon: Mic, label: "Voice AI (STT/TTS)" },
+        { icon: Brain, label: "OpenAI Function Calling" },
+        { icon: CreditCard, label: "Payment Gateway" },
+        { icon: Container, label: "Docker" },
+        { icon: Radio, label: "Monitoring" },
+        { icon: Cpu, label: "Python (FastAPI)" },
+        { icon: Database, label: "PostgreSQL" },
+      ],
+    },
+    {
+      id: "haiguul",
+      categories: ["ai", "web"],
+      ...p.p7,
+      liveLink: "https://haiguul.com",
+      image: "/haiguul.jpg",
+      tech: [
+        { icon: Layout, label: "Next.js 15" },
+        { icon: Brain, label: "Claude API" },
+        { icon: Database, label: "Prisma / PostgreSQL" },
+        { icon: Workflow, label: "BullMQ" },
+        { icon: Search, label: "Fuzzy Search (MN)" },
+        { icon: Cloud, label: "Fly.io" },
+      ],
+    },
+    {
+      id: "bedelerp",
+      categories: ["web"],
+      ...p.p9,
+      icon: Calculator,
+      accent: "from-emerald-400 to-teal-600",
+      tech: [
+        { icon: Coffee, label: "Java 21" },
+        { icon: Server, label: "Spring Boot" },
+        { icon: Database, label: "PostgreSQL / Flyway" },
+        { icon: Network, label: "gRPC" },
+        { icon: FlaskConical, label: "Testcontainers" },
+        { icon: Container, label: "Docker" },
+      ],
+    },
+    {
+      id: "protocol",
+      categories: ["ai"],
+      ...p.p8,
+      icon: AudioLines,
+      accent: "from-violet-400 to-fuchsia-600",
+      tech: [
+        { icon: Cpu, label: "Python" },
+        { icon: Mic, label: "pyannote (PyTorch)" },
+        { icon: AudioLines, label: "Chimege STT" },
+        { icon: Brain, label: "Claude API" },
+      ],
+    },
+    {
+      id: "ecoroute",
+      categories: ["web"],
+      ...p.p1,
+      status: undefined,
+      link: "https://github.com/Nomad1nk/RouteChecker",
+      liveLink: "https://route-checker.vercel.app",
+      image: "/ecoroute.png",
+      tech: [
+        { icon: Layout, label: "Next.js 14" },
+        { icon: Server, label: "Ruby on Rails" },
+        { icon: Cpu, label: "Python Flask" },
+        { icon: MapPin, label: "Leaflet / OSRM" },
+      ],
+    },
+    {
+      id: "booking",
+      categories: ["web"],
+      ...p.p2,
+      link: "https://github.com/Nomad1nk/BookingSystem",
+      liveLink: "https://bookingsystemn.vercel.app",
+      image: "/Bookingsystem.png",
+      tech: [
+        { icon: Calendar, label: "Next.js" },
+        { icon: Server, label: "NestJS" },
+        { icon: Database, label: "PostgreSQL" },
+        { icon: Layout, label: "Tailwind v4" },
+        { icon: CreditCard, label: "Stripe" },
+        { icon: Globe, label: "i18n" },
+      ],
+    },
+    {
+      id: "mindsync",
+      categories: ["ai", "web"],
+      ...p.p3,
+      link: "https://github.com/Nomad1nk/MindSync-Psychologist-AI",
+      liveLink: "https://mind-sync-psychologist-ai.vercel.app",
+      image: "/syncAI.png",
+      tech: [
+        { icon: Server, label: "FastAPI" },
+        { icon: Database, label: "SQLite" },
+        { icon: CreditCard, label: "Stripe" },
+        { icon: Brain, label: "GPT-4o / Whisper" },
+      ],
+    },
+    {
+      id: "ecommerce",
+      categories: ["web"],
+      ...p.p4,
+      link: "https://github.com/Nomad1nk/LuxEcommerce",
+      liveLink: "https://lux-ecommerce.vercel.app",
+      image: "/luxeComm.png",
+      tech: [
+        { icon: Layout, label: "Next.js" },
+        { icon: ShoppingBag, label: "Shopify API" },
+        { icon: CreditCard, label: "Stripe" },
+        { icon: Database, label: "Redis" },
+      ],
+    },
+    {
+      id: "mousetrack",
+      categories: ["ai"],
+      ...p.p6,
+      link: "https://github.com/Nomad1nk/MouseTrack",
+      image: "/mousetrack.png",
+      tech: [
+        { icon: Cpu, label: "Python" },
+        { icon: Camera, label: "OpenCV" },
+        { icon: Eye, label: "Mediapipe" },
+        { icon: MousePointer2, label: "PyAutoGUI" },
+      ],
+    },
+  ];
+}
+
 export default function Portfolio() {
-  const [lang, setLang] = useState<"mn" | "en" | "jp">("mn");
+  const [lang, setLangState] = useState<Lang>("mn");
   const t = translations[lang];
+  const projects = getProjects(t);
+
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("lang");
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem("lang");
+    } catch {}
+    const browser = navigator.language.toLowerCase();
+    const detected: Lang = browser.startsWith("mn")
+      ? "mn"
+      : browser.startsWith("ja")
+        ? "jp"
+        : "en";
+    const initial = [fromUrl, saved].find(isLang) ?? detected;
+    setLangState(initial);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang === "jp" ? "ja" : lang;
+  }, [lang]);
+
+  const setLang = (l: Lang) => {
+    setLangState(l);
+    try {
+      localStorage.setItem("lang", l);
+    } catch {}
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", l);
+    window.history.replaceState(null, "", url);
+  };
 
   return (
     <div
@@ -391,37 +718,27 @@ export default function Portfolio() {
               </a>
             </nav>
 
-            <div className="flex items-center gap-4">
-              <div className="relative group">
-                <button className="flex items-center gap-1 text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition px-2 py-1 rounded-md">
-                  <Globe size={16} />
-                  <span className="uppercase">{lang}</span>
-                  <ChevronDown
-                    size={14}
-                    className="group-hover:rotate-180 transition-transform duration-200"
-                  />
-                </button>
-
-                <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">
-                  <div className="bg-gray-900 border border-white/10 rounded-lg shadow-xl overflow-hidden min-w-[120px] flex flex-col">
-                    {(["mn", "en", "jp"] as const).map((l) => (
-                      <button
-                        key={l}
-                        onClick={() => setLang(l)}
-                        className={`px-4 py-2 text-left text-sm font-medium hover:bg-white/10 transition flex items-center justify-between ${
-                          lang === l
-                            ? "text-white bg-white/5 font-bold"
-                            : "text-gray-400"
-                        }`}
-                      >
-                        <span className="uppercase">{l}</span>
-                        {lang === l && (
-                          <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div
+                role="group"
+                aria-label="Language"
+                className="flex items-center p-0.5 rounded-lg bg-white/5 border border-white/10"
+              >
+                <Globe size={14} className="mx-1.5 text-gray-400 hidden sm:block" />
+                {LANGS.map(({ code, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => setLang(code)}
+                    aria-pressed={lang === code}
+                    className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all ${
+                      lang === code
+                        ? "bg-white text-black shadow"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
               </div>
 
               <a
@@ -440,6 +757,20 @@ export default function Portfolio() {
               </a>
             </div>
           </div>
+          <nav className="md:hidden flex justify-around border-t border-white/5 px-4 py-2 text-xs font-medium text-gray-300">
+            {(
+              [
+                ["#about", t.nav.about],
+                ["#projects", t.nav.projects],
+                ["#skills", t.nav.stack],
+                ["#contact", t.nav.contact],
+              ] as const
+            ).map(([href, label]) => (
+              <a key={href} href={href} className="hover:text-white transition">
+                {label}
+              </a>
+            ))}
+          </nav>
         </header>
 
         <main>
@@ -521,6 +852,32 @@ export default function Portfolio() {
                   {t.hero.github}
                 </a>
               </motion.div>
+
+              <motion.dl
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+                className="mt-14 grid grid-cols-3 max-w-xl mx-auto divide-x divide-white/10 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-sm"
+              >
+                {[
+                  { value: String(projects.length), label: t.hero.stats.projects },
+                  {
+                    value: String(projects.filter((p) => p.liveLink).length),
+                    label: t.hero.stats.live,
+                  },
+                  { value: "MN · EN · JA", label: t.hero.stats.languages },
+                ].map(({ value, label }) => (
+                  <div key={label} className="px-3 py-4 flex flex-col-reverse gap-1">
+                    <dt className="text-[11px] sm:text-xs text-gray-400 font-medium leading-tight">
+                      {label}
+                    </dt>
+                    <dd className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </motion.dl>
             </motion.div>
 
             <motion.a
@@ -541,7 +898,7 @@ export default function Portfolio() {
           >
             <div className="w-full">
               <div className="max-w-5xl mx-auto px-6 mb-8">
-                <h2 className="text-xl font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider border-b border-black/10 dark:border-white/20 pb-2 inline-block">
+                <h2 className="text-4xl font-bold text-white tracking-tight">
                   {t.projects.title}
                 </h2>
               </div>
@@ -550,108 +907,7 @@ export default function Portfolio() {
                 t={t}
                 TechBadge={TechBadge}
                 CheckIcon={CheckIcon}
-                projects={[
-                  {
-                    title: t.projects.p0.title,
-                    status: t.projects.p0.status,
-                    desc: t.projects.p0.desc,
-                    feat1: t.projects.p0.feat1,
-                    feat2: t.projects.p0.feat2,
-                    link: "https://github.com/nomad1nk",
-                    liveLink: "https://bedel.mn",
-                    image: "/bedel-logo.png",
-                    tech: [
-                      { icon: Phone, label: "VoIP / SIP" },
-                      { icon: Mic, label: "Voice AI (STT/TTS)" },
-                      { icon: Brain, label: "OpenAI Function Calling" },
-                      { icon: CreditCard, label: "Payment Gateway" },
-                      { icon: Container, label: "Docker" },
-                      { icon: Radio, label: "Monitoring" },
-                      { icon: Cpu, label: "Python (FastAPI)" },
-                      { icon: Database, label: "PostgreSQL" },
-                    ],
-                  },
-                  {
-                    title: t.projects.p1.title,
-                    desc: t.projects.p1.desc,
-                    feat1: t.projects.p1.feat1,
-                    feat2: t.projects.p1.feat2,
-                    link: "https://github.com/Nomad1nk/RouteChecker",
-                    liveLink: "https://route-checker.vercel.app",
-                    image: "/ecoroute.png",
-                    tech: [
-                      { icon: Layout, label: "Next.js 14" },
-                      { icon: Server, label: "Ruby on Rails" },
-                      { icon: Cpu, label: "Python Flask" },
-                      { icon: MapPin, label: "Leaflet / OSRM" },
-                    ],
-                  },
-                  {
-                    title: t.projects.p2.title,
-                    status: t.projects.p2.status,
-                    desc: t.projects.p2.desc,
-                    feat1: t.projects.p2.feat1,
-                    feat2: t.projects.p2.feat2,
-                    link: "https://github.com/Nomad1nk/BookingSystem",
-                    liveLink: "https://bookingsystemn.vercel.app",
-                    image: "/Bookingsystem.png",
-                    tech: [
-                      { icon: Calendar, label: "Next.js" },
-                      { icon: Server, label: "NestJS" },
-                      { icon: Database, label: "PostgreSQL" },
-                      { icon: Layout, label: "Tailwind v4" },
-                      { icon: CreditCard, label: "Stripe" },
-                      { icon: Globe, label: "i18n" },
-                    ],
-                  },
-                  {
-                    title: t.projects.p4.title,
-                    status: t.projects.p4.status,
-                    desc: t.projects.p4.desc,
-                    feat1: t.projects.p4.feat1,
-                    feat2: t.projects.p4.feat2,
-                    link: "https://github.com/Nomad1nk/LuxEcommerce",
-                    liveLink: "https://lux-ecommerce.vercel.app",
-                    image: "/luxeComm.png",
-                    tech: [
-                      { icon: Layout, label: "Next.js" },
-                      { icon: ShoppingBag, label: "Shopify API" },
-                      { icon: CreditCard, label: "Stripe" },
-                      { icon: Database, label: "Redis" },
-                    ],
-                  },
-                  {
-                    title: t.projects.p3.title,
-                    status: t.projects.p3.status,
-                    desc: t.projects.p3.desc,
-                    feat1: t.projects.p3.feat1,
-                    feat2: t.projects.p3.feat2,
-                    link: "https://github.com/Nomad1nk/MindSync-Psychologist-AI",
-                    liveLink: "https://mind-sync-psychologist-ai.vercel.app",
-                    image: "/syncAI.png",
-                    tech: [
-                      { icon: Server, label: "FastAPI" },
-                      { icon: Database, label: "SQLite" },
-                      { icon: CreditCard, label: "Stripe" },
-                      { icon: Brain, label: "GPT-4o / Whisper" },
-                    ],
-                  },
-                  {
-                    title: t.projects.p6.title,
-                    status: t.projects.p6.status,
-                    desc: t.projects.p6.desc,
-                    feat1: t.projects.p6.feat1,
-                    feat2: t.projects.p6.feat2,
-                    link: "https://github.com/Nomad1nk/MouseTrack",
-                    image: "/mousetrack.png",
-                    tech: [
-                      { icon: Cpu, label: "Python" },
-                      { icon: Camera, label: "OpenCV" },
-                      { icon: Eye, label: "Mediapipe" },
-                      { icon: MousePointer2, label: "PyAutoGUI" },
-                    ],
-                  },
-                ]}
+                projects={projects}
               />
             </div>
           </section>
@@ -687,10 +943,11 @@ export default function Portfolio() {
                   title="Backend Engineering"
                   skills={[
                     "NestJS / Node.js / Express",
+                    "Java 21 / Spring Boot (JPA, Flyway)",
                     "Python (FastAPI / Flask)",
                     "Ruby on Rails",
                     "REST / GraphQL / WebSocket",
-                    "Microservices / gRPC",
+                    "Microservices / gRPC / BullMQ",
                   ]}
                   index={1}
                 />
@@ -725,9 +982,9 @@ export default function Portfolio() {
                   accent="from-pink-400 to-rose-500"
                   title="AI & Voice Systems"
                   skills={[
-                    "Voice AI / STT-TTS (Mongolian)",
+                    "Mongolian Voice AI: STT/TTS, Diarization",
                     "VoIP / SIP / RTP / VAD",
-                    "LLMs: OpenAI (GPT), Claude",
+                    "LLMs: Claude, OpenAI (GPT)",
                     "Function Calling / RAG",
                     "Computer Vision (OpenCV, Mediapipe)",
                   ]}
@@ -741,7 +998,7 @@ export default function Portfolio() {
                     "Stripe / PayPal Integration",
                     "Payment & Messaging APIs",
                     "Authentication (JWT, OAuth)",
-                    "Testing (Jest, Pytest)",
+                    "Testing (JUnit, Testcontainers, Jest, Pytest)",
                     "Git / GitHub Workflow",
                   ]}
                   index={5}
